@@ -35,4 +35,14 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function saveRoles($roles)
+    {
+        if(!empty($roles))
+        {
+            $this->roles()->sync($roles);
+        } else {
+            $this->roles()->detach();
+        }
+    }
 }

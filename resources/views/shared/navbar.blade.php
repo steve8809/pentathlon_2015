@@ -22,6 +22,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Felhasználó <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if (Auth::check())
+                            @if(Auth::user()->hasRole('admin'))
+                                <li><a href="/admin">Admin</a></li>
+                            @endif
                             <li><a href="/users/logout">Kilépés</a></li>
                         @else
                             <li><a href="/users/register">Regisztráció</a></li>

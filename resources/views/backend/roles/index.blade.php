@@ -1,39 +1,35 @@
 @extends('master')
-@section('title', 'Minden felhasználó')
+@section('title', 'Minden jogosultság')
 @section('content')
 
     <div class="container col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h2> Minden felhasználó </h2>
+                <h2> Minden jogosultság </h2>
             </div>
             @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
                 </div>
             @endif
-            @if ($users->isEmpty())
-                <p> Nincs egy felhasználó se.</p>
+            @if ($roles->isEmpty())
+                <p> Nincs jogosultság.</p>
             @else
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Név</th>
-                        <th>E-mail</th>
-                        <th>Csatlakozott</th>
-
+                        <th>Megjelenített név</th>
+                        <th>Leírás</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($users as $user)
+                    @foreach($roles as $role)
                         <tr>
-                            <td>{!! $user->id !!}</td>
-                            <td>
-                                <a href="{!! action('Admin\UsersController@edit', $user->id) !!}">{!! $user->name !!} </a>
-                            </td>
-                            <td>{!! $user->email !!}</td>
-                            <td>{!! $user->created_at !!}</td>
+                            <td>{!! $role->name !!}</td>
+                            <td>{!! $role->display_name !!}</td>
+                            <td>{!! $role->description !!}</td>
+
                         </tr>
                     @endforeach
                     </tbody>
