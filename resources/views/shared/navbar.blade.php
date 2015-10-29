@@ -11,12 +11,7 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navbar_responsive">
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Keresés...">
-                </div>
-                <button type="submit" class="btn btn-default">OK</button>
-            </form>
+
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Felhasználó <span class="caret"></span></a>
@@ -25,7 +20,7 @@
                             @if(Auth::user()->hasRole('admin'))
                                 <li><a href="/admin">Admin</a></li>
                             @endif
-                            <li><a href="/users/logout">Kilépés</a></li>
+                            <li><a href="/users/logout"><span class="glyphicon glyphicon-off"></span> Kilépés</a></li>
                         @else
                             <li><a href="/users/register">Regisztráció</a></li>
                             <li><a href="/users/login">Belépés</a></li>

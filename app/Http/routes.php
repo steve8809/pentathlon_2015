@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/home', function () {
@@ -28,11 +28,22 @@ Route::post('users/login', 'Auth\AuthController@postLogin');
 
 //Admin részek, jogosultság, felhhasználók szerkesztése
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
-    Route::get('users', [ 'as' => 'admin.user.index', 'uses' => 'UsersController@index']);
+    //Admin home
+    Route::get('/', 'PagesController@home');
+    //Jogosultságok
     Route::get('roles', 'RolesController@index');
     Route::get('roles/create', 'RolesController@create');
     Route::post('roles/create', 'RolesController@store');
+    //Felhasználók
+    Route::get('users', [ 'as' => 'admin.user.index', 'uses' => 'UsersController@index']);
     Route::get('users/{id?}/edit', 'UsersController@edit');
     Route::post('users/{id?}/edit','UsersController@update');
-    Route::get('/', 'PagesController@home');
+    Route::resource('users', 'UsersController');
+    //Lovak
+    /*Route::get('horses', 'HorsesController@nidex');
+    Route::get('horses/{id?}/edit', 'HorsesController@edit');
+    Route::post('horses/{id?}/edit', 'UsersController@update');*/
+    Route::resource('horses', 'HorsesController');
+    Route::post('horses/create', 'HorsesController@store');
+
 });

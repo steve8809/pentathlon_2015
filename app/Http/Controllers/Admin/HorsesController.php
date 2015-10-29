@@ -5,12 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Role;
-use App\Http\Requests\UserEditFormRequest;
-use Illuminate\Support\Facades\Hash;
+use App\Horse;
+use App\Http\Requests\HorseFormRequest;
 
-class UsersController extends Controller
+class HorsesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +17,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('backend.users.index', compact('users'));
+        $horses = Horse::all();
+        return view('backend.horses.index', compact('horses'));
     }
 
     /**
@@ -30,7 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.horses.create');
     }
 
     /**
@@ -39,9 +37,18 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HorseFormRequest $request)
     {
-        //
+        $horse = new Horse(array(
+            'name' => $request->get('name'),
+            'sex' => $request->get('sex'),
+            'colour' => $request->get('colour'),
+            'age' => $request->get('age')
+        ));
+
+        $horse->save();
+
+        return redirect('/admin/horses/create')->with('status', 'Új ló felvétele kész.');
     }
 
     /**
@@ -63,10 +70,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::whereId($id)->firstOrFail();
-        $roles = Role::all();
-        $selectedRoles = $user->roles->lists('id')->toArray();
-        return view('backend.users.edit', compact('user', 'roles', 'selectedRoles'));
+        $horse = Horse::whereId($id)->firstOrFail();
+        return view('backend.horses.edit', compact('horse'));
     }
 
     /**
@@ -76,18 +81,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, UserEditFormRequest $request)
+    public function update(Request $request, $id)
     {
-        $user = User::whereId($id)->firstOrFail();
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
-        $password = $request->get('password');
-        if($password != "") {
-            $user->password = Hash::make($password);
-        }
-        $user->save();
-        $user->saveRoles($request->get('role'));
-        return redirect(action('Admin\UsersController@edit', $user->id))->with('status', 'A felhasználó adatai módosítva!');
+        //
     }
 
     /**
@@ -98,7 +94,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect('admin/users');
+        //
     }
 }

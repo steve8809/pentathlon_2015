@@ -7,7 +7,7 @@
     <!--Twitter Bootstrap-->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" >
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-
+    <link rel="stylesheet" href="/css/styles.css">
 
 </head>
 <body>
@@ -18,7 +18,16 @@
 
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-
+<script>
+    function ConfirmDelete()
+    {
+        var x = confirm("Biztos, hogy törölni szeretnéd?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
 
 </body>
 

@@ -15,25 +15,26 @@
             @if ($roles->isEmpty())
                 <p> Nincs jogosultság.</p>
             @else
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Név</th>
-                        <th>Megjelenített név</th>
-                        <th>Leírás</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($roles as $role)
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td>{!! $role->name !!}</td>
-                            <td>{!! $role->display_name !!}</td>
-                            <td>{!! $role->description !!}</td>
-
+                            <th>Név</th>
+                            <th>Megjelenített név</th>
+                            <th>Leírás</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach($roles as $role)
+                            <tr>
+                                <td>{!! $role->name !!}</td>
+                                <td>{!! $role->display_name !!}</td>
+                                <td>{!! $role->description !!}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             @endif
         </div>
     </div>

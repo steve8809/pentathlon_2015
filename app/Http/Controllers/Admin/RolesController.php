@@ -46,8 +46,6 @@ class RolesController extends Controller
         ));
 
         $role->save();
-        //$session_variable = "hello@World#$%@";
-        //$new = htmlspecialchars($session_variable, ENT_QUOTES);
 
         return redirect('/admin/roles/create')->with('status', 'Új jogosultsági beállítás elkészítve.');
     }

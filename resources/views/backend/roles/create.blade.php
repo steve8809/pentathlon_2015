@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label for="display_name" class="col-lg-2 control-label">Megjelenített név</label>
                         <div class="col-lg-10">
-                            <input type="display_name" class="form-control" id="display_name" name="display_name">
+                            <input type="text" class="form-control" id="display_name" name="display_name">
                         </div>
                     </div>
 
