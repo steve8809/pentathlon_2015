@@ -2,7 +2,7 @@
 @section('title', 'Regisztráció')
 
 @section('content')
-    <div class="container col-md-6 col-md-offset-3">
+    <div class="container col-md-8 col-md-offset-3">
         <div class="well well bs-component">
 
             <form class="form-horizontal" method="post">
@@ -32,14 +32,14 @@
                     <div class="form-group">
                         <label for="password" class="col-lg-2 control-label">Jelszó</label>
                         <div class="col-lg-10">
-                            <input type="password" class="form-control"  name="password">
+                            <input type="password" class="form-control"  name="password" placeholder="Jelszó">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="password" class="col-lg-2 control-label">Jelszó ismét</label>
                         <div class="col-lg-10">
-                            <input type="password" class="form-control"  name="password_confirmation">
+                            <input type="password" class="form-control"  name="password_confirmation" placeholder="Jelszó ismét">
                         </div>
                     </div>
 

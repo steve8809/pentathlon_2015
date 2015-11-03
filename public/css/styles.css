@@ -7,3 +7,8 @@
 td.btn-edit {
     width: 110px;
 }
+
+/* Add new item button */
+.new-item {
+    margin-top: 20px;
+}

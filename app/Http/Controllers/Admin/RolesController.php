@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\Http\Requests\RoleFormRequest;
+use App\Http\Requests\RoleFormEditRequest;
 
 class RolesController extends Controller
 {
@@ -39,15 +40,8 @@ class RolesController extends Controller
      */
     public function store(RoleFormRequest $request)
     {
-        $role = new Role(array(
-            'name' => $request->get('name'),
-            'display_name' => $request->get('display_name'),
-            'description' => $request->get('description')
-        ));
-
-        $role->save();
-
-        return redirect('/admin/roles/create')->with('status', 'Új jogosultsági beállítás elkészítve.');
+        Role::create($request->all());
+        return redirect('/admin/roles')->with('status', 'Új jogosultsági beállítás elkészítve.');
     }
 
     /**
@@ -69,7 +63,8 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        return view('backend.roles.edit', compact('role'));
     }
 
     /**
@@ -79,9 +74,11 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, RoleFormEditRequest $request)
     {
-        //
+        $role = Role::findOrFail($id);
+        $role->update($request->all());
+        return redirect('/admin/roles')->with('status', 'Jogosultság módosítva');
     }
 
     /**
@@ -92,6 +89,7 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Role::findOrFail($id)->delete();
+        return redirect('/admin/roles')->with('status', 'Jogosultság törölve.');
     }
 }

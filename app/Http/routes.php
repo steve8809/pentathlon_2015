@@ -19,31 +19,33 @@ Route::get('/home', function () {
     return view('home');
 });
 
-//Regisztráció, Felhasználók, Bejelentkezés, Kijelentkezés
+// Auth -- Regisztráció, Felhasználók, Bejelentkezés, Kijelentkezés
 Route::get('users/register', 'Auth\AuthController@getRegister');
 Route::post('users/register', 'Auth\AuthController@postRegister');
 Route::get('users/logout', 'Auth\AuthController@getLogout');
 Route::get('users/login', 'Auth\AuthController@getLogin');
 Route::post('users/login', 'Auth\AuthController@postLogin');
 
-//Admin részek, jogosultság, felhhasználók szerkesztése
+//Admin részek
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
+
     //Admin home
     Route::get('/', 'PagesController@home');
+
     //Jogosultságok
-    Route::get('roles', 'RolesController@index');
-    Route::get('roles/create', 'RolesController@create');
-    Route::post('roles/create', 'RolesController@store');
+    Route::resource('roles', 'RolesController');
+    Route::post('roles/{id?}/edit', 'RolesController@update');
+
     //Felhasználók
-    Route::get('users', [ 'as' => 'admin.user.index', 'uses' => 'UsersController@index']);
-    Route::get('users/{id?}/edit', 'UsersController@edit');
-    Route::post('users/{id?}/edit','UsersController@update');
     Route::resource('users', 'UsersController');
+    Route::post('users/{id?}/edit','UsersController@update');
+
     //Lovak
-    /*Route::get('horses', 'HorsesController@nidex');
-    Route::get('horses/{id?}/edit', 'HorsesController@edit');
-    Route::post('horses/{id?}/edit', 'UsersController@update');*/
     Route::resource('horses', 'HorsesController');
-    Route::post('horses/create', 'HorsesController@store');
+    Route::post('horses/{id?}/edit', 'HorsesController@update');
+
+    //Klubok
+    Route::resource('clubs', 'ClubsController');
+    Route::post('clubs/{id?}/edit', 'ClubsController@update');
 
 });

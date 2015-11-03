@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class RoleFormRequest extends Request
+class RoleFormEditRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class RoleFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:roles'
+            'name' => 'required|unique:roles,name,'.$this->id
         ];
     }
 }

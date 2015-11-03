@@ -1,17 +1,17 @@
 @extends('master')
-@section('title', 'Minden ló')
+@section('title', 'Összes ló')
 @section('content')
 
     <div class="container col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h2> Minden ló </h2>
+                <a href="{!! action('Admin\HorsesController@create') !!}" class="btn btn-info pull-right new-item">Új ló felvétele</a>
+                <h2> Összes ló </h2>
+
             </div>
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
+
+            @include('statuses.alert_success')
+
             @if ($horses->isEmpty())
                 <p> Nincs egy ló sem.</p>
             @else
@@ -19,28 +19,29 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <td>Ló neve</td>
-                            <td>Neme</td>
-                            <td>Szín</td>
-                            <td>Kor</td>
-                            <td>Műveletek</td>
+                            <th>Ló neve</th>
+                            <th>Neme</th>
+                            <th>Szín</th>
+                            <th>Kor</th>
+                            <th colspan="2">Műveletek</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($horses as $horse)
                             <tr>
-                                <td>
-                                    <a href="{!! action('Admin\HorsesController@edit', $horse->id) !!}">{!! $horse->name !!}</a>
-                                </td>
+                                <td>{!! $horse->name !!}</td>
                                 <td>{!! $horse->sex !!} </td>
                                 <td>{!! $horse->colour !!}</td>
                                 <td>{!! $horse->age !!}</td>
                                 <td class="btn-edit">
-                                    <a href="{!! action('Admin\HorsesController@edit', $horse->id) !!}" class="btn btn-warning">Szerkesztés</a>
+                                    <a href="{!! action('Admin\HorsesController@edit', $horse->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
                                 </td>
                                 <td>
-                                    {!! Form::open(['method' => 'DELETE', 'onsubmit' => 'return ConfirmDelete()', 'route'=>['admin.horses.destroy', $horse->id]]) !!}
-                                    {!! Form::submit('Törlés', ['class' => 'btn btn-danger']) !!}
+                                    {!! Form::open(['method' => 'DELETE', 'route'=>['admin.horses.destroy', $horse->id]]) !!}
+                                    <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
+                                            data-title="Ló törlése" data-message='Biztos, hogy törlöd a következő lovat: {!! $horse->name !!}?'>
+                                        <span class='glyphicon glyphicon-trash'></span> Törlés
+                                    </button>
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
@@ -49,6 +50,9 @@
                     </table>
                 </div>
             @endif
+
+            @include('modals.confirm_delete')
+
         </div>
     </div>
 

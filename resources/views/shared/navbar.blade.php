@@ -14,16 +14,16 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Felhasználó <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> Felhasználó <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if (Auth::check())
                             @if(Auth::user()->hasRole('admin'))
-                                <li><a href="/admin">Admin</a></li>
+                                <li><a href="/admin"><span class="glyphicon glyphicon-dashboard"></span> Admin</a></li>
                             @endif
                             <li><a href="/users/logout"><span class="glyphicon glyphicon-off"></span> Kilépés</a></li>
                         @else
-                            <li><a href="/users/register">Regisztráció</a></li>
-                            <li><a href="/users/login">Belépés</a></li>
+                            <li><a href="/users/register"><span class="glyphicon glyphicon-registration-mark"></span> Regisztráció</a></li>
+                            <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Belépés</a></li>
                         @endif
                     </ul>
                 </li>

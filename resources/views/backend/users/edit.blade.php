@@ -7,15 +7,9 @@
 
             <form class="form-horizontal" method="post">
 
-                @foreach ($errors->all() as $error)
-                    <p class="alert alert-danger">{{ $error }}</p>
-                @endforeach
+                @include('errors.list')
 
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
+                @include('statuses.alert_success')
 
                 {!! csrf_field() !!}
 

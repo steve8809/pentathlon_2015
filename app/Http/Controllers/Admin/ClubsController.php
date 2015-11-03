@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Role;
-use App\Http\Requests\UserFormRequest;
-use Illuminate\Support\Facades\Hash;
+use App\Club;
+use App\Http\Requests\ClubFormRequest;
 
-class UsersController extends Controller
+class ClubsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +18,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('backend.users.index', compact('users'));
+        $clubs = Club::all();
+        return view('backend.clubs.index', compact('clubs'));
     }
 
     /**
@@ -63,10 +62,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::whereId($id)->firstOrFail();
-        $roles = Role::all();
-        $selectedRoles = $user->roles->lists('id')->toArray();
-        return view('backend.users.edit', compact('user', 'roles', 'selectedRoles'));
+        //
     }
 
     /**
@@ -76,18 +72,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, UserFormRequest $request)
+    public function update(Request $request, $id)
     {
-        $user = User::whereId($id)->firstOrFail();
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
-        $password = $request->get('password');
-        if($password != "") {
-            $user->password = Hash::make($password);
-        }
-        $user->save();
-        $user->saveRoles($request->get('role'));
-        return redirect('/admin/users')->with('status', 'A felhasználó adatai módosítva!');
+        //
     }
 
     /**
@@ -98,7 +85,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect('/admin/users');
+        //
     }
 }

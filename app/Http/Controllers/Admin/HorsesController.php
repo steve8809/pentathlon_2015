@@ -39,16 +39,9 @@ class HorsesController extends Controller
      */
     public function store(HorseFormRequest $request)
     {
-        $horse = new Horse(array(
-            'name' => $request->get('name'),
-            'sex' => $request->get('sex'),
-            'colour' => $request->get('colour'),
-            'age' => $request->get('age')
-        ));
+        Horse::create($request->all());
 
-        $horse->save();
-
-        return redirect('/admin/horses/create')->with('status', 'Új ló felvétele kész.');
+        return redirect('/admin/horses')->with('status', 'Új ló felvétele kész.');
     }
 
     /**
@@ -81,9 +74,13 @@ class HorsesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HorseFormRequest $request, $id)
     {
-        //
+        $horse = Horse::findOrFail($id);
+
+        $horse->update($request->all());
+
+        return redirect('/admin/horses')->with('status', 'Ló adatai szerkesztve.');
     }
 
     /**
@@ -94,6 +91,7 @@ class HorsesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Horse::findorFail($id)->delete();
+        return redirect('/admin/horses')->with('status', 'Ló törölve.');
     }
 }

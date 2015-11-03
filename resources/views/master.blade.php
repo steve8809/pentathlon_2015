@@ -18,16 +18,9 @@
 
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script>
-    function ConfirmDelete()
-    {
-        var x = confirm("Biztos, hogy törölni szeretnéd?");
-        if (x)
-            return true;
-        else
-            return false;
-    }
-</script>
+<script src="/js/pentathlon.js"></script>
+
+@yield('scripts')
 
 </body>
 
