@@ -17,7 +17,7 @@ class HorsesController extends Controller
      */
     public function index()
     {
-        $horses = Horse::all();
+        $horses = Horse::paginate(10);
         return view('backend.horses.index', compact('horses'));
     }
 

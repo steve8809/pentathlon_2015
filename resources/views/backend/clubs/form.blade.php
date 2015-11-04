@@ -9,9 +9,9 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('sex', 'Neme', array('class' => 'col-lg-2 control-label')) !!}
+        {!! Form::label('country', 'Ország', array('class' => 'col-lg-2 control-label')) !!}
         <div class="col-lg-10">
-            {!! Form::select('sex', array('' => 'Válassz nemet', 'Mén' => 'Mén', 'Kanca' => 'Kanca', 'Herélt' => 'Herélt'), null, array('class' => 'form-control')) !!}
+            {!! Form::select('country', array('' => 'Válassz országot') + $countries, null, array('class' => 'form-control')) !!}
         </div>
     </div>
 

@@ -2,7 +2,7 @@
 @section('title', 'Regisztráció')
 
 @section('content')
-    <div class="container col-md-8 col-md-offset-3">
+    <div class="container col-md-6 col-md-offset-3">
         <div class="well well bs-component">
 
             <form class="form-horizontal" method="post">

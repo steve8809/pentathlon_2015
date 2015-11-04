@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Öttusa eredménykezelő</a>
+            <a class="navbar-brand" href="/home">Öttusa eredménykezelő</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar_responsive">

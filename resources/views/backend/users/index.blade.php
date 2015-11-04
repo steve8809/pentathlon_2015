@@ -46,6 +46,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <?php echo $users->render(); ?>
                 </div>
             @endif
 

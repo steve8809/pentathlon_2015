@@ -18,7 +18,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::paginate(10);
         return view('backend.roles.index', compact('roles'));
     }
 
@@ -74,7 +74,7 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, RoleFormEditRequest $request)
+    public function update($id, RoleFormRequest $request)
     {
         $role = Role::findOrFail($id);
         $role->update($request->all());

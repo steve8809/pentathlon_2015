@@ -47,6 +47,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <?php echo $roles->render(); ?>
                 </div>
             @endif
 

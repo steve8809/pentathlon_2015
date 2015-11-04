@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class RoleFormEditRequest extends Request
+class CompetitorFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,12 @@ class RoleFormEditRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:roles,name,'.$this->id
+            'first_name' => 'required|alpha_spaces',
+            'last_name' => 'required|alpha_spaces',
+            'sex' => 'required',
+            'birthday' => 'required',
+            'country' => 'required',
+            'club' => 'required',
         ];
     }
 }

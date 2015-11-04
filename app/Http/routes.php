@@ -48,4 +48,13 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::resource('clubs', 'ClubsController');
     Route::post('clubs/{id?}/edit', 'ClubsController@update');
 
+    //Országok
+    Route::get('countries', 'CountriesController@index');
+
+    //Versenyzők
+    Route::resource('competitors', 'CompetitorsController');
+    Route::post('competitors/{id?}/edit', 'CompetitorsController@update');
+
+
+
 });

@@ -12,3 +12,8 @@ td.btn-edit {
 .new-item {
     margin-top: 20px;
 }
+
+/* Pagination */
+.pagination {
+    float: right;
+}
