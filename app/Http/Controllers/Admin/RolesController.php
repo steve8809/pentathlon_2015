@@ -7,7 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\Http\Requests\RoleFormRequest;
-use App\Http\Requests\RoleFormEditRequest;
+use DB;
 
 class RolesController extends Controller
 {
@@ -18,7 +18,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::paginate(10);
+        $roles = DB::table('roles')->orderBy('name', 'asc')->paginate(10);
         return view('backend.roles.index', compact('roles'));
     }
 

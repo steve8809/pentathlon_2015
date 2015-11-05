@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Club;
-use App\Http\Requests\ClubFormRequest;
-use App\Country;
+use App\Http\Requests\CompetitionFormRequest;
+use App\Competition;
 use DB;
+use App\Category;
+use App\Country;
 
-class ClubsController extends Controller
+class CompetitionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +21,8 @@ class ClubsController extends Controller
      */
     public function index()
     {
-        $clubs = DB::table('clubs')->orderBy('name','asc')->paginate(10);
-        return view('backend.clubs.index', compact('clubs'));
+        $competitions = DB::table('competitions')->orderBy('start_date', 'desc')->paginate(10);
+        return view('backend.competitions.index', compact('competitions'));
     }
 
     /**
@@ -31,8 +32,9 @@ class ClubsController extends Controller
      */
     public function create()
     {
-        $countries = Country::lists('name','name')->all();
-        return view('backend.clubs.create', compact('countries'));
+        $countries = Country::lists('name', 'name')->all();
+        $categories = Category::lists('category', 'category')->all();
+        return view('backend.competitions.create', compact('countries', 'categories'));
     }
 
     /**
@@ -41,11 +43,11 @@ class ClubsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClubFormRequest $request)
+    public function store(CompetitionFormRequest $request)
     {
-        Club::create($request->all());
+        Competition::create($request->all());
 
-        return redirect('admin/clubs')->with('status', 'Új klub felvétele kész.');
+        return redirect('admin/competitions')->with('status', 'Új verseny felvétele kész.');
     }
 
     /**
@@ -68,8 +70,9 @@ class ClubsController extends Controller
     public function edit($id)
     {
         $countries = Country::lists('name','name')->all();
-        $club = Club::whereId($id)->firstOrFail();
-        return view('backend.clubs.edit', compact('club', 'countries'));
+        $categories = Category::lists('category','category')->all();
+        $competition = Competition::whereId($id)->firstOrFail();
+        return view('backend.competitions.edit', compact('competition', 'countries', 'categories'));
     }
 
     /**
@@ -79,11 +82,11 @@ class ClubsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ClubFormRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $club = Club::findOrFail($id);
-        $club->update($request->all());
-        return redirect('/admin/clubs')->with('status', 'Klub adatai szerkesztve.');
+        $competition = Competition::findOrFail($id);
+        $competition->update($request->all());
+        return redirect('/admin/competitions')->with('status', 'Verseny adatai módosítva');
     }
 
     /**
@@ -94,7 +97,7 @@ class ClubsController extends Controller
      */
     public function destroy($id)
     {
-        Club::findOrFail($id)->delete();
-        return redirect('/admin/clubs')->with('status', 'Klub törölve');
+        Competition::findOrFail($id)->delete();
+        return redirect('/admin/competitions')->with('status', 'Verseny törölve');
     }
 }

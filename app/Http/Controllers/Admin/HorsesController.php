@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Horse;
 use App\Http\Requests\HorseFormRequest;
+use DB;
 
 class HorsesController extends Controller
 {
@@ -17,7 +18,7 @@ class HorsesController extends Controller
      */
     public function index()
     {
-        $horses = Horse::paginate(10);
+        $horses = DB::table('horses')->orderBy('name', 'asc')->paginate(10);
         return view('backend.horses.index', compact('horses'));
     }
 
@@ -94,4 +95,5 @@ class HorsesController extends Controller
         Horse::findorFail($id)->delete();
         return redirect('/admin/horses')->with('status', 'Ló törölve.');
     }
+
 }

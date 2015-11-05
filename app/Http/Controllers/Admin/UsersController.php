@@ -9,6 +9,7 @@ use App\User;
 use App\Role;
 use App\Http\Requests\UserFormRequest;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class UsersController extends Controller
 {
@@ -19,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
+        $users = DB::table('users')->orderBy('name', 'asc')->paginate(10);
         return view('backend.users.index', compact('users'));
     }
 

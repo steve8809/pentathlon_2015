@@ -48,7 +48,14 @@
                         </div>
                     </div>
                     <div class="list-group-separator"></div>
-
+                    <div class="list-group-item">
+                        <div class="row-content">
+                            <h4 class="list-group-item-heading">Versenyek</h4>
+                            <a href="/admin/competitions" class="btn btn-default btn-raised">Összes verseny</a>
+                            <a href="/admin/competitions/create" class="btn btn-primary btn-raised">Verseny felvétele</a>
+                        </div>
+                    </div>
+                    <div class="list-group-separator"></div>
                 </div>
 
             </div>

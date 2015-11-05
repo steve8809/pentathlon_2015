@@ -10,6 +10,7 @@ use App\Competitor;
 use App\Http\Requests\CompetitorFormRequest;
 use App\Country;
 use App\Club;
+use DB;
 
 class CompetitorsController extends Controller
 {
@@ -20,7 +21,7 @@ class CompetitorsController extends Controller
      */
     public function index()
     {
-        $competitors = Competitor::paginate(10);
+        $competitors = Competitor::paginate(10)->orderBy('name','desc');
         return view('backend.competitors.index', compact('competitors'));
     }
 

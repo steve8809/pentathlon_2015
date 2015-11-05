@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CompetitorFormRequest extends Request
+class CompetitionFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,13 @@ class CompetitorFormRequest extends Request
     public function rules()
     {
         return [
-            'first_name' => 'required|alpha_spaces',
-            'last_name' => 'required|alpha_spaces',
-            'sex' => 'required',
-            'birthday' => 'required|date',
+            'name' => 'required',
             'country' => 'required',
-            'club' => 'required',
+            'town' => 'required',
+            'host' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'category' => 'required',
         ];
     }
 }

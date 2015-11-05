@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
 
         //$this->call(CountriesTableSeeder::class);
 
-        $this->call(AgeGroupsTableSeeder::class);
+        //$this->call(AgeGroupsTableSeeder::class);
+
+        $this->call(CategoriesTableSeeder::class);
 
         Model::reguard();
     }

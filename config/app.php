@@ -146,7 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-        Illuminate\Html\HtmlServiceProvider::class,
+        Chumper\Datatable\DatatableServiceProvider::class,
 
     ],
 
@@ -199,6 +199,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Datatable' => Chumper\Datatable\Facades\DatatableFacade::class,
     ],
 
 ];

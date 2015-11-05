@@ -16,7 +16,7 @@
                 <p> Nincs egy ló sem.</p>
             @else
                 <div class="table-responsive">
-                    <table class="table">
+                    <table id="example" class="table">
                         <thead>
                         <tr>
                             <th>Ló neve</th>
@@ -49,9 +49,9 @@
                         </tbody>
                     </table>
                     <?php echo $horses->render(); ?>
+
                 </div>
             @endif
-
             @include('modals.confirm_delete')
 
         </div>
