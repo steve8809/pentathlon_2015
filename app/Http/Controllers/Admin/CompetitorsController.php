@@ -21,7 +21,7 @@ class CompetitorsController extends Controller
      */
     public function index()
     {
-        $competitors = Competitor::paginate(10)->orderBy('name','desc');
+        $competitors = DB::table('competitors')->orderBy('last_name', 'desc')->paginate(10);
         return view('backend.competitors.index', compact('competitors'));
     }
 
@@ -45,7 +45,15 @@ class CompetitorsController extends Controller
      */
     public function store(CompetitorFormRequest $request)
     {
-        Competitor::create($request->all());
+        $competitor = new Competitor;
+        $competitor->first_name = $request->get('first_name');
+        $competitor->last_name = $request->get('last_name');
+        $competitor->sex = $request->get('sex');
+        $competitor->birthday = $request->get('birthday');
+        $competitor->country = $request->get('country');
+        $competitor->club = $request->get('club');
+        $competitor->full_name = $request->get('last_name').' '.$request->get('first_name');
+        $competitor->save();
 
         return redirect('admin/competitors')->with('status', 'Új versenyző felvétele kész.');
     }
@@ -85,7 +93,14 @@ class CompetitorsController extends Controller
     public function update(Request $request, $id)
     {
         $competitor = Competitor::findOrFail($id);
-        $competitor->update($request->all());
+        $competitor->first_name = $request->get('first_name');
+        $competitor->last_name = $request->get('last_name');
+        $competitor->sex = $request->get('sex');
+        $competitor->birthday = $request->get('birthday');
+        $competitor->country = $request->get('country');
+        $competitor->club = $request->get('club');
+        $competitor->full_name = $request->get('last_name').' '.$request->get('first_name');
+        $competitor->save();
         return redirect('/admin/competitors')->with('status', 'Versenyző adatai módosítva');
     }
 

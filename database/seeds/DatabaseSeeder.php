@@ -20,8 +20,13 @@ class DatabaseSeeder extends Seeder
 
         //$this->call(AgeGroupsTableSeeder::class);
 
-        $this->call(CategoriesTableSeeder::class);
+        //$this->call(CategoriesTableSeeder::class);
 
+        //$this->call(CompetitorTableSeeder::class);
+
+        //$this->call(SwimmingCeRulesTableSeeder::class);
+
+        $this->call(FencingRulesTableSeeder::class);
         Model::reguard();
     }
 }

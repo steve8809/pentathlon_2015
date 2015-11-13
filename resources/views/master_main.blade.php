@@ -38,7 +38,7 @@
 </head>
 <body>
 
-@include('shared.navbar')
+@include('shared.navbar_main')
 
 @yield('content')
 

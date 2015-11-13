@@ -60,5 +60,23 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::resource('competitions', 'CompetitionsController');
     Route::post('competitions/{id?}/edit', 'CompetitionsController@update');
 
+    //Csoport
+    Route::resource('competitiongroups', 'CompetitiongroupsController');
+    Route::post('competitiongroups/{id?}/edit', 'CompetitiongroupsController@update');
+
+    //Nevezés versenyre
+    Route::get('competitiongroups/{id?}/entry', 'CompetitiongroupsController@entry');
+    Route::post('competitiongroups/{id?}/entry', 'CompetitiongroupsController@entry_save');
+    Route::delete('competitiongroups/destroy_entry/{id?}', array('as' => 'admin.destroy_entry',
+        'uses' => 'CompetitiongroupsController@destroy_entry'));
+
+    //Úszás, kombinált szabályok
+    Route::resource('swimming_ce_rules', 'SwimmingCeRulesController');
+    Route::post('swimming_ce_rules/{id?}/edit', 'SwimmingCeRulesController@update');
+
+    //Vívás szabályok
+    Route::resource('fencing_rules', 'FencingRulesController');
+    Route::post('fencing_rules/{id?}/edit', 'FencingRulesController@update');
+
 
 });

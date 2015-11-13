@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Fencing_rules;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CompetitionFormRequest;
-use App\Competition;
 use DB;
-use App\Category;
-use App\Country;
 
-class CompetitionsController extends Controller
+class FencingRulesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +18,8 @@ class CompetitionsController extends Controller
      */
     public function index()
     {
-        $competitions = DB::table('competitions')->orderBy('start_date', 'desc')->paginate(10);
-        return view('backend.competitions.index', compact('competitions'));
+        $fencing_rules = DB::table('fencing_rules')->orderBy('bouts', 'desc')->paginate(10);
+        return view('backend.fencing_rules.index', compact('fencing_rules'));
     }
 
     /**
@@ -32,9 +29,7 @@ class CompetitionsController extends Controller
      */
     public function create()
     {
-        $countries = Country::lists('name', 'name')->all();
-        $categories = Category::lists('category', 'category')->all();
-        return view('backend.competitions.create', compact('countries', 'categories'));
+        //
     }
 
     /**
@@ -43,10 +38,9 @@ class CompetitionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CompetitionFormRequest $request)
+    public function store(Request $request)
     {
-        Competition::create($request->all());
-        return redirect('admin/competitions')->with('status', 'Új verseny felvétele kész.');
+        //
     }
 
     /**
@@ -68,10 +62,8 @@ class CompetitionsController extends Controller
      */
     public function edit($id)
     {
-        $countries = Country::lists('name','name')->all();
-        $categories = Category::lists('category','category')->all();
-        $competition = Competition::whereId($id)->firstOrFail();
-        return view('backend.competitions.edit', compact('competition', 'countries', 'categories'));
+        $fencing_rule = Fencing_rules::findOrFail($id);
+        return view('backend.fencing_rules.edit', compact('fencing_rule'));
     }
 
     /**
@@ -83,9 +75,9 @@ class CompetitionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $competition = Competition::findOrFail($id);
-        $competition->update($request->all());
-        return redirect('/admin/competitions')->with('status', 'Verseny adatai módosítva');
+        $fencing_rule = Fencing_rules::findOrFail($id);
+        $fencing_rule->update($request->all());
+        return redirect('/admin/fencing_rules')->with('status', 'Pontozás módosítva');
     }
 
     /**
@@ -96,7 +88,6 @@ class CompetitionsController extends Controller
      */
     public function destroy($id)
     {
-        Competition::findOrFail($id)->delete();
-        return redirect('/admin/competitions')->with('status', 'Verseny törölve');
+        //
     }
 }

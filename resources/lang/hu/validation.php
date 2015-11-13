@@ -76,6 +76,7 @@ return [
     'timezone'             => 'A(z) :attribute nem egy valós név.',
     'unique'               => 'A(z) :attribute már foglalt.',
     'url'                  => 'The :attribute format is invalid.',
+    'date_multi_format'    => 'Nem megfelelő időformátum. A helyes formátum a következő: óó:pp:mm.ss',
 
     /*
     |--------------------------------------------------------------------------

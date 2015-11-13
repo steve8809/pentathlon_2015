@@ -21,8 +21,6 @@ class AgeGroupsTableSeeder extends Seeder
             array('age_group' => 'Ifi D'),
             array('age_group' => 'Ifi E'),
             array('age_group' => 'Ifi F'),
-            array('age_group' => 'Ifi G'),
-            array('age_group' => 'Ifi H'),
         ));
     }
 }
