@@ -78,5 +78,13 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::resource('fencing_rules', 'FencingRulesController');
     Route::post('fencing_rules/{id?}/edit', 'FencingRulesController@update');
 
+    //Úszás eredmények
+    Route::get('competitiongroups/{id?}/swimming', 'CompetitiongroupsController@swimming');
+    Route::post('competitiongroups/{id?}/swimming', 'CompetitiongroupsController@swimming_save');
+
+    //Lovaglás eredmények
+    Route::get('competitiongroups/{id?}/riding', 'CompetitiongroupsController@riding');
+    Route::post('competitiongroups/{id?}/riding', 'CompetitiongroupsController@riding_save');
+
 
 });

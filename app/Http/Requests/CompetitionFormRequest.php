@@ -25,7 +25,7 @@ class CompetitionFormRequest extends Request
     {
         return [
             'name' => 'required',
-            'country' => 'required',
+            'country_id' => 'required',
             'town' => 'required',
             'host' => 'required',
             'start_date' => 'required|date',

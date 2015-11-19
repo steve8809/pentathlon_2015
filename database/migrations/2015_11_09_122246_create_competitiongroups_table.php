@@ -14,7 +14,8 @@ class CreateCompetitiongroupsTable extends Migration
     {
         Schema::create('competitiongroups', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('competition');
+            $table->integer('competition_id')->unsigned();
+            $table->foreign('competition_id')->references('id')->on('competitions');
             $table->string('name');
             $table->date('date');
             $table->string('type');

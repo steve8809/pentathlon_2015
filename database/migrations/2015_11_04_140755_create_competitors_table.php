@@ -18,7 +18,8 @@ class CreateCompetitorsTable extends Migration
             $table->string('last_name');
             $table->string('sex');
             $table->date('birthday');
-            $table->string('country');
+            $table->integer('country_id')->unsigned();
+            $table->foreign('country_id')->references('id')->on('countries');
             $table->string('club');
             $table->timestamps();
         });

@@ -10,7 +10,7 @@
             {!! Form::model($competitiongroup, array('class' => 'form-horizontal')) !!}
 
             <fieldset>
-                <legend>Nevezés a következő versenyre: {!! $competitiongroup->competition.' - '.$competitiongroup->name !!}</legend>
+                <legend>Nevezés a következő versenyre: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name !!}</legend>
 
                 <div class="form-group">
                     {!! Form::label('competitors', 'Versenyző', array('class' => 'col-lg-2 control-label')) !!}

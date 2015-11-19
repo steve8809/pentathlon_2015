@@ -26,7 +26,7 @@ class CompetitorTableSeeder extends Seeder
                     'first_name' => $n,
                     'sex' => $sex,
                     'birthday' => $birthday,
-                    'country' => 'Magyarország',
+                    'country_id' => 135,
                     'club' => $club,
                     'full_name' => $full_name
                     )

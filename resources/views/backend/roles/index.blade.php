@@ -37,10 +37,12 @@
                                 </td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.roles.destroy', $role->id]]) !!}
-                                    <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
+                                    @if ($role->name != 'admin')
+                                        <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
                                             data-title="Jogosultság törlése" data-message='Biztos, hogy törlöd a következő jogosultságot: {!! $role->name !!}?'>
-                                        <span class='glyphicon glyphicon-trash'></span> Törlés
-                                    </button>
+                                         <span class='glyphicon glyphicon-trash'></span> Törlés
+                                        </button>
+                                    @endif
                                     {!! Form::close() !!}
                                 </td>
                             </tr>

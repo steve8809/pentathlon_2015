@@ -15,13 +15,6 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Menü</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Eredmények <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/admin/swimming_ce_rules">Úszás, kombinált</a></li>
-                        <li><a href="/admin/fencing_rules">Vívás</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Adatbázis <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="/admin/horses">Lovak</a></li>
@@ -47,7 +40,8 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> Felhasználó <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> @if(Auth::user()) {!! Auth::user()->name !!}
+                        @else Felhasználó @endif <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if (Auth::check())
                             <li><a href="/home"><span class="glyphicon glyphicon-dashboard"></span> Vissza a főoldalra</a></li>

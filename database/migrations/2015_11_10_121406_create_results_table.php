@@ -22,12 +22,13 @@ class CreateResultsTable extends Migration
             $table->integer('fencing_lose');
             $table->integer('fencing_points');
             $table->integer('fencing_order');
-            $table->time('swimming_time');
+            $table->string('swimming_time');
             $table->integer('swimming_points');
             $table->integer('swimming_order');
             $table->integer('riding_points');
+            $table->string('riding_horse');
             $table->integer('riding_order');
-            $table->time('ce_time');
+            $table->string('ce_time');
             $table->integer('ce_points');
             $table->integer('ce_order');
             $table->integer('total_points');

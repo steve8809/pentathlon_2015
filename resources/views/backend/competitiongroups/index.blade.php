@@ -32,7 +32,7 @@
                         @foreach($competitiongroups as $competitiongroup)
                             <tr>
                                 <td>{!! $competitiongroup->name !!}</td>
-                                <td>{!! $competitiongroup->competition !!} </td>
+                                <td>{!! $competitiongroup->competition->name !!} </td>
                                 <td>{!! $competitiongroup->date !!}</td>
                                 <td>{!! $competitiongroup->type !!}</td>
                                 <td>{!! $competitiongroup->age_group !!}</td>
@@ -48,8 +48,22 @@
                                     </button>
                                     {!! Form::close() !!}
                                 </td>
-                                <td>
+                                <td class="btn-edit">
                                     <a href="{!! action('Admin\CompetitiongroupsController@entry', $competitiongroup->id) !!}" class="btn btn-info"><span class='glyphicon glyphicon-edit'></span> Nevezés</a>
+                                </td>
+                                <td class="btn-edit">
+                                    <div class="btn-group pull-right">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                            <i class="glyphicon glyphicon-fire"></i> Eredmények <span class="caret"></span>
+                                        </button>
+
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="{!! action('Admin\CompetitiongroupsController@swimming', $competitiongroup->id) !!}">Úszás</a>
+                                                <a href="{!! action('Admin\CompetitiongroupsController@riding', $competitiongroup->id) !!}">Lovaglás</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

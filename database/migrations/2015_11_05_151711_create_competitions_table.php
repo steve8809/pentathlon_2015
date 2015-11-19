@@ -15,7 +15,8 @@ class CreateCompetitionsTable extends Migration
         Schema::create('competitions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('country');
+            $table->integer('country_id')->unsigned();
+            $table->foreign('country_id')->references('id')->on('countries');
             $table->string('town');
             $table->string('host');
             $table->date('start_date');

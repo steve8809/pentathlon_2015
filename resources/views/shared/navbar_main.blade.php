@@ -14,7 +14,8 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> Felhasználó <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> @if(Auth::user()) {!! Auth::user()->name !!}
+                        @else Felhasználó @endif<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if (Auth::check())
                             @if(Auth::user()->hasRole('admin'))

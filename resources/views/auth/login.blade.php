@@ -1,4 +1,4 @@
-@extends('master')
+@extends('master_main')
 @section('title', 'Bejelentkezés')
 
 @section('content')

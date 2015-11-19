@@ -35,7 +35,7 @@
                                 <td>{!! $competitor->first_name !!} </td>
                                 <td>{!! $competitor->sex !!}</td>
                                 <td>{!! $competitor->birthday !!}</td>
-                                <td>{!! $competitor->country !!}</td>
+                                <td>{!! $competitor->country->name !!}</td>
                                 <td>{!! $competitor->club !!}</td>
                                 <td class="btn-edit">
                                     <a href="{!! action('Admin\CompetitorsController@edit', $competitor->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>

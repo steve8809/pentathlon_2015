@@ -32,7 +32,7 @@
                         @foreach($competitions as $competition)
                             <tr>
                                 <td>{!! $competition->name !!}</td>
-                                <td>{!! $competition->country !!} </td>
+                                <td>{!! $competition->country->name !!} </td>
                                 <td>{!! $competition->town !!}</td>
                                 <td>{!! $competition->host !!}</td>
                                 <td>{!! $competition->start_date !!} - {!! $competition->end_date !!}</td>

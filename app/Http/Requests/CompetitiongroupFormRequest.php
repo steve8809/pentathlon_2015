@@ -25,7 +25,7 @@ class CompetitiongroupFormRequest extends Request
     {
         return [
             'name' => 'required',
-            'competition' => 'required',
+            'competition_id' => 'required',
             'date' => 'required|date',
             'type' => 'required',
             'age_group' => 'required',
