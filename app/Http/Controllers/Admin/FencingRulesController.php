@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Fencing_rules;
+use App\Fencing_rule;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Http\Requests\FencingRulesFormRequest;
 
 class FencingRulesController extends Controller
 {
@@ -20,13 +21,13 @@ class FencingRulesController extends Controller
 
     public function edit($id)
     {
-        $fencing_rule = Fencing_rules::findOrFail($id);
+        $fencing_rule = Fencing_rule::findOrFail($id);
         return view('backend.fencing_rules.edit', compact('fencing_rule'));
     }
 
-    public function update(Request $request, $id)
+    public function update(FencingRulesFormRequest $request, $id)
     {
-        $fencing_rule = Fencing_rules::findOrFail($id);
+        $fencing_rule = Fencing_rule::findOrFail($id);
         $fencing_rule->update($request->all());
         return redirect('/admin/fencing_rules')->with('status', 'Pontozás módosítva');
     }

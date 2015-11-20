@@ -38,9 +38,7 @@ class HorsesController extends Controller
     public function update(HorseFormRequest $request, $id)
     {
         $horse = Horse::findOrFail($id);
-
         $horse->update($request->all());
-
         return redirect('/admin/horses')->with('status', 'Ló adatai szerkesztve.');
     }
 

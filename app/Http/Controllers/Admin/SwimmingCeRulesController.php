@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Swimming_ce_rules;
+use App\Swimming_ce_rule;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -21,13 +21,13 @@ class SwimmingCeRulesController extends Controller
 
     public function edit($id)
     {
-        $swimming_ce_rule = Swimming_ce_rules::findOrFail($id);
+        $swimming_ce_rule = Swimming_ce_rule::findOrFail($id);
         return view('backend.swimming_ce_rules.edit', compact('swimming_ce_rule'));
     }
 
     public function update($id, SwimmingCeRulesFormRequest $request)
     {
-        $swimming_ce_rule = Swimming_ce_rules::findOrFail($id);
+        $swimming_ce_rule = Swimming_ce_rule::findOrFail($id);
         $swimming_ce_rule->update($request->all());
         return redirect('/admin/swimming_ce_rules')->with('status', 'Szabály módosítva');
     }

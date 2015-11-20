@@ -11,7 +11,7 @@
 
             @include('statuses.alert_success')
 
-            @include('backend.fencing_rules.form', ['submitButtonText' => 'Pontozás szerkesztése', 'legend' => 'Pontozás szerkesztése'])
+            @include('backend.fencing_rules.form', ['submitButtonText' => 'Pontozás szerkesztése', 'legend' => 'Pontozás szerkesztése - Tusok száma: '.$fencing_rule->bouts])
 
             {!! Form::close() !!}
 

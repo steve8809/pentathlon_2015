@@ -74,7 +74,6 @@ class CompetitiongroupsController extends Controller
 
         $competitor_in = [];
         foreach ($competitor_list as $comp) {
-            //var_dump($comp->competitor->full_name);
             $competitor_in[$comp->id] = $comp->competitor->full_name;
         }
         natsort($competitor_in);
@@ -84,7 +83,6 @@ class CompetitiongroupsController extends Controller
 
     public function entry_save(Request $request, $id)
     {
-        //$competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
         foreach ($request->competitors as $selected_cat) {
             $result = new Result;
             $result->competitor_id = $selected_cat;

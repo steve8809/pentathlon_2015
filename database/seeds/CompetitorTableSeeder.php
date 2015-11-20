@@ -15,7 +15,7 @@ class CompetitorTableSeeder extends Seeder
         $sexes = array('Férfi', 'Nő');
         $start = strtotime("1 January 1980");
         $end = strtotime("31 December 1996");
-        for ($n = 1; $n < 61; ++$n) {
+        for ($n = 1; $n < 81; ++$n) {
             $rand_date = mt_rand($start, $end);
             $birthday = date("Y-m-d", $rand_date);
             $sex = $sexes[array_rand($sexes, 1)];

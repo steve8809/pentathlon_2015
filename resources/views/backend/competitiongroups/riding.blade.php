@@ -23,7 +23,6 @@
                             <div class="col-lg-3">
                                 {!! Form::text('riding['.$key.']', $competitor_riding[$key] , array('class' => 'form-control')) !!}
                             </div>
-                            {!! Form::label('riding_horse['.$key.']', 'Ló neve', array('class' => 'col-lg-2 control-label')) !!}
                             <div class="col-lg-3">
                                 {!! Form::select('riding_horse['.$key.']', array('' => 'Válassz lovat') + $horses, $competitor_horse[$key] , array('class' => 'form-control')) !!}
                             </div>
@@ -42,6 +41,7 @@
 
             {!! Form::close() !!}
         </div>
+        <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
     </div>
 
 @endsection

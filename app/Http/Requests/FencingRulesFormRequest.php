@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class SwimmingCeRulesFormRequest extends Request
+class FencingRulesFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class SwimmingCeRulesFormRequest extends Request
     public function rules()
     {
         return [
-            'swimming_time' => 'date_multi_format:"H:i:s.u"|required',
-            'ce_time' => 'date_multi_format:"H:i:s.u"|required',
-            'swimming_dist' => 'required',
-            'ce_dist' => 'required',
+            'bouts_250' => 'required|integer',
+            'victory_points' => 'required|integer',
         ];
     }
 }

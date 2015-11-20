@@ -43,7 +43,7 @@
                                 <td class="btn-edit">
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.competitiongroups.destroy', $competitiongroup->id]]) !!}
                                     <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
-                                            data-title="Csoport törlése" data-message='Biztos, hogy törlöd a következő csoportot: {!! $competitiongroup->competition.': '.$competitiongroup->name !!}?'>
+                                            data-title="Csoport törlése" data-message='Biztos, hogy törlöd a következő csoportot: {!! $competitiongroup->competition->name.': '.$competitiongroup->name !!}?'>
                                         <span class='glyphicon glyphicon-trash'></span> Törlés
                                     </button>
                                     {!! Form::close() !!}

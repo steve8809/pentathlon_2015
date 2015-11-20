@@ -14,9 +14,9 @@ class CreateHorsesTable extends Migration
     {
         Schema::create('horses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 255);
-            $table->string('colour', 255);
-            $table->string('sex', 255);
+            $table->string('name');
+            $table->string('colour');
+            $table->string('sex');
             $table->integer('age');
             $table->timestamps();
         });

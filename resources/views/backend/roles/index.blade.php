@@ -37,7 +37,7 @@
                                 </td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.roles.destroy', $role->id]]) !!}
-                                    @if ($role->name != 'admin')
+                                    @if ($role->name != 'admin' && $role->name != 'felhasználó')
                                         <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
                                             data-title="Jogosultság törlése" data-message='Biztos, hogy törlöd a következő jogosultságot: {!! $role->name !!}?'>
                                          <span class='glyphicon glyphicon-trash'></span> Törlés

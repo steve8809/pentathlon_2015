@@ -15,28 +15,28 @@
 
                 <fieldset>
                     <legend>Felhasználó regisztrálása</legend>
-                    <div class="form-group">
+                    <div class="form-group @if ($errors->has('name')) has-error @endif">
                         <label for="name" class="col-lg-2 control-label">Név</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="name" placeholder="Név" name="name" value="{{ old('name') }}">
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group @if ($errors->has('email')) has-error @endif">
                         <label for="email" class="col-lg-2 control-label">E-mail</label>
                         <div class="col-lg-10">
                             <input type="email" class="form-control" id="email" placeholder="E-mail" name="email" value="{{ old('email') }}">
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group @if ($errors->has('password')) has-error @endif">
                         <label for="password" class="col-lg-2 control-label">Jelszó</label>
                         <div class="col-lg-10">
                             <input type="password" class="form-control"  name="password" placeholder="Jelszó">
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group @if ($errors->has('password')) has-error @endif">
                         <label for="password" class="col-lg-2 control-label">Jelszó ismét</label>
                         <div class="col-lg-10">
                             <input type="password" class="form-control"  name="password_confirmation" placeholder="Jelszó ismét">

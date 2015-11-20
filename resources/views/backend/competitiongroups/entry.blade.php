@@ -67,6 +67,7 @@
                 </div>
             @endif
         </div>
+        <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
     </div>
 
     @include('modals.confirm_delete')

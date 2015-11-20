@@ -1,21 +1,21 @@
 <fieldset>
     <legend>{!! $legend !!}</legend>
 
-    <div class="form-group">
+    <div class="form-group @if ($errors->has('name')) has-error @endif">
         {!! Form::label('name', 'Név', array('class' => 'col-lg-2 control-label')) !!}
         <div class="col-lg-10">
             {!! Form::text('name', null , array('class' => 'form-control', 'placeholder' => 'Név')) !!}
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group @if ($errors->has('country')) has-error @endif">
         {!! Form::label('country', 'Ország', array('class' => 'col-lg-2 control-label')) !!}
         <div class="col-lg-10">
             {!! Form::select('country', array('' => 'Válassz országot') + $countries, null, array('class' => 'form-control')) !!}
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group @if ($errors->has('town')) has-error @endif">
         {!! Form::label('town', 'Város', array('class' => 'col-lg-2 control-label')) !!}
         <div class="col-lg-10">
             {!! Form::text('town', null , array('class' => 'form-control', 'placeholder' => 'Város')) !!}

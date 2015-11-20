@@ -38,7 +38,7 @@ class SwimmingSaveFormRequest extends Request
         $messages = [];
         foreach($this->request->get('swimming') as $key => $val)
         {
-            $messages['swimming.'.$key.'.date_multi_format'] = 'A pirossal jelölt mezőkben az időeredmény megadása nem a következő formátumban történt: óó:pp:mm.ss';
+            $messages['swimming.'.$key.'.date_multi_format'] = 'A pirossal jelölt mezőkben az időeredmény megadása nem a következő formátumban történt: óó:pp:mm.ss - pl.: 00:02:30.00';
         }
         return $messages;
     }

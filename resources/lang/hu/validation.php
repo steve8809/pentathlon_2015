@@ -76,7 +76,7 @@ return [
     'timezone'             => 'A(z) :attribute nem egy valós név.',
     'unique'               => 'A(z) :attribute már foglalt.',
     'url'                  => 'The :attribute format is invalid.',
-    'date_multi_format'    => 'Nem megfelelő időformátum. A helyes formátum a következő: óó:pp:mm.ss',
+    'date_multi_format'    => 'Nem megfelelő időformátum. A helyes formátum a következő: óó:pp:mm.ss - pl.:00:02:30.00',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,9 +107,33 @@ return [
     */
 
     'attributes' => [
-        'name' => 'név',
-        'password' => 'jelszó',
-        ''
+        'name' => 'Név',
+        'password' => 'Jelszó',
+        'country' => 'Ország',
+        'town' => 'Város',
+        'sex' => 'Nem',
+        'colour' => 'Szín',
+        'age' => 'Kor',
+        'swimming_time' => 'Úszóidő 250 ponthoz',
+        'ce_time' => 'Kombinált idő 500 ponthoz',
+        'swimming_dist' => 'Úszás hossza',
+        'ce_dist' => 'Kombinált hossza',
+        'role' => 'Szerep',
+        'bouts_250' => '250 ponthoz szükséges tusok száma',
+        'victory_points' => 'Győzelem pontszáma',
+        'first_name' => 'Keresztnév',
+        'last_name' => 'Vezetéknév',
+        'birthday' => 'Születési idő',
+        'country_id' => 'Ország',
+        'club' => 'Klub',
+        'host' => 'Rendező',
+        'start_date' => 'Verseny kezdete',
+        'end_date' => 'Versenyy vége',
+        'category' => 'Kategória',
+        'competition_id' => 'Verseny',
+        'type' => 'Típus',
+        'age_group' => 'Korosztály'
+
     ],
 
 ];

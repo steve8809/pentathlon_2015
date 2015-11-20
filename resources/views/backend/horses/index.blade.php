@@ -20,7 +20,7 @@
                         <thead>
                         <tr>
                             <th>Ló neve</th>
-                            <th>Neme</th>
+                            <th>Nem</th>
                             <th>Szín</th>
                             <th>Kor</th>
                             <th colspan="2">Műveletek</th>
