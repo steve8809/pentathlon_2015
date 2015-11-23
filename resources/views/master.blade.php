@@ -33,6 +33,9 @@
     <!--Twitter Bootstrap js-->
     <script src="/js/bootstrap.min.js"></script>
 
+    <!--Masked_input js-->
+    <script src="/js/jquery.maskedinput.js"></script>
+
 
 
 </head>

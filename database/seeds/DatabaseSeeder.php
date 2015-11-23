@@ -16,17 +16,17 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(UserTableSeeder::class);
 
-        $this->call(CountriesTableSeeder::class);
+        /*$this->call(CountriesTableSeeder::class);
 
         $this->call(AgeGroupsTableSeeder::class);
 
         $this->call(CategoriesTableSeeder::class);
 
-        $this->call(CompetitorTableSeeder::class);
+        $this->call(CompetitorTableSeeder::class);*/
 
         $this->call(SwimmingCeRulesTableSeeder::class);
 
-        $this->call(FencingRulesTableSeeder::class);
+        /*$this->call(FencingRulesTableSeeder::class);
 
         $this->call(AdminSeeder::class);
 
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ClubsTableSeeder::class);
 
-        $this->call(CompetitionSeeder::class);
+        $this->call(CompetitionSeeder::class);*/
 
         Model::reguard();
     }

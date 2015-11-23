@@ -23,7 +23,7 @@
                     <div class="form-group @if ($errors->has('swimming.'.$key)) has-error @endif">
                         {!! Form::label('swimming['.$key.']', $comp, array('class' => 'col-lg-2 control-label')) !!}
                         <div class="col-lg-10">
-                            {!! Form::text('swimming['.$key.']', $competitor_swimming[$key] , array('class' => 'form-control')) !!}
+                            {!! Form::text('swimming['.$key.']', $competitor_swimming[$key] , array('class' => 'form-control masked_input')) !!}
                         </div>
                     </div>
 

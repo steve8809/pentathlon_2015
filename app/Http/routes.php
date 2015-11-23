@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('home', 'PageController@index');
 
 // Auth -- Regisztráció, Felhasználók, Bejelentkezés, Kijelentkezés
 Route::get('users/register', 'Auth\AuthController@getRegister');
@@ -69,6 +67,8 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::post('competitiongroups/{id?}/entry', 'CompetitiongroupsController@entry_save');
     Route::delete('competitiongroups/destroy_entry/{id?}', array('as' => 'admin.destroy_entry',
         'uses' => 'CompetitiongroupsController@destroy_entry'));
+    Route::post('competitiongroups/entry_close/{id?}', array('as' => 'admin.entry_close',
+        'uses' => 'CompetitiongroupsController@entry_close'));
 
     //Úszás, kombinált szabályok
     Route::resource('swimming_ce_rules', 'SwimmingCeRulesController');
@@ -85,6 +85,14 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     //Lovaglás eredmények
     Route::get('competitiongroups/{id?}/riding', 'CompetitiongroupsController@riding');
     Route::post('competitiongroups/{id?}/riding', 'CompetitiongroupsController@riding_save');
+
+    //Kombinált eredmények
+    Route::get('competitiongroups/{id?}/ce', 'CompetitiongroupsController@ce');
+    Route::post('competitiongroups/{id?}/ce', 'CompetitiongroupsController@ce_save');
+
+    //Vívás
+    Route::get('competitiongroups/{id?}/fencing', 'CompetitiongroupsController@fencing');
+    Route::post('competitiongroups/{id?}/fencing', 'CompetitiongroupsController@fencing_save');
 
 
 });

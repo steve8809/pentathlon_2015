@@ -11,4 +11,8 @@ class Result extends Model
     public function competitor() {
         return $this->belongsTo('App\Competitor');
     }
+
+    public function competitiongroup() {
+        return $this->belongsTo('App\Competitiongroup');
+    }
 }

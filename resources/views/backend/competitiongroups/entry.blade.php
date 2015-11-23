@@ -19,8 +19,6 @@
                     </div>
                 </div>
 
-
-
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                         {!! Form::submit('Nevezés versenyre', array('class' => 'btn btn-primary')) !!}
@@ -39,6 +37,7 @@
             </div>
             @if (empty($competitor_in))
                 <p> Nincs egy nevezett versenyző sem.</p>
+                <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
             @else
                 <div class="table-responsive">
                     <table class="table">
@@ -67,8 +66,40 @@
                 </div>
             @endif
         </div>
-        <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
     </div>
+    @if (!empty($competitor_in))
+        <div class="container col-md-8 col-md-offset-2">
+            <div class="well well bs-component">
+
+                @include('errors.list')
+
+                {!! Form::open(['method' => 'POST', 'class' => 'form-horizontal', 'route'=>['admin.entry_close', $competitiongroup->id]]) !!}
+
+                <fieldset>
+                    <legend>Nevezés lezárása: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name !!}</legend>
+
+                    <div class="form-group">
+                        {!! Form::label('fencing_bouts', 'Összes tus száma', array('class' => 'col-lg-2 control-label')) !!}
+                        <div class="col-lg-10">
+                            {!! Form::number('fencing_bouts', null, array('class' => 'form-control')) !!}
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            {!! Form::submit('Nevezés lezárása', array('class' => 'btn btn-primary')) !!}
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                {!! Form::close() !!}
+            </div>
+            <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
+        </div>
+    @endif
 
     @include('modals.confirm_delete')
 

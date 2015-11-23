@@ -13,7 +13,9 @@
         <div class="collapse navbar-collapse" id="navbar_responsive">
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Menü</a></li>
+                <li>
+                    <a href="/admin/competitiongroups">Csoportok, eredmények</a>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Adatbázis <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -21,7 +23,6 @@
                         <li><a href="/admin/clubs">Klubok</a></li>
                         <li><a href="/admin/competitors">Versenyzők</a></li>
                         <li><a href="/admin/competitions">Versenyek</a></li>
-                        <li><a href="/admin/competitiongroups">Csoportok</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -36,6 +37,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="/admin/users">Felhasználók adatai</a></li>
                         <li><a href="/admin/roles">Jogosultsági körök</a></li>
+                        <li><a href="/admin/countries">Országok listája</a></li>
                     </ul>
                 </li>
 

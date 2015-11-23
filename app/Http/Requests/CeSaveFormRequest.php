@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class SwimmingSaveFormRequest extends Request
+class CeSaveFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,9 @@ class SwimmingSaveFormRequest extends Request
     {
         $rules = [];
 
-        foreach($this->request->get('swimming') as $key => $val)
+        foreach($this->request->get('ce') as $key => $val)
         {
-            $rules['swimming.'.$key] = 'date_multi_format:"i:s.u"';
+            $rules['ce.'.$key] = 'date_multi_format:"i:s.u"';
         }
 
         return $rules;
@@ -36,9 +36,9 @@ class SwimmingSaveFormRequest extends Request
     public function messages()
     {
         $messages = [];
-        foreach($this->request->get('swimming') as $key => $val)
+        foreach($this->request->get('ce') as $key => $val)
         {
-            $messages['swimming.'.$key.'.date_multi_format'] = 'A pirossal jelölt mezőkben az időeredmény megadása nem a következő formátumban történt: pp:mm.ss - pl.: 02:30.00';
+            $messages['ce.'.$key.'.date_multi_format'] = 'A pirossal jelölt mezőkben az időeredmény megadása nem a következő formátumban történt: pp:mm.ss - pl.: 02:30.00';
         }
         return $messages;
     }

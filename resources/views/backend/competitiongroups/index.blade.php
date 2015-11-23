@@ -15,7 +15,7 @@
             @if ($competitiongroups->isEmpty())
                 <p> Nincs egy csoport sem.</p>
             @else
-                <div class="table-responsive">
+                <div class="table-responsive table-padding">
                     <table class="table">
                         <thead>
                         <tr>
@@ -25,7 +25,7 @@
                             <th>Típus</th>
                             <th>Korosztály</th>
                             <th>Nem</th>
-                            <th colspan="3">Műveletek</th>
+                            <th colspan="4">Műveletek</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -38,22 +38,24 @@
                                 <td>{!! $competitiongroup->age_group !!}</td>
                                 <td>{!! $competitiongroup->sex !!}</td>
                                 <td class="btn-edit">
-                                    <a href="{!! action('Admin\CompetitiongroupsController@edit', $competitiongroup->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
+                                    <a href="{!! action('Admin\CompetitiongroupsController@edit', $competitiongroup->id) !!}" class="btn btn-warning @if ($competitiongroup->entry_closed == 1) disabled @endif">
+                                        <span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
                                 </td>
                                 <td class="btn-edit">
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.competitiongroups.destroy', $competitiongroup->id]]) !!}
-                                    <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
+                                    <button class='btn btn-danger @if ($competitiongroup->entry_closed == 1) disabled @endif' type='button' data-toggle="modal"
+                                            data-target="@if ($competitiongroup->entry_closed == 0) #confirmDelete @endif"
                                             data-title="Csoport törlése" data-message='Biztos, hogy törlöd a következő csoportot: {!! $competitiongroup->competition->name.': '.$competitiongroup->name !!}?'>
                                         <span class='glyphicon glyphicon-trash'></span> Törlés
                                     </button>
                                     {!! Form::close() !!}
                                 </td>
                                 <td class="btn-edit">
-                                    <a href="{!! action('Admin\CompetitiongroupsController@entry', $competitiongroup->id) !!}" class="btn btn-info"><span class='glyphicon glyphicon-edit'></span> Nevezés</a>
+                                    <a href="{!! action('Admin\CompetitiongroupsController@entry', $competitiongroup->id) !!}" class="btn btn-info @if ($competitiongroup->entry_closed == 1) disabled @endif"><span class='glyphicon glyphicon-edit'></span> Nevezés</a>
                                 </td>
                                 <td class="btn-edit">
                                     <div class="btn-group pull-right">
-                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        <button type="button" class="btn btn-primary dropdown-toggle @if ($competitiongroup->entry_closed == 0) disabled @endif" data-toggle="dropdown">
                                             <i class="glyphicon glyphicon-fire"></i> Eredmények <span class="caret"></span>
                                         </button>
 
@@ -61,6 +63,8 @@
                                             <li>
                                                 <a href="{!! action('Admin\CompetitiongroupsController@swimming', $competitiongroup->id) !!}">Úszás</a>
                                                 <a href="{!! action('Admin\CompetitiongroupsController@riding', $competitiongroup->id) !!}">Lovaglás</a>
+                                                <a href="{!! action('Admin\CompetitiongroupsController@ce', $competitiongroup->id) !!}">Kombinált</a>
+                                                <a href="{!! action('Admin\CompetitiongroupsController@fencing', $competitiongroup->id) !!}">Vívás</a>
                                             </li>
                                         </ul>
                                     </div>

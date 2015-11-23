@@ -17,3 +17,7 @@ td.btn-edit {
 .pagination {
     float: right;
 }
+
+.table-padding {
+    padding-bottom: 120px;
+}

@@ -17,7 +17,7 @@ class CountriesTableSeeder extends Seeder
             array('name' => 'Algéria', 'flag' => 'DZ.png', 'iso_alpha3' => 'DZA'),
             array('name' => 'Amerikai Szamoa', 'flag' => 'AS.png', 'iso_alpha3' => 'ASM'),
             array('name' => 'Amerikai Virgin-szigetek', 'flag' => 'VI.png', 'iso_alpha3' => 'VIR'),
-            array('name' => 'Andorra', 'flag' => 'AD.png', 'iso_alpha3' => 'AND'),
+            array('name' => 'Andorra', 'flag' => 'AND.png', 'iso_alpha3' => 'AND'),
             array('name' => 'Angola', 'flag' => 'AO.png', 'iso_alpha3' => 'AOA'),
             array('name' => 'Anguilla', 'flag' => 'AI.png', 'iso_alpha3' => 'AIA'),
             array('name' => 'Antarktisz', 'flag' => 'AQ.png', 'iso_alpha3' => 'ATA'),

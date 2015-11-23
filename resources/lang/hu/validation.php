@@ -76,7 +76,7 @@ return [
     'timezone'             => 'A(z) :attribute nem egy valós név.',
     'unique'               => 'A(z) :attribute már foglalt.',
     'url'                  => 'The :attribute format is invalid.',
-    'date_multi_format'    => 'Nem megfelelő időformátum. A helyes formátum a következő: óó:pp:mm.ss - pl.:00:02:30.00',
+    'date_multi_format'    => 'Nem megfelelő időformátum. A helyes formátum a következő: pp:mm.ss - pl.:02:30.00',
 
     /*
     |--------------------------------------------------------------------------
@@ -132,7 +132,8 @@ return [
         'category' => 'Kategória',
         'competition_id' => 'Verseny',
         'type' => 'Típus',
-        'age_group' => 'Korosztály'
+        'age_group' => 'Korosztály',
+        'fencing_bouts' => 'Összes tus száma'
 
     ],
 

@@ -147,6 +147,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Chumper\Datatable\DatatableServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -200,6 +201,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Datatable' => Chumper\Datatable\Facades\DatatableFacade::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
