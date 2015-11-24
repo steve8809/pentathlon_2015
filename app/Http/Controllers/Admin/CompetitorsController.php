@@ -24,7 +24,7 @@ class CompetitorsController extends Controller
     public function create()
     {
         $countries = Country::lists('name', 'id')->all();
-        $clubs = Club::lists('name', 'name')->all();
+        $clubs = Club::lists('name', 'id')->all();
         return view('backend.competitors.create', compact('countries', 'clubs'));
     }
 
@@ -36,7 +36,7 @@ class CompetitorsController extends Controller
         $competitor->sex = $request->get('sex');
         $competitor->birthday = $request->get('birthday');
         $competitor->country_id = $request->get('country_id');
-        $competitor->club = $request->get('club');
+        $competitor->club_id = $request->get('club_id');
         $competitor->full_name = $request->get('last_name').' '.$request->get('first_name');
         $competitor->save();
         return redirect('admin/competitors')->with('status', 'Új versenyző felvétele kész.');
@@ -45,7 +45,7 @@ class CompetitorsController extends Controller
     public function edit($id)
     {
         $countries = Country::lists('name','id')->all();
-        $clubs = Club::lists('name','name')->all();
+        $clubs = Club::lists('name','id')->all();
         $competitor = Competitor::whereId($id)->firstOrFail();
         return view('backend.competitors.edit', compact('competitor', 'countries', 'clubs'));
     }
@@ -58,7 +58,7 @@ class CompetitorsController extends Controller
         $competitor->sex = $request->get('sex');
         $competitor->birthday = $request->get('birthday');
         $competitor->country_id = $request->get('country_id');
-        $competitor->club = $request->get('club');
+        $competitor->club_id = $request->get('club_id');
         $competitor->full_name = $request->get('last_name').' '.$request->get('first_name');
         $competitor->save();
         return redirect('/admin/competitors')->with('status', 'Versenyző adatai módosítva');

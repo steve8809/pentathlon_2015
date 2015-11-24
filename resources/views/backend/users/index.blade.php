@@ -33,6 +33,7 @@
                                 <td class="btn-edit">
                                     <a href="{!! action('Admin\UsersController@edit', $user->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
                                 </td>
+                                @if ($user->name != 'Admin')
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.users.destroy', $user->id]]) !!}
                                     <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
@@ -41,7 +42,7 @@
                                     </button>
                                     {!! Form::close() !!}
                                 </td>
-
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>
@@ -53,6 +54,7 @@
             @include('modals.confirm_delete')
 
         </div>
+        <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
     </div>
 
 @endsection

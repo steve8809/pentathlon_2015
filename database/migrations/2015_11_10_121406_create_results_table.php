@@ -26,7 +26,8 @@ class CreateResultsTable extends Migration
             $table->integer('swimming_points');
             $table->integer('swimming_order');
             $table->integer('riding_points');
-            $table->string('riding_horse');
+            $table->integer('horse_id')->unsigned()->nullable();
+            $table->foreign('horse_id')->references('id')->on('horses');
             $table->integer('riding_order');
             $table->string('ce_time');
             $table->integer('ce_points');

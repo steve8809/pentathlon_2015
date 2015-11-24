@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Competition extends Model
 {
-    protected $fillable = ['name', 'country_id', 'town', 'host', 'start_date', 'end_date', 'category'];
+    protected $fillable = ['name', 'country_id', 'town', 'host', 'date', 'category'];
 
     public function country() {
         return $this->belongsTo('App\Country');

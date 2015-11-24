@@ -24,7 +24,8 @@ class EntryCloseFormRequest extends Request
     public function rules()
     {
         return [
-            'fencing_bouts' => 'required|integer'
+            'fencing_bouts' => 'required|integer',
+            'bouts_per_match' => 'required|integer'
         ];
     }
 }

@@ -19,8 +19,7 @@ class CreateCompetitionsTable extends Migration
             $table->foreign('country_id')->references('id')->on('countries');
             $table->string('town');
             $table->string('host');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('date');
             $table->string('category');
             $table->timestamps();
         });

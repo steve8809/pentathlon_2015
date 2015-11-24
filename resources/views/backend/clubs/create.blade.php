@@ -16,5 +16,6 @@
             {!! Form::close() !!}
 
         </div>
+        <a href="/admin/clubs" class="btn btn-info">Vissza a klubokhoz</a>
     </div>
 @endsection

@@ -16,5 +16,6 @@
             {!! Form::close() !!}
 
         </div>
+        <a href="/admin/fencing_rules" class="btn btn-info">Vissza a vívás pontozáshoz</a>
     </div>
 @endsection

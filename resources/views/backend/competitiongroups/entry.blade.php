@@ -79,13 +79,18 @@
                     <legend>Nevezés lezárása: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name !!}</legend>
 
                     <div class="form-group">
-                        {!! Form::label('fencing_bouts', 'Összes tus száma', array('class' => 'col-lg-2 control-label')) !!}
-                        <div class="col-lg-10">
-                            {!! Form::number('fencing_bouts', null, array('class' => 'form-control')) !!}
+                        {!! Form::label('bouts_per_match', 'Tusok száma meccsenként', array('class' => 'col-lg-2 control-label')) !!}
+                        <div class="col-lg-6">
+                            {!! Form::number('bouts_per_match', null, array('class' => 'form-control')) !!}
                         </div>
                     </div>
 
-
+                    <div class="form-group">
+                        {!! Form::label('fencing_bouts', 'Összes tus száma', array('class' => 'col-lg-2 control-label')) !!}
+                        <div class="col-lg-6">
+                            {!! Form::number('fencing_bouts', null, array('class' => 'form-control')) !!}
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">

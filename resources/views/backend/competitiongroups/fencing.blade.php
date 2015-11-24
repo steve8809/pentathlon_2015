@@ -46,10 +46,10 @@
                         <div class="form-group @if ($errors->has('fencing.'.$key)) has-error @endif">
                             {!! Form::label('fencing['.$act_competitor.']', $competitor_in[$act_competitor].' - '.$comp, array('class' => 'col-lg-4 control-label')) !!}
                             <div class="col-lg-2">
-                                {!! Form::number('fencing['.$act_competitor.'_'.$key.']', $fencing_results[$act_competitor.'_'.$key] , array('min' => 0, 'class' => 'form-control')) !!}
+                                {!! Form::number('fencing['.$act_competitor.'_'.$key.']', $fencing_results[$act_competitor.'_'.$key] , array('min' => 0, 'max'=>$bouts_per_match, 'class' => 'form-control')) !!}
                             </div>
                             <div class="col-lg-2">
-                                {!! Form::number('fencing['.$key.'_'.$act_competitor.']', $fencing_results[$key.'_'.$act_competitor] , array('min' => 0, 'class' => 'form-control')) !!}
+                                {!! Form::number('fencing['.$key.'_'.$act_competitor.']', $fencing_results[$key.'_'.$act_competitor] , array('min' => 0, 'max'=>$bouts_per_match, 'class' => 'form-control')) !!}
                             </div>
                         </div>
 

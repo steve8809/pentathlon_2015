@@ -37,9 +37,9 @@
     </div>
 
     <div class="form-group @if ($errors->has('club')) has-error @endif">
-        {!! Form::label('club', 'Klub', array('class' => 'col-lg-2 control-label')) !!}
+        {!! Form::label('club_id', 'Klub', array('class' => 'col-lg-2 control-label')) !!}
         <div class="col-lg-10">
-            {!! Form::select('club', array('' => 'Válassz klubot') + $clubs, null, array('class' => 'form-control')) !!}
+            {!! Form::select('club_id', array('' => 'Válassz klubot') + $clubs, null, array('class' => 'form-control')) !!}
         </div>
     </div>
 

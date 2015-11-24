@@ -14,6 +14,7 @@ class AddTwoColumnsToCompetitiongroups extends Migration
     {
         Schema::table('competitiongroups', function(Blueprint $table)
         {
+            $table->integer('bouts_per_match');
             $table->integer('fencing_bouts');
             $table->integer('entry_closed');
         });

@@ -20,7 +20,15 @@
                         <div class="row-content">
                             <h4 class="list-group-item-heading">Jogosultsági körök</h4>
                             <a href="/admin/roles" class="btn btn-default btn-raised">Összes jogosultság</a>
-                            <a href="/admin/roles/create" class="btn btn-primary btn-raised">Jogosultság készítése</a>
+                        </div>
+                    </div>
+                    <div class="list-group-separator"></div>
+                    <div class="list-group-item">
+                        <div class="row-content">
+                            <h4 class="list-group-item-heading">Szabályok</h4>
+                            <a href="/admin/swimming_ce_rules" class="btn btn-default btn-raised">Úszás, kombinált szabályok</a>
+                            <a href="/admin/fencing_rules" class="btn btn-default btn-raised">Vívás szabályok</a>
+
                         </div>
                     </div>
                     <div class="list-group-separator"></div>
@@ -58,21 +66,13 @@
                     <div class="list-group-separator"></div>
                     <div class="list-group-item">
                         <div class="row-content">
-                            <h4 class="list-group-item-heading">Csoportok</h4>
+                            <h4 class="list-group-item-heading">Csoportok, eredmények</h4>
                             <a href="/admin/competitiongroups" class="btn btn-default btn-raised">Összes csoport</a>
                             <a href="/admin/competitiongroups/create" class="btn btn-primary btn-raised">Csoport felvétele</a>
                         </div>
                     </div>
                     <div class="list-group-separator"></div>
-                    <div class="list-group-item">
-                        <div class="row-content">
-                            <h4 class="list-group-item-heading">Szabályok</h4>
-                            <a href="/admin/swimming_ce_rules" class="btn btn-default btn-raised">Úszás, kombinált szabályok</a>
-                            <a href="/admin/fencing_rules" class="btn btn-default btn-raised">Vívás szabályok</a>
 
-                        </div>
-                    </div>
-                    <div class="list-group-separator"></div>
                 </div>
 
             </div>

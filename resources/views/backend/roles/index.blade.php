@@ -5,7 +5,6 @@
     <div class="container col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a href="{!! action('Admin\RolesController@create') !!}" class="btn btn-info pull-right new-item">Új jogosultság felvétele</a>
                 <h2> Összes jogosultság </h2>
             </div>
             @if (session('status'))
@@ -23,7 +22,6 @@
                             <th>Név</th>
                             <th>Megjelenített név</th>
                             <th>Leírás</th>
-                            <th colspan="2">Műveletek</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,19 +30,6 @@
                                 <td>{!! $role->name !!}</td>
                                 <td>{!! $role->display_name !!}</td>
                                 <td>{!! $role->description !!}</td>
-                                <td class="btn-edit">
-                                    <a href="{!! action('Admin\RolesController@edit', $role->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
-                                </td>
-                                <td>
-                                    {!! Form::open(['method' => 'DELETE', 'route'=>['admin.roles.destroy', $role->id]]) !!}
-                                    @if ($role->name != 'admin' && $role->name != 'felhasználó')
-                                        <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
-                                            data-title="Jogosultság törlése" data-message='Biztos, hogy törlöd a következő jogosultságot: {!! $role->name !!}?'>
-                                         <span class='glyphicon glyphicon-trash'></span> Törlés
-                                        </button>
-                                    @endif
-                                    {!! Form::close() !!}
-                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -53,9 +38,8 @@
                 </div>
             @endif
 
-            @include('modals.confirm_delete')
-
         </div>
+        <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
     </div>
 
 @endsection

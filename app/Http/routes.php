@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+// Főoldal
+Route::get('/', 'PageController@index');
 Route::get('home', 'PageController@index');
 
 // Auth -- Regisztráció, Felhasználók, Bejelentkezés, Kijelentkezés
@@ -31,8 +29,7 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/', 'PagesController@home');
 
     //Jogosultságok
-    Route::resource('roles', 'RolesController');
-    Route::post('roles/{id?}/edit', 'RolesController@update');
+    Route::get('/roles', 'RolesController@index');
 
     //Felhasználók
     Route::resource('users', 'UsersController');

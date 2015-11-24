@@ -14,7 +14,7 @@
             {!! Form::model($competitiongroup, array('class' => 'form-horizontal')) !!}
 
             <fieldset>
-                <legend>Úszó eredmények a következő versenyen: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name !!}</legend>
+                <legend>Úszó eredmények a következő versenyen: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name.' - Táv: '.$swimming_dist->swimming_dist !!}</legend>
 
                 @if (empty($competitor_in))
                     <p> Nincs egy nevezett versenyző sem.</p>
@@ -22,9 +22,13 @@
                     @foreach($competitor_in as $key => $comp)
                     <div class="form-group @if ($errors->has('swimming.'.$key)) has-error @endif">
                         {!! Form::label('swimming['.$key.']', $comp, array('class' => 'col-lg-2 control-label')) !!}
-                        <div class="col-lg-10">
+                        <div class="col-lg-6">
                             {!! Form::text('swimming['.$key.']', $competitor_swimming[$key] , array('class' => 'form-control masked_input')) !!}
                         </div>
+                        <div class="col-lg-2">
+                            {!! Form::text('swimming_points['.$key.']', $competitor_swimming_points[$key] , array('class' => 'form-control', 'disabled')) !!}
+                        </div>
+                        {!! Form::label('points', 'pont', array('class' => 'col-1 control-label')) !!}
                     </div>
 
 

@@ -35,7 +35,7 @@
                                 <td>{!! $competition->country->name !!} </td>
                                 <td>{!! $competition->town !!}</td>
                                 <td>{!! $competition->host !!}</td>
-                                <td>{!! $competition->start_date !!} - {!! $competition->end_date !!}</td>
+                                <td>{!! $competition->date !!} </td>
                                 <td>{!! $competition->category !!}</td>
                                 <td class="btn-edit">
                                     <a href="{!! action('Admin\CompetitionsController@edit', $competition->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
@@ -59,6 +59,7 @@
             @include('modals.confirm_delete')
 
         </div>
+        <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
     </div>
 
 @endsection

@@ -2,7 +2,7 @@
 @section('title', 'Aktuális verseny')
 @section('content')
 
-    <div class="container col-md-8 col-md-offset-2">
+    <div class="container col-md-10 col-md-offset-1">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2> {!! $competitiongroup->name !!} </h2>
@@ -15,7 +15,7 @@
                     <table id="example" class="table">
                         <thead>
                         <tr>
-                            <th colspan="4"></th>
+                            <th colspan="5"></th>
                             <th colspan="4">Vívás</th>
                             <th colspan="3">Úszás</th>
                             <th colspan="3">Lovaglás</th>
@@ -23,21 +23,22 @@
                         </tr>
                         <tr>
                             <th></th>
-                            <th>Versenyző</th>
+                            <th class="no-sort">Versenyző</th>
                             <th colspan="2">Nemzet</th>
+                            <th>Klub</th>
                             <th>H</th>
-                            <th>Gy</th>
-                            <th>V</th>
-                            <th>P</th>
+                            <th class="no-sort">Gy</th>
+                            <th class="no-sort">V</th>
+                            <th class="no-sort">P</th>
                             <th>H</th>
-                            <th>Idő</th>
-                            <th>P</th>
+                            <th class="no-sort">Idő</th>
+                            <th class="no-sort">P</th>
                             <th>H</th>
-                            <th>Ló</th>
-                            <th>P</th>
+                            <th class="no-sort">Ló</th>
+                            <th class="no-sort">P</th>
                             <th>H</th>
-                            <th>Idő</th>
-                            <th>P</th>
+                            <th class="no-sort">Idő</th>
+                            <th class="no-sort">P</th>
                             <th>Össz</th>
                         </tr>
                         </thead>
@@ -48,7 +49,7 @@
                                 <td>{!! $result->competitor->full_name !!}</td>
                                 <td>{!! $result->competitor->country->iso_alpha3 !!}</td>
                                 <td><img src="images/{!! $result->competitor->country->flag !!}"></td>
-
+                                <td>{!! $result->competitor->club->name !!}</td>
                                 <td>{!! $result->fencing_order !!}</td>
                                 <td>{!! $result->fencing_win !!} </td>
                                 <td>{!! $result->fencing_lose !!}</td>
@@ -57,7 +58,7 @@
                                 <td>{!! $result->swimming_time !!}</td>
                                 <td>{!! $result->swimming_points !!}</td>
                                 <td>{!! $result->riding_order !!}</td>
-                                <td>{!! $result->riding_horse !!}</td>
+                                <td>{!! $result->horse->name !!}</td>
                                 <td>{!! $result->riding_points !!}</td>
                                 <td>{!! $result->ce_order !!}</td>
                                 <td>{!! $result->ce_time !!}</td>
@@ -90,7 +91,11 @@
                     "sNext":    "Következő",
                     "sPrevious": "Előző"
                 },
-            }
+            },
+            "aoColumnDefs" : [ {
+                "bSortable" : false,
+                "aTargets" : [ "no-sort" ]
+            } ]
         } );
     } );
 </script>

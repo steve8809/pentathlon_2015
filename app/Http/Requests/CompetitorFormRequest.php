@@ -30,7 +30,7 @@ class CompetitorFormRequest extends Request
             'sex' => 'required',
             'birthday' => 'required|date',
             'country_id' => 'required',
-            'club' => 'required',
+            'club_id' => 'required',
         ];
     }
 }

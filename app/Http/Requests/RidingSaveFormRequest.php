@@ -27,7 +27,12 @@ class RidingSaveFormRequest extends Request
 
         foreach($this->request->get('riding') as $key => $val)
         {
-            $rules['riding.'.$key] = 'integer|max:250';
+            $rules['riding.'.$key] = 'integer|between:0,250';
+        }
+
+        foreach($this->request->get('horse_id') as $key => $val)
+        {
+            $rules['horse_id.'.$key] = 'required';
         }
 
         return $rules;
@@ -39,7 +44,12 @@ class RidingSaveFormRequest extends Request
         foreach($this->request->get('riding') as $key => $val)
         {
             $messages['riding.'.$key.'.integer'] = 'A pirossal jelölt mezőkben a pontszám megadása nem megfelelő.';
-            $messages['riding.'.$key.'.max'] = 'A pirossal jelölt mezőkben 250-nél nagyobb a pontszám.';
+            $messages['riding.'.$key.'.between'] = 'A pirossal jelölt mezőkben nem megfelelő a pontszám: 0 és 250 közötti értéket kell megadni.';
+        }
+
+        foreach($this->request->get('horse_id') as $key => $val)
+        {
+            $messages['horse_id.'.$key.'.required'] = 'A pirossal jelölt mezőkben a ló kiválasztása kötelező.';
         }
 
         return $messages;

@@ -61,10 +61,10 @@
 
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
+                                                <a href="{!! action('Admin\CompetitiongroupsController@fencing', $competitiongroup->id) !!}">Vívás</a>
                                                 <a href="{!! action('Admin\CompetitiongroupsController@swimming', $competitiongroup->id) !!}">Úszás</a>
                                                 <a href="{!! action('Admin\CompetitiongroupsController@riding', $competitiongroup->id) !!}">Lovaglás</a>
                                                 <a href="{!! action('Admin\CompetitiongroupsController@ce', $competitiongroup->id) !!}">Kombinált</a>
-                                                <a href="{!! action('Admin\CompetitiongroupsController@fencing', $competitiongroup->id) !!}">Vívás</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -80,6 +80,7 @@
             @include('modals.confirm_delete')
 
         </div>
+        <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
     </div>
 
 @endsection

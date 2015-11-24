@@ -29,17 +29,10 @@
         </div>
     </div>
 
-    <div class="form-group @if ($errors->has('start_date')) has-error @endif">
-        {!! Form::label('start_date', 'Verseny kezdete', array('class' => 'col-lg-2 control-label')) !!}
+    <div class="form-group @if ($errors->has('date')) has-error @endif">
+        {!! Form::label('date', 'Verseny kezdete', array('class' => 'col-lg-2 control-label')) !!}
         <div class="col-lg-10">
-            {!! Form::input('date','start_date', date('Y-m-d'), array('class' => 'form-control')) !!}
-        </div>
-    </div>
-
-    <div class="form-group @if ($errors->has('end_date')) has-error @endif">
-        {!! Form::label('end_date', 'Verseny vége', array('class' => 'col-lg-2 control-label')) !!}
-        <div class="col-lg-10">
-            {!! Form::input('date','end_date', date('Y-m-d'), array('class' => 'form-control')) !!}
+            {!! Form::input('date','date', date('Y-m-d'), array('class' => 'form-control')) !!}
         </div>
     </div>
 

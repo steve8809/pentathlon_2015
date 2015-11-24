@@ -20,13 +20,13 @@
                     <p> Nincs egy nevezett versenyző sem.</p>
                 @else
                     @foreach($competitor_in as $key => $comp)
-                        <div class="form-group @if ($errors->has('riding.'.$key)) has-error @endif @if ($errors->has('riding_horse.'.$key)) has-error @endif">
+                        <div class="form-group">
                             {!! Form::label('riding['.$key.']', $comp, array('class' => 'col-lg-2 control-label')) !!}
-                            <div class="col-lg-3">
-                                {!! Form::text('riding['.$key.']', $competitor_riding[$key] , array('class' => 'form-control')) !!}
+                            <div class="col-lg-3 @if ($errors->has('riding.'.$key)) has-error @endif">
+                                {!! Form::number('riding['.$key.']', $competitor_riding[$key] , array('class' => 'form-control')) !!}
                             </div>
-                            <div class="col-lg-3">
-                                {!! Form::select('riding_horse['.$key.']', array('' => 'Válassz lovat') + $horses, $competitor_horse[$key] , array('class' => 'form-control')) !!}
+                            <div class="col-lg-3 @if ($errors->has('horse_id.'.$key)) has-error @endif">
+                                {!! Form::select('horse_id['.$key.']', array('' => 'Válassz lovat') + $horses, $competitor_horse[$key] , array('class' => 'form-control')) !!}
                             </div>
                         </div>
 

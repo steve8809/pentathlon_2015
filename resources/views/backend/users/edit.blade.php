@@ -37,7 +37,7 @@
                         <label for="select" class="col-lg-2 control-label">Szerep</label>
 
                         <div class="col-lg-10">
-                            <select class="form-control" id="role" name="role[]" multiple>
+                            <select class="form-control" @if($user->name == "Admin") disabled @endif id="role" name="role[]" multiple>
                                 @foreach($roles as $role)
                                     <option value="{!! $role->id !!}"  @if(in_array($role->id, $selectedRoles))
                                     selected="selected" @endif >{!! $role->display_name !!}
@@ -71,5 +71,6 @@
                 </fieldset>
             </form>
         </div>
+        <a href="/admin/users" class="btn btn-info">Vissza a felhasználókhoz</a>
     </div>
 @endsection

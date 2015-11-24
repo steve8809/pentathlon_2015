@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Age_group;
 use App\Competition;
 use App\Fencing_rule;
+use App\Swimming_ce_rule;
 use Illuminate\Http\Request;
 use App\Competitor;
 use App\Http\Requests;
@@ -32,21 +33,24 @@ class CompetitiongroupsController extends Controller
         foreach ($competitor_list as $comp) {
             $result = Result::where('competitiongroup_id', '=', $id)->where('competitor_id', '=', $comp->competitor->id)->firstOrFail();
             $fencing_results = Fencing_result::where('competitiongroup_id', '=', $id)->where('competitor1_id', '=', $comp->competitor->id)->orWhere('competitor2_id', '=', $comp->competitor->id)->get();
-            $temp = 0;
+            $temp_win = 0;
+            $temp_lose = 0;
 
             foreach($fencing_results as $fence) {
 
                 if ($fence->competitor1_id == $comp->competitor->id) {
-                    $temp += $fence->competitor1_bouts;
+                    $temp_win += $fence->competitor1_bouts;
+                    $temp_lose += $fence->competitor2_bouts;
                 }
                 if ($fence->competitor2_id == $comp->competitor_id) {
-                    $temp += $fence->competitor2_bouts;
+                    $temp_win += $fence->competitor2_bouts;
+                    $temp_lose += $fence->competitor1_bouts;
                 }
 
             }
-            $comp->fencing_win = $temp;
-            $comp->fencing_lose = $comp->competitiongroup->fencing_bouts - $temp;
-            if ($temp == 0) {
+            $comp->fencing_win = $temp_win;
+            $comp->fencing_lose = $temp_lose;
+            if ($temp_win == 0) {
                 $comp->fencing_points = 0;
             }
             else {
@@ -162,6 +166,7 @@ class CompetitiongroupsController extends Controller
     {
         //Nevezés lezárása
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
+        $competitiongroup->bouts_per_match = $request->get('bouts_per_match');
         $competitiongroup->fencing_bouts = $request->get('fencing_bouts');
         $competitiongroup->entry_closed = 1;
         $competitiongroup->save();
@@ -194,17 +199,21 @@ class CompetitiongroupsController extends Controller
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
         $competitor_list = Result::where('competitiongroup_id', '=', $id)->get();
+        $swimming_rule = Swimming_ce_rule::select('swimming_dist')->where('age_group','=', $competitiongroup->age_group)->where('type','Egyéni')->get();
+        $swimming_dist = $swimming_rule[0];
 
         //Versenyzők és időeredményeik tárolása
         $competitor_in = [];
         $competitor_swimming = [];
+        $competitor_swimming_points = [];
         foreach ($competitor_list as $comp) {
             $competitor_in[$comp->competitor->id] = $comp->competitor->full_name;
             $competitor_swimming[$comp->competitor->id] = $comp->swimming_time;
+            $competitor_swimming_points[$comp->competitor->id] = $comp->swimming_points;
         }
         natsort($competitor_in);
 
-        return view('backend.competitiongroups.swimming', compact('competitiongroup', 'competitor_in', 'competitor_swimming'));
+        return view('backend.competitiongroups.swimming', compact('competitiongroup', 'competitor_in', 'competitor_swimming', 'swimming_dist', 'competitor_swimming_points'));
 
     }
 
@@ -233,7 +242,13 @@ class CompetitiongroupsController extends Controller
                 $seconds = $time_array[1];
                 $x = $minutes * 60 + $seconds;
                 $swimming_points = floor(($swimming_250_seconds - $x)/(1/3));
-                $result->swimming_points = 250 + $swimming_points;
+                if ($swimming_points < -250) {
+                    $result->swimming_points = 0;
+                }
+                else {
+                    $result->swimming_points = 250 + $swimming_points;
+                }
+
             }
 
             $result->save();
@@ -256,7 +271,7 @@ class CompetitiongroupsController extends Controller
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
         $competitor_list = Result::where('competitiongroup_id', '=', $id)->get();
-        $horses = Horse::orderBy('name','asc')->lists('name', 'name')->all();
+        $horses = Horse::orderBy('name','asc')->lists('name', 'id')->all();
 
         $competitor_in = [];
         $competitor_riding = [];
@@ -266,7 +281,12 @@ class CompetitiongroupsController extends Controller
         foreach ($competitor_list as $comp) {
             $competitor_in[$comp->competitor->id] = $comp->competitor->full_name;
             $competitor_riding[$comp->competitor->id] = $comp->riding_points;
-            $competitor_horse[$comp->competitor->id] = $comp->riding_horse;
+            if ($comp->horse != null){
+                $competitor_horse[$comp->competitor->id] = $comp->horse->id;
+            }
+            else {
+                $competitor_horse[$comp->competitor->id] = "";
+            }
         }
         natsort($competitor_in);
 
@@ -281,12 +301,12 @@ class CompetitiongroupsController extends Controller
         foreach ($competitor_list as $comp) {
             $result = Result::where('competitiongroup_id', '=', $id)->where('competitor_id', '=', $comp->competitor->id)->firstOrFail();
             $result->riding_points = $request->riding[$comp->competitor->id];
-            $result->riding_horse = $request->riding_horse[$comp->competitor->id];
+            $result->horse_id = $request->horse_id[$comp->competitor->id];
             $result->save();
         }
 
         //Lovas sorrend kialakítása
-        $riding_order = Result::where('competitiongroup_id', '=', $id)->where('riding_points','!=',0)->orderBy('riding_points', 'desc')->get();
+        $riding_order = Result::where('competitiongroup_id', '=', $id)->where('riding_points','!=',0)->orWhereNotNull('horse_id')->orderBy('riding_points', 'desc')->get();
         $i = 0;
         foreach($riding_order as $ride) {
             $i++;
@@ -302,17 +322,21 @@ class CompetitiongroupsController extends Controller
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
         $competitor_list = Result::where('competitiongroup_id', '=', $id)->get();
+        $ce_rule = Swimming_ce_rule::select('ce_dist')->where('age_group','=', $competitiongroup->age_group)->where('type','Egyéni')->get();
+        $ce_dist = $ce_rule[0];
 
         //Versenyzők és kombinált időeredményeik tárolása
         $competitor_in = [];
         $competitor_ce = [];
+        $competitor_ce_points = [];
         foreach ($competitor_list as $comp) {
             $competitor_in[$comp->competitor->id] = $comp->competitor->full_name;
             $competitor_ce[$comp->competitor->id] = $comp->ce_time;
+            $competitor_ce_points[$comp->competitor->id] = $comp->ce_points;
         }
         natsort($competitor_in);
 
-        return view('backend.competitiongroups.ce', compact('competitiongroup', 'competitor_in', 'competitor_ce'));
+        return view('backend.competitiongroups.ce', compact('competitiongroup', 'competitor_in', 'competitor_ce', 'competitor_ce_points', 'ce_dist'));
     }
 
     public function ce_save(CeSaveFormRequest $request, $id)
@@ -340,7 +364,13 @@ class CompetitiongroupsController extends Controller
                 $seconds = $time_array[1];
                 $x = $minutes * 60 + $seconds;
                 $ce_points = ceil(($ce_500_seconds - $x));
-                $result->ce_points = 500 + $ce_points;
+                if ($ce_points < -500) {
+                    $result->ce_points = 0;
+                }
+                else {
+                    $result->ce_points = 500 + $ce_points;
+                }
+
             }
 
             $result->save();
@@ -363,6 +393,7 @@ class CompetitiongroupsController extends Controller
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
         $competitor_list = Result::where('competitiongroup_id', '=', $id)->orderBy('competitor_id')->get();
+        $bouts_per_match = $competitiongroup->bouts_per_match;
 
         //Nevezett versenyzők
         $competitor_in = [];
@@ -394,7 +425,7 @@ class CompetitiongroupsController extends Controller
             $fencing_results[$fence->competitor2_id.'_'.$fence->competitor1_id] = $fence->competitor2_bouts;
         }
 
-        return view('backend.competitiongroups.fencing', compact('competitiongroup', 'competitor_in', 'competitor_in_opp', 'competitor_list', 'act_competitor', 'fencing_results'));
+        return view('backend.competitiongroups.fencing', compact('competitiongroup', 'competitor_in', 'competitor_in_opp', 'competitor_list', 'act_competitor', 'fencing_results', 'bouts_per_match'));
     }
 
     public function fencing_save(Request $request, $id)

@@ -15,5 +15,6 @@
 
             {!! Form::close() !!}
         </div>
+        <a href="/admin/horses" class="btn btn-info">Vissza a lovakhoz</a>
     </div>
 @endsection

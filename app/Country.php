@@ -12,4 +12,8 @@ class Country extends Model
         return $this->hasMany('App\Competition');
     }
 
+    public function competitor() {
+        return $this->hasMany('App\Competitor');
+    }
+
 }

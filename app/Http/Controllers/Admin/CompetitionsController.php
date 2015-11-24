@@ -18,7 +18,7 @@ class CompetitionsController extends Controller
 
     public function index()
     {
-        $competitions = Competition::orderBy('start_date', 'desc')->paginate(10);
+        $competitions = Competition::orderBy('date', 'desc')->paginate(10);
         return view('backend.competitions.index', compact('competitions'));
     }
 

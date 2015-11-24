@@ -20,7 +20,8 @@ class CreateCompetitorsTable extends Migration
             $table->date('birthday');
             $table->integer('country_id')->unsigned();
             $table->foreign('country_id')->references('id')->on('countries');
-            $table->string('club');
+            $table->integer('club_id')->unsigned();
+            $table->foreign('club_id')->references('id')->on('clubs');
             $table->timestamps();
         });
     }
