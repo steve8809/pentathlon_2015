@@ -36,7 +36,8 @@
                                 </td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.clubs.destroy', $club->id]]) !!}
-                                    <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
+                                    <button class='btn btn-danger @if ($club->in_competition == 1) disabled @endif' type='button' data-toggle="modal"
+                                            data-target="@if ($club->in_competition == 0) #confirmDelete @endif"
                                             data-title="Klub törlése" data-message='Biztos, hogy törlöd a következő klubot: {!! $club->name !!}?'>
                                         <span class='glyphicon glyphicon-trash'></span> Törlés
                                     </button>

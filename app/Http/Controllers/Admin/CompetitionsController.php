@@ -43,7 +43,7 @@ class CompetitionsController extends Controller
         return view('backend.competitions.edit', compact('competition', 'countries', 'categories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CompetitionFormRequest $request, $id)
     {
         $competition = Competition::findOrFail($id);
         $competition->update($request->all());

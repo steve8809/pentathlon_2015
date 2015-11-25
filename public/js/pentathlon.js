@@ -23,6 +23,7 @@ $('#confirmDelete').find('.modal-footer #confirm').on('click', function(){
 
 //Select2 js
 $('#competitors').select2();
+$('')
 
 //Masked_input js
 jQuery(function($){

@@ -5,6 +5,8 @@
     <div class="container col-md-8 col-md-offset-2">
         <div class="well well bs-component">
 
+            @include('errors.list')
+
             @include('statuses.alert_success')
 
             {!! Form::model($competitiongroup, array('class' => 'form-horizontal')) !!}
@@ -103,6 +105,7 @@
                 {!! Form::close() !!}
             </div>
             <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
+            <div class = "placeholder"></div>
         </div>
     @endif
 

@@ -24,7 +24,7 @@ class CompetitorsController extends Controller
     public function create()
     {
         $countries = Country::lists('name', 'id')->all();
-        $clubs = Club::lists('name', 'id')->all();
+        $clubs = Club::all()->lists('name_town', 'id')->all();
         return view('backend.competitors.create', compact('countries', 'clubs'));
     }
 
@@ -39,18 +39,23 @@ class CompetitorsController extends Controller
         $competitor->club_id = $request->get('club_id');
         $competitor->full_name = $request->get('last_name').' '.$request->get('first_name');
         $competitor->save();
+
+        $club = Club::where('id','=',$request->get('club_id'))->firstOrFail();
+        $club->in_competition = 1;
+        $club->save();
+
         return redirect('admin/competitors')->with('status', 'Új versenyző felvétele kész.');
     }
 
     public function edit($id)
     {
         $countries = Country::lists('name','id')->all();
-        $clubs = Club::lists('name','id')->all();
+        $clubs = Club::all()->lists('name_town', 'id')->all();
         $competitor = Competitor::whereId($id)->firstOrFail();
         return view('backend.competitors.edit', compact('competitor', 'countries', 'clubs'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CompetitorFormRequest $request, $id)
     {
         $competitor = Competitor::findOrFail($id);
         $competitor->first_name = $request->get('first_name');

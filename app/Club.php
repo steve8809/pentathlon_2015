@@ -11,4 +11,9 @@ class Club extends Model
     public function competitor() {
         return $this->hasMany('App\Competitor');
     }
+
+    public function getNameTownAttribute()
+    {
+        return $this->name.'; '.$this->town;
+    }
 }

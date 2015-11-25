@@ -13,6 +13,18 @@
         <div class="collapse navbar-collapse" id="navbar_responsive">
 
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/home">Aktuális verseny</a>
+                </li>
+                <li>
+                    <a href="/competitions">Versenyek</a>
+                </li>
+                <li>
+                    <a href="/statistics">Statisztikák</a>
+                </li>
+                <li>
+                    <a href="/competitor_statistics">Versenyzők statisztikája</a>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> @if(Auth::user()) {!! Auth::user()->name !!}
                         @else Felhasználó @endif<span class="caret"></span></a>

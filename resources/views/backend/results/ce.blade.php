@@ -15,7 +15,9 @@
 
             <fieldset>
                 <legend>Kombinált eredmények a következő versenyen: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name.' - Táv: '.$ce_dist->ce_dist!!}</legend>
-
+                <ul class="list-group">
+                    <li class="list-group-item">Időeredmény megadása a következő formátumban: mm:ss.uu, pl.: 13:11.67 </li>
+                </ul>
                 @if (empty($competitor_in))
                     <p> Nincs egy nevezett versenyző sem.</p>
                 @else
@@ -43,6 +45,7 @@
             {!! Form::close() !!}
         </div>
         <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
+        <div class = "placeholder"></div>
     </div>
 
 @endsection

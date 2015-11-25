@@ -16,7 +16,7 @@
                     <p> Nincs egy nevezett versenyző sem.</p>
                 @else
                     <div class="form-group">
-                        {!! Form::label('valami', 'Versenyző kiválasztása', array('class' => 'col-lg-3 control-label')) !!}
+                        {!! Form::label('competitor', 'Versenyző kiválasztása', array('class' => 'col-lg-3 control-label')) !!}
                         <div class="col-lg-3">
                             {!! Form::select('competitor', $competitor_in, $act_competitor , array('class' => 'form-control')) !!}
                         </div>
@@ -34,10 +34,11 @@
         </div>
     </div>
 
-
-
     <div class="container col-md-8 col-md-offset-2">
         <div class="well well bs-component">
+            <ul class="list-group">
+                <li class="list-group-item">Tusok száma ezen a versenyen: {!! $bouts_per_match !!}</li>
+            </ul>
 
             {!! Form::model($competitiongroup, array('class' => 'form-horizontal')) !!}
                 <fieldset>
@@ -66,6 +67,7 @@
             {!! Form::close() !!}
         </div>
         <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
+        <div class = "placeholder"></div>
     </div>
 
 @endsection

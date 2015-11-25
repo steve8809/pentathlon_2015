@@ -5,6 +5,7 @@
     <div class="container col-md-8 col-md-offset-2">
         <div class="well well bs-component">
 
+
             @if ($errors->has())
                 <p class="alert alert-danger">{!! $errors->first() !!}</p>
             @endif
@@ -15,7 +16,9 @@
 
             <fieldset>
                 <legend>Úszó eredmények a következő versenyen: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name.' - Táv: '.$swimming_dist->swimming_dist !!}</legend>
-
+                <ul class="list-group">
+                    <li class="list-group-item">Időeredmény megadása a következő formátumban: mm:ss.uu, pl.: 02:01.45 </li>
+                </ul>
                 @if (empty($competitor_in))
                     <p> Nincs egy nevezett versenyző sem.</p>
                 @else
@@ -45,6 +48,7 @@
             {!! Form::close() !!}
         </div>
         <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
+        <div class = "placeholder"></div>
     </div>
 
 @endsection

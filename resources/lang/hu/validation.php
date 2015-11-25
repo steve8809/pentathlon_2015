@@ -13,34 +13,34 @@ return [
     |
     */
 
-    'accepted'             => 'The :attribute must be accepted.',
-    'active_url'           => 'The :attribute is not a valid URL.',
-    'after'                => 'The :attribute must be a date after :date.',
-    'alpha'                => 'The :attribute may only contain letters.',
-    'alpha_dash'           => 'The :attribute may only contain letters, numbers, and dashes.',
-    'alpha_num'            => 'The :attribute may only contain letters and numbers.',
+    'accepted'             => 'A(z) :attribute el kell fogadni.',
+    'active_url'           => 'A(z) :attribute nem egy létező URL.',
+    'after'                => 'A(z) :attribute egy dátumnak kell lennie, :date után.',
+    'alpha'                => 'A(z) :attribute csak betűket tartalmazhat.',
+    'alpha_dash'           => 'A(z) :attribute csak betűket, számokat és kötőjeleket tartalmazhat.',
+    'alpha_num'            => 'A(z) :attribute csak betűket és számokat tartalmazhat.',
     'alpha_spaces'         => 'A(z) :attribute csak betűket és space-eket tartalmazhat.',
-    'array'                => 'The :attribute must be an array.',
-    'before'               => 'The :attribute must be a date before :date.',
+    'array'                => 'A(z) :attribute egy tömbnek kell lennie.',
+    'before'               => 'A(z) :attribute egy dátumnak kell lennie, :date előtt.',
     'between'              => [
-        'numeric' => 'The :attribute must be between :min and :max.',
-        'file'    => 'The :attribute must be between :min and :max kilobytes.',
-        'string'  => 'The :attribute must be between :min and :max characters.',
-        'array'   => 'The :attribute must have between :min and :max items.',
+        'numeric' => 'A(z) :attribute mezőnek a következő értékek között kell lennie: :min és :max.',
+        'file'    => 'A(z) :attribute mérete :min és :max kilobyte közötti lehet.',
+        'string'  => 'A(z) :attribute :min és :max karakter közötti lehet.',
+        'array'   => 'A(z) :attribute :min és :max közötti adatot tartalmazhat.',
     ],
-    'boolean'              => 'The :attribute field must be true or false.',
+    'boolean'              => 'A(z) :attribute mező igaz vagy hamis lehet.',
     'confirmed'            => 'The :attribute megerősítése nem megfelelő.',
-    'date'                 => 'The :attribute is not a valid date.',
-    'date_format'          => 'The :attribute does not match the format :format.',
+    'date'                 => 'A(z) :attribute nem egy valós dátum.',
+    'date_format'          => 'A(z) :attribute nem felel meg a következő formátumnak: :format.',
     'different'            => 'The :attribute and :other must be different.',
     'digits'               => 'The :attribute must be :digits digits.',
     'digits_between'       => 'The :attribute must be between :min and :max digits.',
-    'email'                => 'The :attribute must be a valid email address.',
+    'email'                => 'A(z) :attribute mezőben egy valós e-mail címet kell megadni.',
     'exists'               => 'The selected :attribute is invalid.',
     'filled'               => 'The :attribute field is required.',
     'image'                => 'The :attribute must be an image.',
     'in'                   => 'The selected :attribute is invalid.',
-    'integer'              => 'The :attribute must be an integer.',
+    'integer'              => 'A(z) :attribute egy egész számnak kell lennie.',
     'ip'                   => 'The :attribute must be a valid IP address.',
     'json'                 => 'The :attribute must be a valid JSON string.',
     'max'                  => [
@@ -75,7 +75,7 @@ return [
     'string'               => 'A(z) :attribute nem egy karaktersorozat.',
     'timezone'             => 'A(z) :attribute nem egy valós név.',
     'unique'               => 'A(z) :attribute már foglalt.',
-    'url'                  => 'The :attribute format is invalid.',
+    'url'                  => 'A(z) :attribute formátuma helytelen.',
     'date_multi_format'    => 'Nem megfelelő időformátum. A helyes formátum a következő: pp:mm.ss - pl.:02:30.00',
 
     /*
@@ -133,7 +133,8 @@ return [
         'competition_id' => 'Verseny',
         'type' => 'Típus',
         'age_group' => 'Korosztály',
-        'fencing_bouts' => 'Összes tus száma'
+        'fencing_bouts' => 'Összes tus száma',
+        'competitors' => 'Versenyző'
 
     ],
 

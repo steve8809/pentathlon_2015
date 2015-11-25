@@ -42,7 +42,8 @@
                                 </td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.competitors.destroy', $competitor->id]]) !!}
-                                    <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
+                                    <button class='btn btn-danger @if ($competitor->in_competition == 1) disabled @endif' type='button' data-toggle="modal"
+                                            data-target="@if ($competitor->in_competition == 0) #confirmDelete @endif"
                                             data-title="Versenyző törlése" data-message='Biztos, hogy törlöd a következő versenyzőt: {!! $competitor->last_name.' '.$competitor->first_name !!}?'>
                                         <span class='glyphicon glyphicon-trash'></span> Törlés
                                     </button>

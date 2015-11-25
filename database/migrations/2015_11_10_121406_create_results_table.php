@@ -18,6 +18,8 @@ class CreateResultsTable extends Migration
             $table->foreign('competitiongroup_id')->references('id')->on('competitiongroups');
             $table->integer('competitor_id')->unsigned();
             $table->foreign('competitor_id')->references('id')->on('competitors');
+            $table->string('sex');
+            $table->string('age_group');
             $table->integer('fencing_win');
             $table->integer('fencing_lose');
             $table->integer('fencing_points');

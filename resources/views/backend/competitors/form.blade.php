@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="form-group @if ($errors->has('club')) has-error @endif">
+    <div class="form-group @if ($errors->has('club_id')) has-error @endif">
         {!! Form::label('club_id', 'Klub', array('class' => 'col-lg-2 control-label')) !!}
         <div class="col-lg-10">
             {!! Form::select('club_id', array('' => 'Válassz klubot') + $clubs, null, array('class' => 'form-control')) !!}

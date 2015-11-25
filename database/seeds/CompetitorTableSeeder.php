@@ -11,7 +11,6 @@ class CompetitorTableSeeder extends Seeder
      */
     public function run()
     {
-        //$clubs = array('Klub1', 'Klub2', 'Klub3', 'Klub4', 'Klub5', 'Klub6');
         $sexes = array('Férfi', 'Nő');
         $start = strtotime("1 January 1980");
         $end = strtotime("31 December 1996");
@@ -19,6 +18,7 @@ class CompetitorTableSeeder extends Seeder
             $rand_date = mt_rand($start, $end);
             $birthday = date("Y-m-d", $rand_date);
             $sex = $sexes[array_rand($sexes, 1)];
+            $country_id = rand(1,239);
             $club = rand(1,6);
             $full_name = 'Versenyző '.$n;
             DB::table('competitors')->insert(
@@ -26,7 +26,7 @@ class CompetitorTableSeeder extends Seeder
                     'first_name' => $n,
                     'sex' => $sex,
                     'birthday' => $birthday,
-                    'country_id' => 135,
+                    'country_id' => $country_id,
                     'club_id' => $club,
                     'full_name' => $full_name
                     )

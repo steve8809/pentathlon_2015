@@ -21,3 +21,7 @@ td.btn-edit {
 .table-padding {
     padding-bottom: 120px;
 }
+
+.placeholder {
+    height: 60px;
+}

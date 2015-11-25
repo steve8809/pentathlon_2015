@@ -20,5 +20,9 @@ class Competitor extends Model
         return $this->belongsTo('App\Club');
     }
 
+    public function getFullNameBirthdayAttribute()
+    {
+        return $this->full_name.'; '.$this->birthday;
+    }
 
 }

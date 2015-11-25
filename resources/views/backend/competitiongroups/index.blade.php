@@ -38,7 +38,8 @@
                                 <td>{!! $competitiongroup->age_group !!}</td>
                                 <td>{!! $competitiongroup->sex !!}</td>
                                 <td class="btn-edit">
-                                    <a href="{!! action('Admin\CompetitiongroupsController@edit', $competitiongroup->id) !!}" class="btn btn-warning @if ($competitiongroup->entry_closed == 1) disabled @endif">
+                                    <a href="{!! action('Admin\CompetitiongroupsController@edit', $competitiongroup->id) !!}" class="btn btn-warning @if ($competitiongroup->entry_closed == 1) disabled @endif
+                                        @if (in_array($competitiongroup->id, $in_entry)) disabled @endif">
                                         <span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
                                 </td>
                                 <td class="btn-edit">
@@ -61,10 +62,10 @@
 
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <a href="{!! action('Admin\CompetitiongroupsController@fencing', $competitiongroup->id) !!}">Vívás</a>
-                                                <a href="{!! action('Admin\CompetitiongroupsController@swimming', $competitiongroup->id) !!}">Úszás</a>
-                                                <a href="{!! action('Admin\CompetitiongroupsController@riding', $competitiongroup->id) !!}">Lovaglás</a>
-                                                <a href="{!! action('Admin\CompetitiongroupsController@ce', $competitiongroup->id) !!}">Kombinált</a>
+                                                <a href="{!! action('Admin\ResultsController@fencing', $competitiongroup->id) !!}">Vívás</a>
+                                                <a href="{!! action('Admin\ResultsController@swimming', $competitiongroup->id) !!}">Úszás</a>
+                                                <a href="{!! action('Admin\ResultsController@riding', $competitiongroup->id) !!}">Lovaglás</a>
+                                                <a href="{!! action('Admin\ResultsController@ce', $competitiongroup->id) !!}">Kombinált</a>
                                             </li>
                                         </ul>
                                     </div>

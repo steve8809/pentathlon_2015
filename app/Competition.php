@@ -15,4 +15,9 @@ class Competition extends Model
     public function competitiongroup() {
         return $this->hasMany('App\Competitiongroup');
     }
+
+    public function getNameTownDateCategoryAttribute()
+    {
+        return $this->name.'; '.$this->town.'; '.$this->date.'; '.$this->category;
+    }
 }

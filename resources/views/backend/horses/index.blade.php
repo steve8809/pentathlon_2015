@@ -38,7 +38,8 @@
                                 </td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.horses.destroy', $horse->id]]) !!}
-                                    <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
+                                    <button class='btn btn-danger @if ($horse->in_competition == 1) disabled @endif' type='button' data-toggle="modal"
+                                            data-target="@if ($horse->in_competition == 0) #confirmDelete @endif"
                                             data-title="Ló törlése" data-message='Biztos, hogy törlöd a következő lovat: {!! $horse->name !!}?'>
                                         <span class='glyphicon glyphicon-trash'></span> Törlés
                                     </button>
