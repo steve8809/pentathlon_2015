@@ -83,14 +83,14 @@
                     <div class="form-group">
                         {!! Form::label('bouts_per_match', 'Tusok száma meccsenként', array('class' => 'col-lg-2 control-label')) !!}
                         <div class="col-lg-6">
-                            {!! Form::number('bouts_per_match', null, array('class' => 'form-control')) !!}
+                            {!! Form::number('bouts_per_match', 0, array('class' => 'form-control')) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('fencing_bouts', 'Összes tus száma', array('class' => 'col-lg-2 control-label')) !!}
                         <div class="col-lg-6">
-                            {!! Form::number('fencing_bouts', null, array('class' => 'form-control')) !!}
+                            {!! Form::number('fencing_bouts', 0, array('class' => 'form-control')) !!}
                         </div>
                     </div>
 

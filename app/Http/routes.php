@@ -102,4 +102,8 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     //Vívás
     Route::get('competitiongroups/{id?}/fencing', 'ResultsController@fencing');
     Route::post('competitiongroups/{id?}/fencing', 'ResultsController@fencing_save');
+
+    //Speciális
+    Route::get('competitiongroups/{id?}/special', 'ResultsController@special');
+    Route::post('competitiongroups/{id?}/special', 'ResultsController@special_save');
 });

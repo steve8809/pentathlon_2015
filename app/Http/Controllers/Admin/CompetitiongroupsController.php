@@ -154,11 +154,6 @@ class CompetitiongroupsController extends Controller
             unset($competitor_in[0]);
             $competitor_in = array_values($competitor_in);
         }
-
         return redirect('admin/competitiongroups/')->with('status', 'Nevezés lezárva');
     }
-
-
-
-
 }

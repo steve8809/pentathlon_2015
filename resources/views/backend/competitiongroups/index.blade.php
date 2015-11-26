@@ -66,6 +66,7 @@
                                                 <a href="{!! action('Admin\ResultsController@swimming', $competitiongroup->id) !!}">Úszás</a>
                                                 <a href="{!! action('Admin\ResultsController@riding', $competitiongroup->id) !!}">Lovaglás</a>
                                                 <a href="{!! action('Admin\ResultsController@ce', $competitiongroup->id) !!}">Kombinált</a>
+                                                <a href="{!! action('Admin\ResultsController@special', $competitiongroup->id) !!}">Speciális</a>
                                             </li>
                                         </ul>
                                     </div>

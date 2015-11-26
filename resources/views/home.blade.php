@@ -68,17 +68,33 @@
                                     <td><img src="/images/{!! $result->competitor->country->flag !!}"></td>
                                     <td>{!! $result->competitor->club->name !!}</td>
                                     <td>{!! $result->fencing_order !!}</td>
-                                    <td>{!! $result->fencing_win !!} </td>
-                                    <td>{!! $result->fencing_lose !!}</td>
+                                    @if($result->fencing_status == "")
+                                        <td>{!! $result->fencing_win !!} </td>
+                                        <td>{!! $result->fencing_lose !!}</td>
+                                    @else
+                                        <td colspan="2">{!! $result->fencing_status !!}</td>
+                                    @endif
                                     <td>{!! $result->fencing_points !!}</td>
                                     <td>{!! $result->swimming_order !!}</td>
-                                    <td>{!! $result->swimming_time !!}</td>
+                                    @if($result->swimming_status == "")
+                                        <td>{!! $result->swimming_time !!}</td>
+                                    @else
+                                        <td>{!! $result->swimming_status !!}</td>
+                                    @endif
                                     <td>{!! $result->swimming_points !!}</td>
                                     <td>{!! $result->riding_order !!}</td>
-                                    <td>@if ($result->horse != null) {!! $result->horse->name !!} @endif</td>
-                                    <td>{!! $result->riding_points !!}</td>
+                                    <td>@if ($result->horse != null && $result->riding_status == "") {!! $result->horse->name !!} @endif</td>
+                                    @if($result->riding_status == "")
+                                        <td>{!! $result->riding_points !!}</td>
+                                    @else
+                                        <td>{!! $result->riding_status !!}</td>
+                                    @endif
                                     <td>{!! $result->ce_order !!}</td>
-                                    <td>{!! $result->ce_time !!}</td>
+                                    @if($result->ce_status == "")
+                                        <td>{!! $result->ce_time !!}</td>
+                                    @else
+                                        <td>{!! $result->ce_status !!}</td>
+                                    @endif
                                     <td>{!! $result->ce_points !!}</td>
                                     <td>{!! $result->total_points !!}</td>
                                 </tr>
