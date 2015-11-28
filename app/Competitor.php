@@ -22,7 +22,7 @@ class Competitor extends Model
 
     public function getFullNameBirthdayAttribute()
     {
-        return $this->full_name.'; '.$this->birthday;
+        return $this->full_name.' ('.$this->birthday.')';
     }
 
 }

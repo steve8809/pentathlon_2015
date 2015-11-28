@@ -76,6 +76,14 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::post('competitiongroups/{id?}/entry', 'CompetitiongroupsController@entry_save');
     Route::delete('competitiongroups/destroy_entry/{id?}', array('as' => 'admin.destroy_entry',
         'uses' => 'CompetitiongroupsController@destroy_entry'));
+
+    //Csapatok nevezése versenyre
+    Route::get('competitiongroups/{id?}/entry/teams_entry', 'CompetitiongroupsController@teams_entry');
+    Route::post('competitiongroups/{id?}/entry/teams_entry', 'CompetitiongroupsController@teams_entry_save');
+    Route::delete('competitiongroups/destroy_team_entry/{id?}', array('as' => 'admin.destroy_team_entry',
+        'uses' => 'CompetitiongroupsController@destroy_team_entry'));
+
+    //Nevezés lezárása
     Route::post('competitiongroups/entry_close/{id?}', array('as' => 'admin.entry_close',
         'uses' => 'CompetitiongroupsController@entry_close'));
 
@@ -106,4 +114,9 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     //Speciális
     Route::get('competitiongroups/{id?}/special', 'ResultsController@special');
     Route::post('competitiongroups/{id?}/special', 'ResultsController@special_save');
+
+    //Kizárás
+    Route::get('competitiongroups/{id?}/dsq', 'ResultsController@dsq');
+    Route::post('competitiongroups/{id?}/dsq', 'ResultsController@dsq_save');
+
 });

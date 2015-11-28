@@ -1,13 +1,6 @@
 <fieldset>
     <legend>{!! $legend !!}</legend>
 
-    <div class="form-group @if ($errors->has('name')) has-error @endif">
-        {!! Form::label('name', 'Név', array('class' => 'col-lg-2 control-label')) !!}
-        <div class="col-lg-10">
-            {!! Form::text('name', null , array('class' => 'form-control', 'placeholder' => 'Csoport neve')) !!}
-        </div>
-    </div>
-
     <div class="form-group @if ($errors->has('competition_id')) has-error @endif">
         {!! Form::label('competition_id', 'Verseny', array('class' => 'col-lg-2 control-label')) !!}
         <div class="col-lg-10">

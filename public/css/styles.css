@@ -19,9 +19,13 @@ td.btn-edit {
 }
 
 .table-padding {
-    padding-bottom: 120px;
+    padding-bottom: 170px;
 }
 
 .placeholder {
     height: 60px;
+}
+
+.table-text-center td, .table-text-center th {
+    text-align: center;
 }

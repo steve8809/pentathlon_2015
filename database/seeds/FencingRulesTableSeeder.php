@@ -70,6 +70,9 @@ class FencingRulesTableSeeder extends Seeder
             array('bouts' => '5', 'victory_points' => '18', 'bouts_250' => '3'),
             array('bouts' => '4', 'victory_points' => '20', 'bouts_250' => '3'),
             array('bouts' => '3', 'victory_points' => '25', 'bouts_250' => '2'),
+            array('bouts' => '2', 'victory_points' => '40', 'bouts_250' => '1'),
+            array('bouts' => '1', 'victory_points' => '50', 'bouts_250' => '1'),
+            array('bouts' => '0', 'victory_points' => '0', 'bouts_250' => '0'),
         ));
     }
 }

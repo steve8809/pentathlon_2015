@@ -18,12 +18,12 @@ class CompetitionSeeder extends Seeder
         ));
 
         DB::table('competitiongroups')->insert(array(
-            array('competition_id' => 1, 'name' => 'Felnőtt Férfi', 'date' => Carbon\Carbon::now(), 'type' => 'Döntő', 'age_group' => 'Felnőtt', 'sex' => 'Férfi'),
-            array('competition_id' => 1, 'name' => 'Felnőtt Női', 'date' => Carbon\Carbon::now(), 'type' => 'Döntő', 'age_group' => 'Felnőtt', 'sex' => 'Nő'),
-            array('competition_id' => 2, 'name' => 'Junior Férfi', 'date' => Carbon\Carbon::now()->addDays(-1), 'type' => 'Döntő', 'age_group' => 'Felnőtt', 'sex' => 'Férfi'),
-            array('competition_id' => 2, 'name' => 'Junior Női', 'date' => Carbon\Carbon::now()->addDays(-1), 'type' => 'Döntő', 'age_group' => 'Felnőtt', 'sex' => 'Nő'),
-            array('competition_id' => 3, 'name' => 'Ifi E Női', 'date' => Carbon\Carbon::now()->addDays(-2), 'type' => 'Döntő', 'age_group' => 'Ifi E', 'sex' => 'Nő'),
-            array('competition_id' => 3, 'name' => 'Ifi E Férfi', 'date' => Carbon\Carbon::now()->addDays(-2), 'type' => 'Döntő', 'age_group' => 'Ifi E', 'sex' => 'Férfi'),
+            array('competition_id' => 1, 'name' => 'Felnőtt Férfi Döntő', 'date' => Carbon\Carbon::now(), 'type' => 'Döntő', 'age_group' => 'Felnőtt', 'sex' => 'Férfi'),
+            array('competition_id' => 1, 'name' => 'Felnőtt Nő Döntő', 'date' => Carbon\Carbon::now(), 'type' => 'Döntő', 'age_group' => 'Felnőtt', 'sex' => 'Nő'),
+            array('competition_id' => 2, 'name' => 'Junior Férfi Döntő', 'date' => Carbon\Carbon::now()->addDays(-1), 'type' => 'Döntő', 'age_group' => 'Felnőtt', 'sex' => 'Férfi'),
+            array('competition_id' => 2, 'name' => 'Junior Nő Döntő', 'date' => Carbon\Carbon::now()->addDays(-1), 'type' => 'Döntő', 'age_group' => 'Felnőtt', 'sex' => 'Nő'),
+            array('competition_id' => 3, 'name' => 'Ifi E Nő Döntő', 'date' => Carbon\Carbon::now()->addDays(-2), 'type' => 'Döntő', 'age_group' => 'Ifi E', 'sex' => 'Nő'),
+            array('competition_id' => 3, 'name' => 'Ifi E Férfi Döntő', 'date' => Carbon\Carbon::now()->addDays(-2), 'type' => 'Döntő', 'age_group' => 'Ifi E', 'sex' => 'Férfi'),
         ));
 
     }

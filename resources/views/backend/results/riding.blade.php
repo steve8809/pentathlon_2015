@@ -16,7 +16,7 @@
             <fieldset>
                 <legend>Lovaglás pontszámok a következő versenyen: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name !!}</legend>
                 <ul class="list-group">
-                    <li class="list-group-item">A lovaglás pontszáma 0 és 250 közötti érték. Ló választása kötelező. </li>
+                    <li class="list-group-item">A lovaglás pontszáma 0 és 300 közötti érték. Ló választása kötelező. </li>
                 </ul>
                 @if (empty($competitor_in))
                     <p> Nincs egy nevezett versenyző sem.</p>
@@ -25,7 +25,7 @@
                         <div class="form-group">
                             {!! Form::label('riding['.$key.']', $comp, array('class' => 'col-lg-2 control-label')) !!}
                             <div class="col-lg-3 @if ($errors->has('riding.'.$key)) has-error @endif">
-                                {!! Form::number('riding['.$key.']', $competitor_riding[$key] , array('min' => 0, 'max' => 250, 'class' => 'form-control')) !!}
+                                {!! Form::number('riding['.$key.']', $competitor_riding[$key] , array('min' => 0, 'max' => 300, 'class' => 'form-control')) !!}
                             </div>
                             <div class="col-lg-3 @if ($errors->has('horse_id.'.$key)) has-error @endif">
                                 {!! Form::select('horse_id['.$key.']', array('' => 'Válassz lovat') + $horses, $competitor_horse[$key] , array('class' => 'form-control')) !!}

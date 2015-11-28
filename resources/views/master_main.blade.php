@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title> @yield('title') </title>
     <!--Twitter Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" >
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" >
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 
@@ -29,6 +30,7 @@
 
     <!--DataTables js-->
     <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/natural.js"></script>
 
     <!--Twitter Bootstrap js-->
     <script src="/js/bootstrap.min.js"></script>

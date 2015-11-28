@@ -29,7 +29,7 @@ return [
         'array'   => 'A(z) :attribute :min és :max közötti adatot tartalmazhat.',
     ],
     'boolean'              => 'A(z) :attribute mező igaz vagy hamis lehet.',
-    'confirmed'            => 'The :attribute megerősítése nem megfelelő.',
+    'confirmed'            => 'A(z) :attribute megerősítése nem megfelelő.',
     'date'                 => 'A(z) :attribute nem egy valós dátum.',
     'date_format'          => 'A(z) :attribute nem felel meg a következő formátumnak: :format.',
     'different'            => 'The :attribute and :other must be different.',
@@ -134,7 +134,8 @@ return [
         'type' => 'Típus',
         'age_group' => 'Korosztály',
         'fencing_bouts' => 'Összes tus száma',
-        'competitors' => 'Versenyző'
+        'competitors' => 'Versenyző',
+        'team_name' => 'Név'
 
     ],
 

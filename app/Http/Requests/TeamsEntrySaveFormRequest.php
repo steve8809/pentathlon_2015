@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CompetitiongroupFormRequest extends Request
+class TeamsEntrySaveFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,8 @@ class CompetitiongroupFormRequest extends Request
     public function rules()
     {
         return [
-            'competition_id' => 'required',
-            'date' => 'required|date',
-            'type' => 'required',
-            'age_group' => 'required',
-            'sex' => 'required',
+            'team_name' => 'required',
+            'competitors' => 'required|size:3|array'
         ];
     }
 }

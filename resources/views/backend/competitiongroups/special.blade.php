@@ -68,19 +68,19 @@
 
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button class='btn btn-danger' type='button' data-toggle="modal"
+                        <button class='btn btn-warning' type='button' data-toggle="modal"
                                 data-target="#confirmSpecial"
-                                data-title="Módosítások megerősítése" data-message='Biztos, hogy módosítani szeretnéd? Ez a lépés nem visszavonható!'>
-                            <span class='glyphicon glyphicon-trash'></span> Módosítások mentése
+                                data-title="Módosítások megerősítése" data-message='Biztos, hogy módosítani szeretnéd a következő versenyzőt: {!! $competitor_in[$act_competitor] !!}?
+                                Ez a lépés nem visszavonható!'>Módosítások mentése
                         </button>
                     </div>
                 </div>
 
             </fieldset>
-
             {!! Form::close() !!}
         </div>
         @include('modals.confirm_special')
+        <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
     </div>
 
 @endsection

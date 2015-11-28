@@ -13,7 +13,7 @@
                 <p> Nincs egy verseny sem.</p>
             @else
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-text-center">
                         <thead>
                         <tr>
                             <th>Név</th>

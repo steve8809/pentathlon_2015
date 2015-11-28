@@ -16,6 +16,7 @@ use App\Competitiongroup;
 use DB;
 use App\Result;
 use App\Fencing_result;
+use App\Results_team;
 
 class ResultsController extends Controller
 {
@@ -23,7 +24,7 @@ class ResultsController extends Controller
     public function swimming_order($id)
     {
         $swimming_order = Result::where('competitiongroup_id', '=', $id)->where('swimming_time','!=','')->where('swimming_points', '!=', 0)
-            ->where('swimming_status', '')->orderBy('swimming_time', 'asc')->get();
+            ->where('swimming_status', '')->where('dsq_status', '=', 0)->orderBy('swimming_time', 'asc')->get();
         $i = 0;
         foreach($swimming_order as $swim) {
             $i++;
@@ -35,7 +36,7 @@ class ResultsController extends Controller
     public function ce_order($id)
     {
         $ce_order = Result::where('competitiongroup_id', '=', $id)->where('ce_time','!=','')->where('ce_points', '!=', 0)
-            ->where('ce_status', '')->orderBy('ce_time', 'asc')->get();
+            ->where('ce_status', '')->where('dsq_status', 0)->orderBy('ce_time', 'asc')->get();
         $i = 0;
         foreach($ce_order as $ce) {
             $i++;
@@ -47,7 +48,7 @@ class ResultsController extends Controller
     public function riding_order($id)
     {
         $riding_order = Result::where('competitiongroup_id', '=', $id)->WhereNotNull('horse_id')->
-            where('riding_status', '')->orderBy('riding_points', 'desc')->get();
+            where('riding_status', '')->where('dsq_status', 0)->orderBy('riding_points', 'desc')->get();
         $i = 0;
         foreach($riding_order as $ride) {
             $i++;
@@ -58,7 +59,7 @@ class ResultsController extends Controller
 
     public function fencing_order($id)
     {
-        $fencing_order = Result::where('competitiongroup_id', '=', $id)->where('fencing_status', '')->orderBy('fencing_points', 'desc')->get();
+        $fencing_order = Result::where('competitiongroup_id', '=', $id)->where('fencing_status', '')->where('dsq_status', 0)->orderBy('fencing_points', 'desc')->get();
         $i = 0;
         foreach($fencing_order as $fence) {
             $i++;
@@ -71,7 +72,7 @@ class ResultsController extends Controller
     public function total_fencing_points($id)
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('fencing_status', '')->get();
+        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('fencing_status', '')->where('dsq_status', 0)->get();
         $fencing_rule = Fencing_rule::where('bouts', '=', $competitiongroup->fencing_bouts)->firstOrFail();
         $fencing_250 = $fencing_rule->bouts_250;
         $fencing_victory_points = $fencing_rule->victory_points;
@@ -122,10 +123,69 @@ class ResultsController extends Controller
         }
     }
 
+    public function team_points_order($id)
+    {
+        $teams = Results_team::where('competitiongroup_id', '=', $id)->get();
+        foreach($teams as $team) {
+            $comps = [$team->competitor1_id, $team->competitor2_id, $team->competitor3_id];
+            $competitors = Result::where('competitiongroup_id', '=', $id)->whereIn('competitor_id', $comps)->get();
+            $swimming_points = 0;
+            $riding_points = 0;
+            $ce_points = 0;
+            $fencing_points = 0;
+            $total_points = 0;
+            foreach($competitors as  $comp) {
+                $swimming_points += $comp->swimming_points;
+                $riding_points += $comp->riding_points;
+                $ce_points += $comp->ce_points;
+                $fencing_points += $comp->fencing_points;
+                $total_points += $comp->total_points;
+            }
+            $team->swimming_points = $swimming_points;
+            $team->riding_points = $riding_points;
+            $team->ce_points = $ce_points;
+            $team->fencing_points = $fencing_points;
+            $team->total_points = $total_points;
+            $team->save();
+        }
+
+        $fencing_order = Results_team::where('competitiongroup_id', '=', $id)->orderBy('fencing_points', 'desc')->get();
+        $i = 0;
+        foreach($fencing_order as $fence) {
+            $i++;
+            $fence->fencing_order = $i;
+            $fence->save();
+        }
+
+        $swimming_order = Results_team::where('competitiongroup_id', '=', $id)->orderBy('swimming_points', 'desc')->get();
+        $i = 0;
+        foreach($swimming_order as $swim) {
+            $i++;
+            $swim->swimming_order = $i;
+            $swim->save();
+        }
+
+        $riding_order = Results_team::where('competitiongroup_id', '=', $id)->orderBy('riding_points', 'desc')->get();
+        $i = 0;
+        foreach($riding_order as $ride) {
+            $i++;
+            $ride->riding_order = $i;
+            $ride->save();
+        }
+
+        $ce_order = Results_team::where('competitiongroup_id', '=', $id)->orderBy('ce_points', 'desc')->get();
+        $i = 0;
+        foreach($ce_order as $ce) {
+            $i++;
+            $ce->ce_order = $i;
+            $ce->save();
+        }
+    }
+
     public function swimming($id)
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('swimming_status', '')->get();
+        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('swimming_status', '')->where('dsq_status', 0)->get();
         $swimming_rule = Swimming_ce_rule::select('swimming_dist')->where('age_group','=', $competitiongroup->age_group)->where('type','Egyéni')->get();
         $swimming_dist = $swimming_rule[0];
 
@@ -147,7 +207,7 @@ class ResultsController extends Controller
     public function swimming_save(SwimmingSaveFormRequest $request, $id)
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('swimming_status', '')->get();
+        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('swimming_status', '')->where('dsq_status', 0)->get();
         $swimming_250 = DB::table('swimming_ce_rules')->select('swimming_time')->where('age_group','=',$competitiongroup->age_group)->where('type','=','Egyéni')->get();
 
         //"Időeredmény 250 ponthoz" átalakítása másodpercekké
@@ -184,13 +244,16 @@ class ResultsController extends Controller
 
         //Össz pontszám
         $this->total_points($id);
+
+        $this->team_points_order($id);
+
         return redirect('admin/competitiongroups/'.$id.'/swimming')->with('status', 'Eredmények mentve');
     }
 
     public function riding($id)
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('riding_status', '')->get();
+        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('riding_status', '')->where('dsq_status', 0)->get();
         $horses = Horse::orderBy('name','asc')->lists('name', 'id')->all();
 
         $competitor_in = [];
@@ -215,7 +278,7 @@ class ResultsController extends Controller
 
     public function riding_save($id, RidingSaveFormRequest $request)
     {
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('riding_status', '')->get();
+        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('riding_status', '')->where('dsq_status', 0)->get();
 
         //Versenyző lovas pontjainak ill. lovának mentése
         foreach ($competitor_list as $comp) {
@@ -233,13 +296,16 @@ class ResultsController extends Controller
         $this->riding_order($id);
 
         $this->total_points($id);
+
+        $this->team_points_order($id);
+
         return redirect('admin/competitiongroups/'.$id.'/riding')->with('status', 'Eredmények mentve');
     }
 
     public function ce($id)
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('ce_status', '')->get();
+        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('ce_status', '')->where('dsq_status', 0)->get();
         $ce_rule = Swimming_ce_rule::select('ce_dist')->where('age_group','=', $competitiongroup->age_group)->where('type','Egyéni')->get();
         $ce_dist = $ce_rule[0];
 
@@ -260,7 +326,7 @@ class ResultsController extends Controller
     public function ce_save(CeSaveFormRequest $request, $id)
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('ce_status', '')->get();
+        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('ce_status', '')->where('dsq_status', 0)->get();
         $ce_500 = DB::table('swimming_ce_rules')->select('ce_time')->where('age_group','=',$competitiongroup->age_group)->where('type','=','Egyéni')->get();
 
         //"Időeredmény 500 ponthoz" átalakítása másodpercekké
@@ -297,13 +363,16 @@ class ResultsController extends Controller
 
         //Össz pontszám
         $this->total_points($id);
+
+        $this->team_points_order($id);
+
         return redirect('admin/competitiongroups/'.$id.'/ce')->with('status', 'Eredmények mentve');
     }
 
     public function fencing(Request $request, $id)
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('fencing_status', '')->orderBy('competitor_id')->get();
+        $competitor_list = Result::where('competitiongroup_id', '=', $id)->where('fencing_status', '')->where('dsq_status', 0)->orderBy('competitor_id')->get();
         $bouts_per_match = $competitiongroup->bouts_per_match;
 
         //Nevezett versenyzők
@@ -362,13 +431,16 @@ class ResultsController extends Controller
         $this->total_fencing_points($id);
 
         $this->total_points($id);
+
+        $this->team_points_order($id);
+
         return redirect('admin/competitiongroups/'.$id.'/fencing?competitor='.$act_competitor.'')->with('status', 'Eredmények mentve');
     }
 
     public function special(Request $request, $id)
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->orderBy('competitor_id')->get();
+        $competitor_list = Result::where('competitiongroup_id', '=', $id)->orderBy('competitor_id')->where('dsq_status', 0)->get();
 
         //Nevezett versenyzők
         $competitor_in = [];
@@ -384,14 +456,14 @@ class ResultsController extends Controller
             $act_competitor = $request->competitor;
         }
 
-        $specials = ['Részt vett', 'Nem indult el', 'Feladta', 'Kihagyta'];
+        $specials = ['Részt vett', 'Nem indult el', 'Feladta/Nem ért célba', 'Kihagyta'];
 
         //Úszás spec
         $swimming = [];
         foreach($competitor_list as $comp) {
             if ($comp->swimming_status == "DNS")
                 $swimming[$comp->competitor->id] = 1;
-            else if ($comp->swimming_status == "ABA") {
+            else if ($comp->swimming_status == "DNF") {
                 $swimming[$comp->competitor->id] = 2;
             }
             else if ($comp->swimming_status == "ELI") {
@@ -407,7 +479,7 @@ class ResultsController extends Controller
         foreach($competitor_list as $comp) {
             if ($comp->riding_status == "DNS")
                 $riding[$comp->competitor->id] = 1;
-            else if ($comp->riding_status == "ABA") {
+            else if ($comp->riding_status == "DNF") {
                 $riding[$comp->competitor->id] = 2;
             }
             else if ($comp->riding_status == "ELI") {
@@ -423,7 +495,7 @@ class ResultsController extends Controller
         foreach($competitor_list as $comp) {
             if ($comp->ce_status == "DNS")
                 $ce[$comp->competitor->id] = 1;
-            else if ($comp->ce_status == "ABA") {
+            else if ($comp->ce_status == "DNF") {
                 $ce[$comp->competitor->id] = 2;
             }
             else if ($comp->ce_status == "ELI") {
@@ -439,7 +511,7 @@ class ResultsController extends Controller
         foreach($competitor_list as $comp) {
             if ($comp->fencing_status == "DNS")
                 $fencing[$comp->competitor->id] = 1;
-            else if ($comp->fencing_status == "ABA") {
+            else if ($comp->fencing_status == "DNF") {
                 $fencing[$comp->competitor->id] = 2;
             }
             else if ($comp->fencing_status == "ELI") {
@@ -468,7 +540,7 @@ class ResultsController extends Controller
             $result->save();
         }
         if ($request->swimming == 2) {
-            $result->swimming_status = "ABA";
+            $result->swimming_status = "DNF";
             $result->swimming_points = 0;
             $result->swimming_order = 0;
             $result->save();
@@ -488,7 +560,7 @@ class ResultsController extends Controller
             $result->save();
         }
         if ($request->riding == 2) {
-            $result->riding_status = "ABA";
+            $result->riding_status = "DNF";
             $result->riding_points = 0;
             $result->riding_order = 0;
             $result->save();
@@ -508,7 +580,7 @@ class ResultsController extends Controller
             $result->save();
         }
         if ($request->ce == 2) {
-            $result->ce_status = "ABA";
+            $result->ce_status = "DNF";
             $result->ce_points = 0;
             $result->ce_order = 0;
             $result->save();
@@ -533,18 +605,21 @@ class ResultsController extends Controller
 
             $fencing_results1 = Fencing_result::where('competitiongroup_id', '=', $id)->where('competitor1_id', '=', $act_competitor)->get();
             $fencing_results2 = Fencing_result::where('competitiongroup_id', '=', $id)->where('competitor2_id', '=', $act_competitor)->get();
+
             foreach ($fencing_results1 as $fence) {
                 $fence->delete();
             }
+
             foreach ($fencing_results2 as $fence) {
                 $fence->delete();
             }
+
             if ($request->fencing == 1) {
                 $result->fencing_status = "DNS";
                 $result->save();
             }
             if ($request->fencing == 2) {
-                $result->fencing_status = "ABA";
+                $result->fencing_status = "DNF";
                 $result->save();
             }
             if ($request->fencing == 3) {
@@ -557,9 +632,75 @@ class ResultsController extends Controller
         $this->swimming_order($id);
         $this->ce_order($id);
         $this->total_fencing_points($id);
-        $this->fencing_order($id);
         $this->total_points($id);
+        $this->team_points_order($id);
 
         return redirect('admin/competitiongroups/'.$id.'/special?competitor='.$act_competitor.'')->with('status', 'Módosítások elmentve.');
+    }
+
+    public function dsq($id, Request $request) {
+        $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
+        $competitor_list = Result::where('competitiongroup_id', '=', $id)->orderBy('competitor_id')->where('dsq_status', 0)->get();
+
+        //Nevezett versenyzők
+        $competitor_in = [];
+        foreach ($competitor_list as $comp) {
+            $competitor_in[$comp->competitor->id] = $comp->competitor->full_name;
+        }
+        natsort($competitor_in);
+        reset($competitor_in);
+        $act_competitor = key($competitor_in);
+
+        //Kiválasztott versenyző
+        if ($request->competitor) {
+            $act_competitor = $request->competitor;
+        }
+
+        return view('backend.competitiongroups.dsq', compact('competitiongroup', 'competitor_in', 'act_competitor'));
+    }
+
+    public function dsq_save($id, Request $request)
+    {
+        $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
+        $act_competitor = $request->act_comp;
+        $result = Result::where('competitiongroup_id', '=', $id)->where('competitor_id', '=', $act_competitor)->first();
+        $result->dsq_status = 1;
+        $result->fencing_win = 0;
+        $result->fencing_lose = 0;
+        $result->fencing_points = 0;
+        $result->fencing_order = 0;
+        $result->swimming_time = "";
+        $result->swimming_points = 0;
+        $result->swimming_order = 0;
+        $result->riding_points = 0;
+        $result->horse_id = null;
+        $result->riding_order = 0;
+        $result->ce_time = "";
+        $result->ce_points = 0;
+        $result->ce_order = 0;
+        $result->total_points = 0;
+        $result->save();
+
+        $competitiongroup->fencing_bouts = $competitiongroup->fencing_bouts - $competitiongroup->bouts_per_match;
+        $competitiongroup->save();
+
+        $fencing_results1 = Fencing_result::where('competitiongroup_id', '=', $id)->where('competitor1_id', '=', $act_competitor)->get();
+        $fencing_results2 = Fencing_result::where('competitiongroup_id', '=', $id)->where('competitor2_id', '=', $act_competitor)->get();
+        foreach ($fencing_results1 as $fence) {
+            $fence->delete();
+        }
+
+        foreach ($fencing_results2 as $fence) {
+            $fence->delete();
+        }
+
+        $this->riding_order($id);
+        $this->swimming_order($id);
+        $this->ce_order($id);
+        $this->total_fencing_points($id);
+        $this->total_points($id);
+        $this->team_points_order($id);
+
+        return redirect('admin/competitiongroups/'.$id.'/dsq')->with('status', 'Versenyző kizárva.');
     }
 }

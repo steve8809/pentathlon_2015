@@ -22,7 +22,7 @@
                             <th>Klub neve</th>
                             <th>Ország</th>
                             <th>Város</th>
-                            <th colspan="2">Műveletek</th>
+                            <th colspan="2" class="text-left">Műveletek</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -31,10 +31,10 @@
                                 <td>{!! $club->name !!}</td>
                                 <td>{!! $club->country !!} </td>
                                 <td>{!! $club->town !!}</td>
-                                <td class="btn-edit">
+                                <td class="text_left btn-edit">
                                     <a href="{!! action('Admin\ClubsController@edit', $club->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
                                 </td>
-                                <td>
+                                <td class="text_left">
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.clubs.destroy', $club->id]]) !!}
                                     <button class='btn btn-danger @if ($club->in_competition == 1) disabled @endif' type='button' data-toggle="modal"
                                             data-target="@if ($club->in_competition == 0) #confirmDelete @endif"

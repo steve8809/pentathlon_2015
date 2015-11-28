@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Results_team;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,9 +20,11 @@ class PageController extends Controller
         $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->get();
         if (!$competitiongroups->isEmpty()) {
             $competitiongroup = Competitiongroup::where('competition_id', '=', $competition->id)->firstOrFail();
-            $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();
+            $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 0)->orderBy('total_points', 'desc')->get();
+            $results_dsq = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 1)->get();
+            $teams = Results_team::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();
         }
-        return view('home', compact('competition', 'competitiongroups', 'competitiongroup', 'results'));
+        return view('home', compact('competition', 'competitiongroups', 'competitiongroup', 'results', 'results_dsq', 'teams'));
     }
 
     public function select($id)
@@ -30,9 +33,11 @@ class PageController extends Controller
         $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->get();
         if (!$competitiongroups->isEmpty()) {
             $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
-            $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();
+            $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 0)->orderBy('total_points', 'desc')->get();
+            $results_dsq = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 1)->get();
+            $teams = Results_team::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();
         }
-        return view('home', compact('competition', 'competitiongroups', 'competitiongroup', 'results'));
+        return view('home', compact('competition', 'competitiongroups', 'competitiongroup', 'results', 'results_dsq', 'teams'));
     }
 
     public function competitions()
@@ -47,9 +52,11 @@ class PageController extends Controller
         $competitiongroups = Competitiongroup::where('competition_id', '=', $id)->get();
         if (!$competitiongroups->isEmpty()) {
             $competitiongroup = Competitiongroup::where('competition_id', '=', $competition->id)->firstOrFail();
-            $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();
+            $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 0)->orderBy('total_points', 'desc')->get();
+            $results_dsq = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 1)->get();
+            $teams = Results_team::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();
         }
-        return view('home', compact('competition', 'competitiongroups', 'competitiongroup', 'results'));
+        return view('home', compact('competition', 'competitiongroups', 'competitiongroup', 'results', 'results_dsq', 'teams'));
     }
 
     public function competition_select($id, $subid)
@@ -58,9 +65,11 @@ class PageController extends Controller
         $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->get();
         if (!$competitiongroups->isEmpty()) {
             $competitiongroup = Competitiongroup::whereId($subid)->firstOrFail();
-            $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();
+            $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 0)->orderBy('total_points', 'desc')->get();
+            $results_dsq = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 1)->get();
+            $teams = Results_team::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();
         }
-        return view('home', compact('competition', 'competitiongroups', 'competitiongroup', 'results'));
+        return view('home', compact('competition', 'competitiongroups', 'competitiongroup', 'results', 'results_dsq', 'teams'));
     }
 
     public function statistics()
@@ -123,7 +132,7 @@ class PageController extends Controller
         //Nevezett versenyzők
         $competitor_in = [];
         foreach ($competitors as $comp) {
-            $competitor_in[$comp->id] = $comp->full_name;
+            $competitor_in[$comp->id] = $comp->full_name_birthday;
         }
         natsort($competitor_in);
         reset($competitor_in);

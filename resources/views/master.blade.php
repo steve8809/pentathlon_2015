@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title> @yield('title') </title>
     <!--Twitter Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" >
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" >
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 
