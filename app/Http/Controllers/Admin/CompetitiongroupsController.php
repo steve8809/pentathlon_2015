@@ -238,6 +238,7 @@ class CompetitiongroupsController extends Controller
         $competitiongroup->bouts_per_match = $request->get('bouts_per_match');
         $competitiongroup->fencing_bouts = $request->get('fencing_bouts');
         $competitiongroup->entry_closed = 1;
+        $competitiongroup->riding_time_limit = $request->get('riding_time_limit');
         $competitiongroup->save();
 
         //Benevezett versenyzők vívó mérkőzéseinek összeállítása

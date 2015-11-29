@@ -17,5 +17,6 @@
 
         </div>
         <a href="/admin/swimming_ce_rules" class="btn btn-info">Vissza a szabályokhoz</a>
+        <div class="placeholder"></div>
     </div>
 @endsection

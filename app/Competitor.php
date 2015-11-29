@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Competitor extends Model
 {
-    protected $fillable = ['first_name', 'last_name', 'sex', 'birthday', 'country_id', 'club_id', 'full_name'];
+    protected $fillable = ['first_name', 'last_name', 'sex', 'birthday', 'country_id', 'club_id', 'full_name', 'in_competition'];
 
     public function country() {
         return $this->belongsTo('App\Country');

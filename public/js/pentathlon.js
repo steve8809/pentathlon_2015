@@ -16,7 +16,6 @@ $('#confirmDelete').on('show.bs.modal', function (e) {
     $(this).find('.modal-footer #confirm').data('form', form);
 });
 
-//Form confirm submit-hoz
 $('#confirmDelete').find('.modal-footer #confirm').on('click', function(){
     $(this).data('form').submit();
 });
@@ -29,7 +28,7 @@ jQuery(function($){
     $(".masked_input").mask("99:99.99");
 });
 
-//Modal ablakban megerősítés
+//Modal ablakban megerősítés speciálishoz
 $('#confirmSpecial').on('show.bs.modal', function (e) {
     $message = $(e.relatedTarget).attr('data-message');
     $(this).find('.modal-body p').text($message);
@@ -40,12 +39,11 @@ $('#confirmSpecial').on('show.bs.modal', function (e) {
     $(this).find('.modal-footer #confirm').data('form', form);
 });
 
-//Form confirm submit-hoz
 $('#confirmSpecial').find('.modal-footer #confirm').on('click', function(){
     $(this).data('form').submit();
 });
 
-//Modal ablakban megerősítés
+//Modal ablakban megerősítés kizáráshoz
 $('#confirmDsq').on('show.bs.modal', function (e) {
     $message = $(e.relatedTarget).attr('data-message');
     $(this).find('.modal-body p').text($message);
@@ -56,7 +54,6 @@ $('#confirmDsq').on('show.bs.modal', function (e) {
     $(this).find('.modal-footer #confirm').data('form', form);
 });
 
-//Form confirm submit-hoz
 $('#confirmDsq').find('.modal-footer #confirm').on('click', function(){
     $(this).data('form').submit();
 });

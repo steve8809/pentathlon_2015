@@ -1,5 +1,5 @@
 @extends('master_main')
-@section('title', 'Eredmények')
+@section('title', 'Eredmények - '.$competition->name)
 @section('content')
 
     <div class="container col-md-10 col-md-offset-1">
@@ -29,35 +29,36 @@
                     <p> Nincs a versenyhez eredmény.</p>
                 @else
                     <div class="table-responsive">
-                        <table id="results" class="table table-bordered table-text-center">
+                        <table cellpadding="0" id="results" class="table table-bordered table-text-center table-hover">
                             <thead>
                             <tr>
                                 <th colspan="5"></th>
                                 <th colspan="4">Vívás</th>
                                 <th colspan="3">Úszás</th>
-                                <th colspan="3">Lovaglás</th>
+                                <th colspan="4">Lovaglás</th>
                                 <th colspan="3">Kombinált</th>
                                 <th></th>
                             </tr>
                             <tr>
-                                <th></th>
+                                <th class="sort"></th>
                                 <th class="no-sort">Versenyző</th>
                                 <th colspan="2">Nemzet</th>
-                                <th>Klub</th>
-                                <th>H</th>
+                                <th class="no-sort">Klub</th>
+                                <th class="sort">H</th>
                                 <th class="no-sort">Gy</th>
                                 <th class="no-sort">V</th>
                                 <th class="no-sort">P</th>
-                                <th>H</th>
+                                <th class="sort">H</th>
                                 <th class="no-sort">Idő</th>
                                 <th class="no-sort">P</th>
-                                <th>H</th>
+                                <th class="sort">H</th>
+                                <th class="no-sort">Idő</th>
                                 <th class="no-sort">Ló</th>
                                 <th class="no-sort">P</th>
-                                <th>H</th>
+                                <th class="sort">H</th>
                                 <th class="no-sort">Idő</th>
                                 <th class="no-sort">P</th>
-                                <th>Össz</th>
+                                <th class="no-sort">Össz</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -76,20 +77,33 @@
                                         <td>{!! $result->fencing_status !!}</td>
                                         <td>-</td>
                                     @endif
-                                    <td>{!! $result->fencing_points !!}</td>
+                                    @if($result->penalty_points_fencing == null || $result->penalty_points_fencing == 0)
+                                        <td>{!! $result->fencing_points !!}</td>
+                                    @else
+                                        <td>{!! $result->fencing_points !!} (-{!! $result->penalty_points_fencing !!})</td>
+                                    @endif
                                     <td>@if ($result->swimming_order != 0){!! $result->swimming_order !!} @else - @endif</td>
                                     @if($result->swimming_status == "")
                                         <td>{!! $result->swimming_time !!}</td>
                                     @else
                                         <td>{!! $result->swimming_status !!}</td>
                                     @endif
-                                    <td>{!! $result->swimming_points !!}</td>
+                                    @if($result->penalty_points_swimming == null || $result->penalty_points_swimming == 0)
+                                        <td>{!! $result->swimming_points !!}</td>
+                                    @else
+                                        <td>{!! $result->swimming_points !!} (-{!! $result->penalty_points_swimming !!})</td>
+                                    @endif
                                     <td>@if ($result->riding_order != 0){!! $result->riding_order !!} @else - @endif</td>
-                                    <td>@if ($result->horse != null && $result->riding_status == "") {!! $result->horse->name !!} @else - @endif</td>
                                     @if($result->riding_status == "")
-                                        <td>{!! $result->riding_points !!}</td>
+                                        <td>{!! $result->riding_time !!}</td>
                                     @else
                                         <td>{!! $result->riding_status !!}</td>
+                                    @endif
+                                    <td>@if ($result->horse != null && $result->riding_status == "") {!! $result->horse->name !!} @else - @endif</td>
+                                    @if($result->penalty_points_riding == null || $result->penalty_points_riding == 0)
+                                        <td>{!! $result->riding_points !!}</td>
+                                    @else
+                                        <td>{!! $result->riding_points !!} (-{!! $result->penalty_points_riding !!})</td>
                                     @endif
                                     <td>@if ($result->ce_order != 0){!! $result->ce_order !!} @else - @endif</td>
                                     @if($result->ce_status == "")
@@ -97,8 +111,16 @@
                                     @else
                                         <td>{!! $result->ce_status !!}</td>
                                     @endif
-                                    <td>{!! $result->ce_points !!}</td>
-                                    <td>{!! $result->total_points !!}</td>
+                                    @if($result->penalty_points_ce == null || $result->penalty_points_ce == 0)
+                                        <td>{!! $result->ce_points !!}</td>
+                                    @else
+                                        <td>{!! $result->ce_points !!} (-{!! $result->penalty_points_ce !!})</td>
+                                    @endif
+                                    @if($result->total_penalty_points == null || $result->total_penalty_points == 0)
+                                        <td>{!! $result->total_points !!}</td>
+                                    @else
+                                        <td>{!! $result->total_points !!} (-{!! $result->total_penalty_points !!})</td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
@@ -109,8 +131,8 @@
         </div>
 
         @if ($results_dsq->isEmpty() && $teams->isEmpty())
-        @if (Route::is('competition.show') || Route::is('competition.select'))<a href="/competitions" class="btn btn-info">Vissza a versenyekhez</a>
-            <div class = "placeholder"></div> @endif
+        @if (Route::is('competition.show') || Route::is('competition.select'))<a href="/competitions" class="btn btn-info">Vissza a versenyekhez</a>@endif
+            <div class = "placeholder"></div>
         @endif
     </div>
 
@@ -122,7 +144,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="results_teams" class="table table-bordered table-text-center">
+                    <table id="results_teams" class="table table-bordered table-text-center table-hover">
                         <thead>
                         <tr>
                             <th colspan="2"></th>
@@ -175,8 +197,8 @@
                 </div>
             </div>
             @if ($results_dsq->isEmpty())
-            @if (Route::is('competition.show') || Route::is('competition.select'))<a href="/competitions" class="btn btn-info">Vissza a versenyekhez</a>
-                <div class = "placeholder"></div>@endif
+            @if (Route::is('competition.show') || Route::is('competition.select'))<a href="/competitions" class="btn btn-info">Vissza a versenyekhez</a>@endif
+                <div class = "placeholder"></div>
             @endif
         </div>
     @endif
@@ -189,7 +211,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="results_dsq" class="table table-bordered table-text-center">
+                    <table id="results_dsq" class="table table-bordered table-text-center table-hover">
                         <thead>
                         <tr>
                             <th></th>
@@ -240,7 +262,7 @@
                     "bSortable" : false,
                     "aTargets" : [ "no-sort" ]
                 } ],
-                "aoColumns": [null, null, null, null, null, {"sType": "natural"}, null, null, null, {"sType": "natural"}, null, null, {"sType": "natural"}, null, null, {"sType": "natural"}, null, null, null]
+                "aoColumns": [null, null, null, null, null, {"sType": "natural"}, null, null, null, {"sType": "natural"}, null, null, {"sType": "natural"}, null, null, null, {"sType": "natural"}, null, null, null]
             } );
 
         } );

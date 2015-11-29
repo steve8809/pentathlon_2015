@@ -48,5 +48,6 @@
                 </fieldset>
             </form>
         </div>
+        <div class="placeholder"></div>
     </div>
 @endsection

@@ -135,7 +135,11 @@ return [
         'age_group' => 'Korosztály',
         'fencing_bouts' => 'Összes tus száma',
         'competitors' => 'Versenyző',
-        'team_name' => 'Név'
+        'team_name' => 'Név',
+        'bouts_per_match' => 'Tusok száma meccsenként',
+        'riding_time_limit' => 'Lovas szintidő',
+        'club_id' => 'Klub',
+        'date' => 'Dátum'
 
     ],
 

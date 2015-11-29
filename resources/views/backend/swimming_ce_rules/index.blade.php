@@ -16,7 +16,7 @@
                 <p> Nincs szabály.</p>
             @else
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Típus</th>
@@ -38,7 +38,7 @@
                                 <td>{!! $swimming_ce_rule->ce_time !!}</td>
                                 <td>{!! $swimming_ce_rule->ce_dist !!}</td>
                                 <td>
-                                    <a href="{!! action('Admin\SwimmingCeRulesController@edit', $swimming_ce_rule->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
+                                    <a href="{!! action('Admin\SwimmingCeRulesController@edit', $swimming_ce_rule->id) !!}" class="btn btn-sm btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -52,6 +52,7 @@
 
         </div>
         <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
+        <div class="placeholder"></div>
     </div>
 
 @endsection

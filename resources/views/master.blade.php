@@ -28,9 +28,6 @@
     <script src="/js/select2.min.js"></script>
     <script src="/js/select2_locale_hu.js"></script>
 
-    <!--DataTables js-->
-    <script src="/js/jquery.dataTables.min.js"></script>
-
     <!--Twitter Bootstrap js-->
     <script src="/js/bootstrap.min.js"></script>
 

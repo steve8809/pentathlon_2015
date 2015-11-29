@@ -17,5 +17,6 @@
 
         </div>
         <a href="/admin/horses" class="btn btn-info">Vissza a lovakhoz</a>
+        <div class="placeholder"></div>
     </div>
 @endsection

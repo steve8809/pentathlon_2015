@@ -85,6 +85,7 @@
             </div>
 
         </div>
+        <div class="placeholder"></div>
     </div>
 
 @endsection

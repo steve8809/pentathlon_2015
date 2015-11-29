@@ -24,8 +24,9 @@ class EntryCloseFormRequest extends Request
     public function rules()
     {
         return [
+            'bouts_per_match' => 'required|integer',
             'fencing_bouts' => 'required|integer',
-            'bouts_per_match' => 'required|integer'
+            'riding_time_limit' => 'required|date_multi_format:"i:s.u"'
         ];
     }
 }

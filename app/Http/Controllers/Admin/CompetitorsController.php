@@ -66,6 +66,11 @@ class CompetitorsController extends Controller
         $competitor->club_id = $request->get('club_id');
         $competitor->full_name = $request->get('last_name').' '.$request->get('first_name');
         $competitor->save();
+
+        $club = Club::where('id','=',$request->get('club_id'))->firstOrFail();
+        $club->in_competition = 1;
+        $club->save();
+
         return redirect('/admin/competitors')->with('status', 'Versenyző adatai módosítva');
     }
 

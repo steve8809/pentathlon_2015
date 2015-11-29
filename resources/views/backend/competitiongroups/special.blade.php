@@ -81,6 +81,7 @@
         </div>
         @include('modals.confirm_special')
         <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
+        <div class="placeholder"></div>
     </div>
 
 @endsection

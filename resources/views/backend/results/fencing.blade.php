@@ -7,6 +7,8 @@
 
             @include('statuses.alert_success')
 
+            @include('errors.list')
+
             {!! Form::open(['method' => 'get', 'class' => 'form-horizontal']) !!}
 
             <fieldset>
@@ -45,16 +47,23 @@
                     {!! Form::hidden('act_comp', $act_competitor) !!}
                     @foreach($competitor_in_opp as $key => $comp)
                         <div class="form-group @if ($errors->has('fencing.'.$key)) has-error @endif">
-                            {!! Form::label('fencing['.$act_competitor.']', $competitor_in[$act_competitor].' - '.$comp, array('class' => 'col-lg-4 control-label')) !!}
-                            <div class="col-lg-2">
+                            {!! Form::label('fencing['.$act_competitor.']', $competitor_in[$act_competitor].' - '.$comp, array('class' => 'col-xs-4 control-label')) !!}
+                            <div class="col-xs-2">
                                 {!! Form::number('fencing['.$act_competitor.'_'.$key.']', $fencing_results[$act_competitor.'_'.$key] , array('min' => 0, 'max'=>$bouts_per_match, 'class' => 'form-control')) !!}
                             </div>
-                            <div class="col-lg-2">
+                            <div class="col-xs-2">
                                 {!! Form::number('fencing['.$key.'_'.$act_competitor.']', $fencing_results[$key.'_'.$act_competitor] , array('min' => 0, 'max'=>$bouts_per_match, 'class' => 'form-control')) !!}
                             </div>
                         </div>
 
                     @endforeach
+                    <div class="placeholder"></div>
+                    <div class="form-group">
+                        {!! Form::label('penalty_fencing['.$act_competitor.']', 'Büntetőpontok - '.$competitor_in[$act_competitor], array('class' => 'col-xs-4 control-label')) !!}
+                        <div class="col-xs-2 @if ($errors->has('penalty_fencing.'.$act_competitor)) has-error @endif">
+                            {!! Form::text('penalty_fencing['.$act_competitor.']', $competitor_penalty_fencing[$act_competitor] , array('class' => 'form-control')) !!}
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-4">

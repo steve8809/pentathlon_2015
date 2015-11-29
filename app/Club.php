@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Club extends Model
 {
-    protected $fillable = ['name', 'country', 'town'];
+    protected $fillable = ['name', 'country', 'town', 'in_competition'];
 
     public function competitor() {
         return $this->hasMany('App\Competitor');

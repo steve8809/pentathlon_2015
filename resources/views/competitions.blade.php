@@ -6,14 +6,12 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2> Összes verseny </h2>
-
             </div>
-
             @if ($competitions->isEmpty())
                 <p> Nincs egy verseny sem.</p>
             @else
                 <div class="table-responsive">
-                    <table class="table table-text-center">
+                    <table class="table table-text-center table-hover">
                         <thead>
                         <tr>
                             <th>Név</th>
@@ -46,6 +44,7 @@
             @endif
 
         </div>
+        <div class="placeholder"></div>
     </div>
 
 @endsection

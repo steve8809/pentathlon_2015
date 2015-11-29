@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group @if ($errors->has('date')) has-error @endif">
-        {!! Form::label('date', 'Verseny kezdete', array('class' => 'col-lg-2 control-label')) !!}
+        {!! Form::label('date', 'Dátum', array('class' => 'col-lg-2 control-label')) !!}
         <div class="col-lg-10">
             {!! Form::input('date','date', date('Y-m-d'), array('class' => 'form-control')) !!}
         </div>

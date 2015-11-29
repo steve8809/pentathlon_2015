@@ -16,7 +16,7 @@
                 <p> Nincs szabály.</p>
             @else
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Tusok száma</th>
@@ -32,7 +32,7 @@
                                 <td>{!! $fencing_rule->bouts_250 !!}</td>
                                 <td>{!! $fencing_rule->victory_points !!}</td>
                                 <td>
-                                    <a href="{!! action('Admin\FencingRulesController@edit', $fencing_rule->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
+                                    <a href="{!! action('Admin\FencingRulesController@edit', $fencing_rule->id) !!}" class="btn btn-sm btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -46,6 +46,7 @@
 
         </div>
         <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
+        <div class="placeholder"></div>
     </div>
 
 @endsection

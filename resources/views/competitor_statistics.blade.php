@@ -4,9 +4,7 @@
 @section('content')
     <div class="container col-md-10 col-md-offset-1">
         <div class="well well bs-component">
-
             {!! Form::open(['method' => 'get', 'class' => 'form-horizontal']) !!}
-
             <fieldset>
                 <div class="form-group">
                     {!! Form::label('competitor', 'Versenyző kiválasztása', array('class' => 'col-lg-3 control-label')) !!}
@@ -21,7 +19,6 @@
                     </div>
                 </div>
             </fieldset>
-
             {!! Form::close() !!}
         </div>
     </div>
@@ -33,7 +30,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-text-center">
+                <table class="table table-text-center table-hover">
                     <thead>
                         <tr>
                             <th>Megnevezés</th>
@@ -125,6 +122,7 @@
                 </table>
             </div>
         </div>
+        <div class="placeholder"></div>
     </div>
 
 @endsection

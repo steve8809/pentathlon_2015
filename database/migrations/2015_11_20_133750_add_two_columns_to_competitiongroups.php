@@ -17,6 +17,7 @@ class AddTwoColumnsToCompetitiongroups extends Migration
             $table->integer('bouts_per_match');
             $table->integer('fencing_bouts');
             $table->integer('entry_closed');
+            $table->text('riding_time_limit');
         });
     }
 

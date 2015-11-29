@@ -13,6 +13,10 @@
 
             <fieldset>
                 <legend>Nevezés a következő versenyre: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name !!}</legend>
+                <ul class="list-group">
+                    <li class="list-group-item">Csapatok nevezése nem kötelező.</li>
+                    <li class="list-group-item">Egy csapatban 3 versenyző lehet.</li>
+                </ul>
 
                 <div class="form-group @if ($errors->has('name')) has-error @endif">
                     {!! Form::label('team_name', 'Név', array('class' => 'col-lg-2 control-label')) !!}
@@ -122,24 +126,33 @@
     <div class="container col-md-8 col-md-offset-2">
         <div class="well well bs-component">
 
-            @include('errors.list')
-
             {!! Form::open(['method' => 'POST', 'class' => 'form-horizontal', 'route'=>['admin.entry_close', $competitiongroup->id]]) !!}
 
             <fieldset>
                 <legend>Nevezés lezárása: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name !!}</legend>
-
+                <ul class="list-group">
+                    <li class="list-group-item">Lovas szintidő megadása a következő formátumban: mm:ss.uu, pl.: 02:01.45 </li>
+                    <li class="list-group-item">Ha nincs lovaglás a versenyen, akkor a következőt kell megadni: 00:00.00 </li>
+                    <li class="list-group-item">Ha nincs vívás a versenyen, akkor a tusok számához 0-t kell írni mindkettő mezőben. </li>
+                </ul>
                 <div class="form-group">
                     {!! Form::label('bouts_per_match', 'Tusok száma meccsenként', array('class' => 'col-lg-2 control-label')) !!}
                     <div class="col-lg-6">
-                        {!! Form::number('bouts_per_match', 0, array('min' => 0, 'class' => 'form-control')) !!}
+                        {!! Form::number('bouts_per_match', null, array('min' => 0, 'class' => 'form-control')) !!}
                     </div>
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('fencing_bouts', 'Összes tus száma', array('class' => 'col-lg-2 control-label')) !!}
                     <div class="col-lg-6">
-                        {!! Form::number('fencing_bouts', 0, array('min' => 0, 'class' => 'form-control')) !!}
+                        {!! Form::number('fencing_bouts', null, array('min' => 0, 'class' => 'form-control')) !!}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('riding_time_limit', 'Lovas szintidő', array('class' => 'col-lg-2 control-label')) !!}
+                    <div class="col-lg-6">
+                        {!! Form::text('riding_time_limit', null , array('class' => 'form-control masked_input')) !!}
                     </div>
                 </div>
 

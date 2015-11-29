@@ -13,7 +13,7 @@
                 <p> Nincs egy ország sem.</p>
             @else
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Zászló</th>
@@ -37,6 +37,7 @@
 
         </div>
         <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
+        <div class="placeholder"></div>
     </div>
 
 @endsection

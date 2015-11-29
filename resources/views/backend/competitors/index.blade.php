@@ -16,7 +16,7 @@
                 <p> Nincs egy versenyző sem.</p>
             @else
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Vezetéknév</th>
@@ -38,11 +38,11 @@
                                 <td>{!! $competitor->country->name !!}</td>
                                 <td>{!! $competitor->club->name !!}</td>
                                 <td class="btn-edit">
-                                    <a href="{!! action('Admin\CompetitorsController@edit', $competitor->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
+                                    <a href="{!! action('Admin\CompetitorsController@edit', $competitor->id) !!}" class="btn btn-sm btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
                                 </td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.competitors.destroy', $competitor->id]]) !!}
-                                    <button class='btn btn-danger @if ($competitor->in_competition == 1) disabled @endif' type='button' data-toggle="modal"
+                                    <button class='btn btn-sm btn-danger @if ($competitor->in_competition == 1) disabled @endif' type='button' data-toggle="modal"
                                             data-target="@if ($competitor->in_competition == 0) #confirmDelete @endif"
                                             data-title="Versenyző törlése" data-message='Biztos, hogy törlöd a következő versenyzőt: {!! $competitor->last_name.' '.$competitor->first_name !!}?'>
                                         <span class='glyphicon glyphicon-trash'></span> Törlés
@@ -61,6 +61,7 @@
 
         </div>
         <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
+        <div class="placeholder"></div>
     </div>
 
 @endsection

@@ -16,5 +16,6 @@
             {!! Form::close() !!}
         </div>
         <a href="/admin/competitors" class="btn btn-info">Vissza a versenyzőkhöz</a>
+        <div class="placeholder"></div>
     </div>
 @endsection

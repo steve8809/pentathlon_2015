@@ -14,7 +14,7 @@
                 <p> Nincs egy felhasználó sem.</p>
             @else
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Név</th>
@@ -30,18 +30,21 @@
                                 <td>{!! $user->name !!}</td>
                                 <td>{!! $user->email !!}</td>
                                 <td>{!! $user->created_at !!}</td>
-                                <td class="btn-edit">
-                                    <a href="{!! action('Admin\UsersController@edit', $user->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
-                                </td>
+
                                 @if ($user->name != 'Admin')
-                                <td>
-                                    {!! Form::open(['method' => 'DELETE', 'route'=>['admin.users.destroy', $user->id]]) !!}
-                                    <button class='btn btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
-                                            data-title="Felhasználó törlése" data-message='Biztos, hogy törlöd a következő felhasználót: {!! $user->name !!}?'>
-                                        <span class='glyphicon glyphicon-trash'></span> Törlés
-                                    </button>
-                                    {!! Form::close() !!}
-                                </td>
+                                    <td class="btn-edit">
+                                        <a href="{!! action('Admin\UsersController@edit', $user->id) !!}" class="btn btn-sm btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
+                                    </td>
+                                    <td>
+                                        {!! Form::open(['method' => 'DELETE', 'route'=>['admin.users.destroy', $user->id]]) !!}
+                                        <button class='btn btn-sm btn-danger' type='button' data-toggle="modal" data-target="#confirmDelete"
+                                                data-title="Felhasználó törlése" data-message='Biztos, hogy törlöd a következő felhasználót: {!! $user->name !!}?'>
+                                            <span class='glyphicon glyphicon-trash'></span> Törlés
+                                        </button>
+                                        {!! Form::close() !!}
+                                    </td>
+                                    @else
+                                    <td colspan="2"></td>
                                 @endif
                             </tr>
                         @endforeach
@@ -55,6 +58,7 @@
 
         </div>
         <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
+        <div class="placeholder"></div>
     </div>
 
 @endsection

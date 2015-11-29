@@ -16,7 +16,7 @@
                 <p> Nincs egy verseny sem.</p>
             @else
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Név</th>
@@ -38,11 +38,11 @@
                                 <td>{!! $competition->date !!} </td>
                                 <td>{!! $competition->category !!}</td>
                                 <td class="btn-edit">
-                                    <a href="{!! action('Admin\CompetitionsController@edit', $competition->id) !!}" class="btn btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
+                                    <a href="{!! action('Admin\CompetitionsController@edit', $competition->id) !!}" class="btn btn-sm btn-warning"><span class='glyphicon glyphicon-edit'></span> Szerkesztés</a>
                                 </td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['admin.competitions.destroy', $competition->id]]) !!}
-                                    <button class='btn btn-danger @if ($competition->in_competition == 1) disabled @endif'  type='button' data-toggle="modal"
+                                    <button class='btn btn-sm btn-danger @if ($competition->in_competition == 1) disabled @endif'  type='button' data-toggle="modal"
                                             data-target="@if ($competition->in_competition == 0) #confirmDelete @endif"
                                             data-title="Verseny törlése" data-message='Biztos, hogy törlöd a következő versenyt: {!! $competition->name !!}?'>
                                         <span class='glyphicon glyphicon-trash'></span> Törlés
@@ -61,6 +61,7 @@
 
         </div>
         <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
+        <div class="placeholder"></div>
     </div>
 
 @endsection

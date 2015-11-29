@@ -21,13 +21,21 @@
                 @if (empty($competitor_in))
                     <p> Nincs egy nevezett versenyző sem.</p>
                 @else
+                    <div class="form-group">
+                        {!! Form::label('ce', 'Idő', array('class' => 'col-xs-offset-2 col-xs-4')) !!}
+                        {!! Form::label('penalty_ce', 'Büntetőpont', array('class' => 'col-xs-2')) !!}
+                        {!! Form::label('ce_points', 'Pontszám', array('class' => 'col-xs-2')) !!}
+                    </div>
                     @foreach($competitor_in as $key => $comp)
-                        <div class="form-group @if ($errors->has('ce.'.$key)) has-error @endif">
-                            {!! Form::label('ce['.$key.']', $comp, array('class' => 'col-lg-2 control-label')) !!}
-                            <div class="col-lg-6">
+                        <div class="form-group">
+                            {!! Form::label('ce['.$key.']', $comp, array('class' => 'col-xs-2 control-label')) !!}
+                            <div class="col-xs-4 @if ($errors->has('ce.'.$key)) has-error @endif">
                                 {!! Form::text('ce['.$key.']', $competitor_ce[$key] , array('class' => 'form-control masked_input')) !!}
                             </div>
-                            <div class="col-lg-2">
+                            <div class="col-xs-2 @if ($errors->has('penalty_ce.'.$key)) has-error @endif">
+                                {!! Form::text('penalty_ce['.$key.']', $competitor_penalty_ce[$key] , array('class' => 'form-control')) !!}
+                            </div>
+                            <div class="col-xs-2">
                                 {!! Form::text('ce_points['.$key.']', $competitor_ce_points[$key] , array('class' => 'form-control', 'disabled')) !!}
                             </div>
                             {!! Form::label('points', 'pont', array('class' => 'col-1 control-label')) !!}
