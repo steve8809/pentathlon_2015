@@ -15,7 +15,7 @@
             @if ($competitiongroups->isEmpty())
                 <p> Nincs egy csoport sem.</p>
             @else
-                <div class="table-responsive">
+                <div class="table-responsive table-padding">
                     <table class="table table-hover">
                         <thead>
                         <tr>

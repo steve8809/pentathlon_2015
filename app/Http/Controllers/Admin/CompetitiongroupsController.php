@@ -97,6 +97,7 @@ class CompetitiongroupsController extends Controller
     public function entry($id)
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
+        $act_competitiongroup = $competitiongroup->id;
 
         //Versenyzők a listába
         $competitors = Competitor::where('sex', '=', $competitiongroup->sex)->orderBy('full_name')->get()->lists('full_name_birthday', 'id');
@@ -106,7 +107,7 @@ class CompetitiongroupsController extends Controller
         }
 
         //Benevezett versenyzők
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->join('competitors', 'results.competitor_id', '=', 'competitors.id')->orderBy('full_name', 'asc')->get();
+        $competitor_list = Result::select('results.*')->where('competitiongroup_id', '=', $id)->join('competitors', 'results.competitor_id', '=', 'competitors.id')->orderBy('full_name', 'asc')->get();
         $competitor_in = [];
         foreach ($competitor_list as $comp) {
             $competitor_in[$comp->id] = $comp->competitor->full_name;
@@ -131,7 +132,7 @@ class CompetitiongroupsController extends Controller
             $in_team[] = $add;
         }
 
-        return view('backend.competitiongroups.entry', compact('competitiongroup', 'competitors', 'competitor_list', 'competitor_in', 'comp_count', 'in_team'));
+        return view('backend.competitiongroups.entry', compact('competitiongroup', 'competitors', 'competitor_list', 'competitor_in', 'comp_count', 'in_team', 'act_competitiongroup'));
     }
 
     public function entry_save(EntrySaveFormRequest $request, $id)
@@ -189,7 +190,7 @@ class CompetitiongroupsController extends Controller
         natsort($competitors);
 
         //Benevezett versenyzők
-        $competitor_list = Result::where('competitiongroup_id', '=', $id)->join('competitors', 'results.competitor_id', '=', 'competitors.id')->orderBy('full_name', 'asc')->get();
+        $competitor_list = Result::select('results.*')->where('competitiongroup_id', '=', $id)->join('competitors', 'results.competitor_id', '=', 'competitors.id')->orderBy('full_name', 'asc')->get();
         $competitor_in = [];
         foreach ($competitor_list as $comp) {
             $competitor_in[$comp->id] = $comp->competitor->full_name;

@@ -9,8 +9,7 @@
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "5.1.*",
         "zizaco/entrust": "dev-laravel-5",
-        "chumper/datatable": "dev-develop",
-        "barryvdh/laravel-debugbar": "^2.0"
+        "chumper/datatable": "dev-develop"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

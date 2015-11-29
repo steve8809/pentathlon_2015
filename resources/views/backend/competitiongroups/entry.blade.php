@@ -13,7 +13,6 @@
 
             <fieldset>
                 <legend>Nevezés a következő versenyre: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name !!}</legend>
-
                 <div class="form-group">
                     {!! Form::label('competitors', 'Versenyző', array('class' => 'col-lg-2 control-label')) !!}
                     <div class="col-lg-10">
@@ -60,7 +59,7 @@
                                 <td>{!! $competitor->competitor->country->name !!}</td>
                                 <td>{!! $competitor->competitor->club->name !!}</td>
                                 <td>
-                                    {!! Form::open(['method' => 'DELETE', 'route'=>['admin.destroy_entry', $competitor->competitor->id]]) !!}
+                                    {!! Form::open(['method' => 'DELETE', 'route'=>['admin.destroy_entry', $competitor->id]]) !!}
                                     <button class='btn btn-danger @if (in_array($competitor->competitor->id, $in_team)) disabled @endif' type='button' data-toggle="modal"
                                             data-target="@if (!in_array($competitor->competitor->id, $in_team)) #confirmDelete" @endif
                                             data-title="Versenyző nevezésének törlése" data-message='Biztos, hogy törlöd a következő versenyző nevezését: {!! $competitor->competitor->full_name !!}?'>
