@@ -70,6 +70,13 @@ class ResultsController extends Controller
             $fence->fencing_order = $i;
             $fence->save();
         }
+        if($fencing_order->count() == 0) {
+            $fencing_order = Result::where('competitiongroup_id', '=', $id)->get();
+            foreach($fencing_order as $fence) {
+                $fence->fencing_order = 0;
+                $fence->save();
+            }
+        }
     }
 
     //Vívás pontszámok
@@ -706,8 +713,8 @@ class ResultsController extends Controller
 
         //Vívás specek
         if ($request->fencing == 1 || $request->fencing == 2 || $request->fencing == 3) {
-            $result->fencing_win = 0;
-            $result->fencing_lose = 0;
+            $result->fencing_win = null;
+            $result->fencing_lose = null;
             $result->fencing_points = 0;
             $result->fencing_order = 0;
             $result->penalty_points_fencing = 0;

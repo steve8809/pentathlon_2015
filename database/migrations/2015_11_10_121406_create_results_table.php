@@ -32,7 +32,7 @@ class CreateResultsTable extends Migration
             $table->integer('swimming_points');
             $table->integer('swimming_order');
             $table->string('riding_status');
-            $table->integer('riding_point');
+            $table->string('riding_point');
             $table->string('riding_time');
             $table->integer('riding_points');
             $table->integer('horse_id')->unsigned()->nullable();
