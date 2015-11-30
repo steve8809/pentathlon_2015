@@ -21,7 +21,7 @@ use App\Results_team;
 
 class ResultsController extends Controller
 {
-
+    //Úszó sorrend
     public function swimming_order($id)
     {
         $swimming_order = Result::where('competitiongroup_id', '=', $id)->where('swimming_time','!=','')
@@ -34,6 +34,7 @@ class ResultsController extends Controller
         }
     }
 
+    //Kombinált sorrend
     public function ce_order($id)
     {
         $ce_order = Result::where('competitiongroup_id', '=', $id)->where('ce_time','!=','')
@@ -46,6 +47,7 @@ class ResultsController extends Controller
         }
     }
 
+    //Lovaglás sorrend
     public function riding_order($id)
     {
         $riding_order = Result::where('competitiongroup_id', '=', $id)->WhereNotNull('horse_id')->
@@ -58,6 +60,7 @@ class ResultsController extends Controller
         }
     }
 
+    //Vívás sorrend
     public function fencing_order($id)
     {
         $fencing_order = Result::where('competitiongroup_id', '=', $id)->where('fencing_status', '')->where('dsq_status', 0)->whereNotNull('fencing_win')->orderBy('fencing_points', 'desc')->get();
@@ -69,7 +72,7 @@ class ResultsController extends Controller
         }
     }
 
-
+    //Vívás pontszámok
     public function total_fencing_points($id)
     {
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
@@ -120,6 +123,7 @@ class ResultsController extends Controller
        $this->fencing_order($id);
     }
 
+    //Össz pontszám kiszámítása
     public function total_points($id)
     {
         $competitor_list = Result::where('competitiongroup_id', '=', $id)->get();
@@ -131,6 +135,7 @@ class ResultsController extends Controller
         }
     }
 
+    //Csapat pontszámok és sorrendek kiszámítása
     public function team_points_order($id)
     {
         $teams = Results_team::where('competitiongroup_id', '=', $id)->get();
@@ -157,6 +162,7 @@ class ResultsController extends Controller
             $team->save();
         }
 
+        //Vívás sorrend
         $fencing_order = Results_team::where('competitiongroup_id', '=', $id)->orderBy('fencing_points', 'desc')->get();
         $i = 0;
         foreach($fencing_order as $fence) {
@@ -165,6 +171,7 @@ class ResultsController extends Controller
             $fence->save();
         }
 
+        //Úszás sorrend
         $swimming_order = Results_team::where('competitiongroup_id', '=', $id)->orderBy('swimming_points', 'desc')->get();
         $i = 0;
         foreach($swimming_order as $swim) {
@@ -173,6 +180,7 @@ class ResultsController extends Controller
             $swim->save();
         }
 
+        //Lovas sorrend
         $riding_order = Results_team::where('competitiongroup_id', '=', $id)->orderBy('riding_points', 'desc')->get();
         $i = 0;
         foreach($riding_order as $ride) {
@@ -181,6 +189,7 @@ class ResultsController extends Controller
             $ride->save();
         }
 
+        //Kombinált sorrend
         $ce_order = Results_team::where('competitiongroup_id', '=', $id)->orderBy('ce_points', 'desc')->get();
         $i = 0;
         foreach($ce_order as $ce) {
@@ -634,18 +643,21 @@ class ResultsController extends Controller
             $result->swimming_status = "DNS";
             $result->swimming_points = 0;
             $result->swimming_order = 0;
+            $result->penalty_points_swimming = 0;
             $result->save();
         }
         if ($request->swimming == 2) {
             $result->swimming_status = "DNF";
             $result->swimming_points = 0;
             $result->swimming_order = 0;
+            $result->penalty_points_swimming = 0;
             $result->save();
         }
         if ($request->swimming == 3) {
             $result->swimming_status = "ELI";
             $result->swimming_points = 0;
             $result->swimming_order = 0;
+            $result->penalty_points_swimming = 0;
             $result->save();
         }
 
@@ -674,18 +686,21 @@ class ResultsController extends Controller
             $result->ce_status = "DNS";
             $result->ce_points = 0;
             $result->ce_order = 0;
+            $result->penalty_points_ce = 0;
             $result->save();
         }
         if ($request->ce == 2) {
             $result->ce_status = "DNF";
             $result->ce_points = 0;
             $result->ce_order = 0;
+            $result->penalty_points_ce = 0;
             $result->save();
         }
         if ($request->ce == 3) {
             $result->ce_status = "ELI";
             $result->ce_points = 0;
             $result->ce_order = 0;
+            $result->penalty_points_ce = 0;
             $result->save();
         }
 
@@ -695,6 +710,7 @@ class ResultsController extends Controller
             $result->fencing_lose = 0;
             $result->fencing_points = 0;
             $result->fencing_order = 0;
+            $result->penalty_points_fencing = 0;
             $result->save();
 
             $competitiongroup->fencing_bouts = $competitiongroup->fencing_bouts - $competitiongroup->bouts_per_match;
@@ -725,6 +741,7 @@ class ResultsController extends Controller
             }
         }
 
+        //Sorrendek
         $this->riding_order($id);
         $this->swimming_order($id);
         $this->ce_order($id);
@@ -762,20 +779,26 @@ class ResultsController extends Controller
         $act_competitor = $request->act_comp;
         $result = Result::where('competitiongroup_id', '=', $id)->where('competitor_id', '=', $act_competitor)->first();
         $result->dsq_status = 1;
-        $result->fencing_win = 0;
-        $result->fencing_lose = 0;
+        $result->fencing_win = null;
+        $result->fencing_lose = null;
         $result->fencing_points = 0;
+        $result->penalty_points_fencing = null;
         $result->fencing_order = 0;
         $result->swimming_time = "";
         $result->swimming_points = 0;
+        $result->penalty_points_swimming = null;
         $result->swimming_order = 0;
+        $result->riding_point = 0;
+        $result->riding_time = "";
         $result->riding_points = 0;
         $result->horse_id = null;
         $result->riding_order = 0;
         $result->ce_time = "";
         $result->ce_points = 0;
+        $result->penalty_points_ce = null;
         $result->ce_order = 0;
         $result->total_points = 0;
+        $result->total_penalty_points = null;
         $result->save();
 
         $competitiongroup->fencing_bouts = $competitiongroup->fencing_bouts - $competitiongroup->bouts_per_match;
@@ -791,6 +814,7 @@ class ResultsController extends Controller
             $fence->delete();
         }
 
+        //Sorrendek
         $this->riding_order($id);
         $this->swimming_order($id);
         $this->ce_order($id);

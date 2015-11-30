@@ -47,9 +47,6 @@
                     <?php echo $swimming_ce_rules->render(); ?>
                 </div>
             @endif
-
-            @include('modals.confirm_delete')
-
         </div>
         <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
         <div class="placeholder"></div>

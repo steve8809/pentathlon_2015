@@ -14,9 +14,9 @@ return [
     */
 
     'password' => 'A jelszónak legalább 6 karakternek kell lennie és egymás után kétszer ugyanazt a jelszót kell megadni.',
-    'reset' => 'Your password has been reset!',
-    'sent' => 'We have e-mailed your password reset link!',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that e-mail address.",
+    'reset' => 'A jelszavad vissza lett állítva!',
+    'sent' => 'E-mailben küldtünk egy linket a jelszó visszaállításához!',
+    'token' => 'A jelszó visszaállítási token nem megfelelő.',
+    'user' => "Nincs felhasználó ezzel az e-mail címmel.",
 
 ];

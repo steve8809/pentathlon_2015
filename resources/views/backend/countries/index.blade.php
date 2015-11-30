@@ -6,9 +6,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2> Összes ország </h2>
-
             </div>
-
             @if ($countries->isEmpty())
                 <p> Nincs egy ország sem.</p>
             @else
@@ -34,7 +32,6 @@
                     <?php echo $countries->render(); ?>
                 </div>
             @endif
-
         </div>
         <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
         <div class="placeholder"></div>

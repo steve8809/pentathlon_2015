@@ -32,7 +32,7 @@
                         <div class="form-group">
                             {!! Form::label('riding_point['.$key.']', $comp, array('class' => 'col-xs-2 control-label')) !!}
                             <div class="col-xs-2 @if ($errors->has('riding_point.'.$key)) has-error @endif">
-                                {!! Form::text('riding_point['.$key.']', $competitor_riding_point[$key] , array('min' => 0, 'max' => 300, 'class' => 'form-control')) !!}
+                                {!! Form::number('riding_point['.$key.']', $competitor_riding_point[$key] , array('min' => 0, 'max' => 300, 'class' => 'form-control')) !!}
                             </div>
                             <div class="col-xs-2 @if ($errors->has('riding_time.'.$key)) has-error @endif">
                                 {!! Form::text('riding_time['.$key.']', $competitor_riding_time[$key] , array('class' => 'form-control masked_input')) !!}

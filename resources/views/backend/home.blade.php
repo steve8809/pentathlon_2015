@@ -81,9 +81,7 @@
                     <div class="list-group-separator"></div>
 
                 </div>
-
             </div>
-
         </div>
         <div class="placeholder"></div>
     </div>

@@ -7,11 +7,8 @@
             <div class="panel-heading">
                 <a href="{!! action('Admin\CompetitiongroupsController@create') !!}" class="btn btn-info pull-right new-item">Új csoport felvétele</a>
                 <h2> Összes csoport </h2>
-
             </div>
-
             @include('statuses.alert_success')
-
             @if ($competitiongroups->isEmpty())
                 <p> Nincs egy csoport sem.</p>
             @else
@@ -52,14 +49,14 @@
                                     {!! Form::close() !!}
                                 </td>
                                 <td class="btn-edit">
-                                    <a href="{!! action('Admin\CompetitiongroupsController@entry', $competitiongroup->id) !!}" class="btn btn-sm btn-info @if ($competitiongroup->entry_closed == 1) disabled @endif"><span class='glyphicon glyphicon-edit'></span> Nevezés</a>
+                                    <a href="{!! action('Admin\CompetitiongroupsController@entry', $competitiongroup->id) !!}" class="btn btn-sm btn-info
+                                    @if ($competitiongroup->entry_closed == 1) disabled @endif"><span class='glyphicon glyphicon-edit'></span> Nevezés</a>
                                 </td>
                                 <td class="btn-edit">
                                     <div class="btn-group pull-right">
                                         <button type="button" class="btn btn-sm btn-primary dropdown-toggle @if ($competitiongroup->entry_closed == 0) disabled @endif" data-toggle="dropdown">
                                             <i class="glyphicon glyphicon-fire"></i> Eredmények <span class="caret"></span>
                                         </button>
-
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
                                                 @if($competitiongroup->fencing_bouts != 0)<a href="{!! action('Admin\ResultsController@fencing', $competitiongroup->id) !!}">Vívás</a>@endif
@@ -79,9 +76,7 @@
                     <?php echo $competitiongroups->render(); ?>
                 </div>
             @endif
-
             @include('modals.confirm_delete')
-
         </div>
         <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
         <div class="placeholder"></div>

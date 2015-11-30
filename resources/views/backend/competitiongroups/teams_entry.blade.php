@@ -135,21 +135,21 @@
                     <li class="list-group-item">Ha nincs lovaglás a versenyen, akkor a következőt kell megadni: 00:00.00 </li>
                     <li class="list-group-item">Ha nincs vívás a versenyen, akkor a tusok számához 0-t kell írni mindkettő mezőben. </li>
                 </ul>
-                <div class="form-group">
+                <div class="form-group @if ($errors->has('bouts_per_match')) has-error @endif">
                     {!! Form::label('bouts_per_match', 'Tusok száma meccsenként', array('class' => 'col-lg-2 control-label')) !!}
                     <div class="col-lg-6">
                         {!! Form::number('bouts_per_match', null, array('min' => 0, 'class' => 'form-control')) !!}
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group @if ($errors->has('fencing_bouts')) has-error @endif">
                     {!! Form::label('fencing_bouts', 'Összes tus száma', array('class' => 'col-lg-2 control-label')) !!}
                     <div class="col-lg-6">
                         {!! Form::number('fencing_bouts', null, array('min' => 0, 'class' => 'form-control')) !!}
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group @if ($errors->has('riding_time_limit')) has-error @endif">
                     {!! Form::label('riding_time_limit', 'Lovas szintidő', array('class' => 'col-lg-2 control-label')) !!}
                     <div class="col-lg-6">
                         {!! Form::text('riding_time_limit', null , array('class' => 'form-control masked_input')) !!}

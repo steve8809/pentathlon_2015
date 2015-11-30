@@ -14,6 +14,7 @@
             @include('backend.competitors.form', ['submitButtonText' => 'Versenyző szerkesztése', 'legend' => 'Versenyző szerkesztése'])
 
             {!! Form::close() !!}
+
         </div>
         <a href="/admin/competitors" class="btn btn-info">Vissza a versenyzőkhöz</a>
         <div class="placeholder"></div>

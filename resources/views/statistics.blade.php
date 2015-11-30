@@ -58,6 +58,7 @@
                             <td>@if ($best_swimming_50_female){!! $best_swimming_50_female->swimming_time !!} @else - @endif</td>
                             <td>@if ($best_swimming_50_female){!! $best_swimming_50_female->competitor->full_name !!}@else - @endif</td>
                             <td>@if ($best_swimming_50_female){!! $best_swimming_50_female->competitiongroup->competition->name !!}@else - @endif</td>
+                            <td>@if ($best_swimming_50_female){!! $best_swimming_50_female->competitiongroup->name !!}@else - @endif</td>
                             <td>@if ($best_swimming_50_female){!! $best_swimming_50_female->competitiongroup->date !!}@else - @endif</td>
                         </tr>
                         <tr>

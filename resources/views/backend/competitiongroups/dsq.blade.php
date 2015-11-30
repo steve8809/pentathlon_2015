@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Speciális esetek')
+@section('title', 'Versenyző kizárása')
 
 @section('content')
     <div class="container col-md-8 col-md-offset-2">
@@ -47,7 +47,6 @@
                                 Ez a lépés nem visszavonható!'>Versenyző kizárása</button>
                     </div>
                 </div>
-
 
             </fieldset>
 

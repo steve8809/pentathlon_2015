@@ -7,11 +7,8 @@
             <div class="panel-heading">
                 <a href="{!! action('Admin\CompetitionsController@create') !!}" class="btn btn-info pull-right new-item">Új verseny felvétele</a>
                 <h2> Összes verseny </h2>
-
             </div>
-
             @include('statuses.alert_success')
-
             @if ($competitions->isEmpty())
                 <p> Nincs egy verseny sem.</p>
             @else
@@ -56,9 +53,7 @@
                     <?php echo $competitions->render(); ?>
                 </div>
             @endif
-
             @include('modals.confirm_delete')
-
         </div>
         <a href="/admin" class="btn btn-info">Vissza az admin főoldalára</a>
         <div class="placeholder"></div>

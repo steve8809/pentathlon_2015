@@ -77,6 +77,8 @@ class CompetitiongroupsController extends Controller
     {
         $competitiongroup = Competitiongroup::findOrFail($id);
 
+        $in_competition = $request->competition_id;
+
         $competitiongroup->competition_id = $request->competition_id;
         $competitiongroup->date = $request->date;
         $competitiongroup->type = $request->type;
@@ -84,6 +86,10 @@ class CompetitiongroupsController extends Controller
         $competitiongroup->age_group = $request->age_group;
         $competitiongroup->name = $request->age_group.' '.$request->sex.' '.$request->type;
         $competitiongroup->save();
+
+        $competition = Competition::where('id', '=', $in_competition)->firstOrFail();
+        $competition->in_competition = 1;
+        $competition->save();
 
         return redirect('/admin/competitiongroups')->with('status', 'Csoport adatai módosítva');
     }

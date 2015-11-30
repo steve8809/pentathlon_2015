@@ -9,6 +9,7 @@
                     <h2> {!! $competition->name !!}</h2>
                     <p> Még nincsen csoport felvéve a versenyhez</p>
                 @else
+                    @if (!Route::is('competition.show') && !Route::is('competition.select'))<h1>Aktuális verseny</h1> @endif
                     <h2> {!! $competition->name.' - '. $competitiongroup->name.' - '.$competitiongroup->date !!} </h2>
                     <ul class="nav nav-pills">
                         @if (Route::is('competition.show') || Route::is('competition.select'))
@@ -71,8 +72,8 @@
                                     <td>{!! $result->competitor->club->name !!}</td>
                                     <td>@if ($result->fencing_order != 0){!! $result->fencing_order !!} @else - @endif</td>
                                     @if($result->fencing_status == "")
-                                        <td>{!! $result->fencing_win !!} </td>
-                                        <td>{!! $result->fencing_lose !!}</td>
+                                        <td>@if (!is_null($result->fencing_win)){!! $result->fencing_win !!} @else - @endif</td>
+                                        <td>@if (!is_null($result->fencing_lose)){!! $result->fencing_lose !!} @else - @endif</td>
                                     @else
                                         <td>{!! $result->fencing_status !!}</td>
                                         <td>-</td>
@@ -84,7 +85,7 @@
                                     @endif
                                     <td>@if ($result->swimming_order != 0){!! $result->swimming_order !!} @else - @endif</td>
                                     @if($result->swimming_status == "")
-                                        <td>{!! $result->swimming_time !!}</td>
+                                        <td>@if ($result->swimming_time != ""){!! $result->swimming_time !!} @else - @endif</td>
                                     @else
                                         <td>{!! $result->swimming_status !!}</td>
                                     @endif
@@ -95,19 +96,15 @@
                                     @endif
                                     <td>@if ($result->riding_order != 0){!! $result->riding_order !!} @else - @endif</td>
                                     @if($result->riding_status == "")
-                                        <td>{!! $result->riding_time !!}</td>
+                                        <td>@if ($result->riding_time != ""){!! $result->riding_time !!} @else - @endif</td>
                                     @else
                                         <td>{!! $result->riding_status !!}</td>
                                     @endif
                                     <td>@if ($result->horse != null && $result->riding_status == "") {!! $result->horse->name !!} @else - @endif</td>
-                                    @if($result->penalty_points_riding == null || $result->penalty_points_riding == 0)
-                                        <td>{!! $result->riding_points !!}</td>
-                                    @else
-                                        <td>{!! $result->riding_points !!} (-{!! $result->penalty_points_riding !!})</td>
-                                    @endif
+                                    <td>{!! $result->riding_points !!}</td>
                                     <td>@if ($result->ce_order != 0){!! $result->ce_order !!} @else - @endif</td>
                                     @if($result->ce_status == "")
-                                        <td>{!! $result->ce_time !!}</td>
+                                        <td>@if ($result->ce_time != ""){!! $result->ce_time !!} @else - @endif</td>
                                     @else
                                         <td>{!! $result->ce_status !!}</td>
                                     @endif
@@ -177,13 +174,13 @@
                                     {!! $team->competitor2->full_name !!} <br>
                                     {!! $team->competitor3->full_name !!} <br>
                                 </td>
-                                <td rowspan="4">{!! $team->fencing_order !!}</td>
+                                <td rowspan="4">@if ($team->fencing_order != 0){!! $team->fencing_order !!} @else - @endif</td>
                                 <td rowspan="4">{!! $team->fencing_points !!}</td>
-                                <td rowspan="4">{!! $team->swimming_order !!}</td>
+                                <td rowspan="4">@if ($team->swimming_order != 0){!! $team->swimming_order !!} @else - @endif</td>
                                 <td rowspan="4">{!! $team->swimming_points !!}</td>
-                                <td rowspan="4">{!! $team->riding_order !!}</td>
+                                <td rowspan="4">@if ($team->riding_order != 0){!! $team->riding_order !!} @else - @endif</td>
                                 <td rowspan="4">{!! $team->riding_points !!}</td>
-                                <td rowspan="4">{!! $team->ce_order !!}</td>
+                                <td rowspan="4">@if ($team->ce_order != 0){!! $team->ce_order !!} @else - @endif</td>
                                 <td rowspan="4">{!! $team->ce_points !!}</td>
                                 <td rowspan="4">{!! $team->total_points !!}</td>
                             </tr>

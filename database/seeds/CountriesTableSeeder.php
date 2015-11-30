@@ -217,7 +217,6 @@ class CountriesTableSeeder extends Seeder
             array('name' => 'Szenegál', 'flag' => 'SN.png', 'iso_alpha3' => 'SEN'),
             array('name' => 'Szent Helena', 'flag' => 'SH.png', 'iso_alpha3' => 'SHN'),
             array('name' => 'Szerbia', 'flag' => 'RS.png', 'iso_alpha3' => 'SRB'),
-            array('name' => 'Szerbia és Montenegró', 'flag' => 'CS.png', 'iso_alpha3' => 'SCG'),
             array('name' => 'Szingapúr', 'flag' => 'SG.png', 'iso_alpha3' => 'SGP'),
             array('name' => 'Szlovákia', 'flag' => 'SK.png', 'iso_alpha3' => 'SVK'),
             array('name' => 'Szlovénia', 'flag' => 'SI.png', 'iso_alpha3' => 'SVN'),
