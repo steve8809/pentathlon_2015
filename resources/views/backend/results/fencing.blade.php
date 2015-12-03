@@ -47,7 +47,11 @@
                     {!! Form::hidden('act_comp', $act_competitor) !!}
                     @foreach($competitor_in_opp as $key => $comp)
                         <div class="form-group @if ($errors->has('fencing.'.$key)) has-error @endif">
-                            {!! Form::label('fencing['.$act_competitor.']', $competitor_in[$act_competitor].' - '.$comp, array('class' => 'col-xs-4 control-label')) !!}
+                            @if ($fencing_results[$act_competitor.'_'.$key] + $fencing_results[$key.'_'.$act_competitor] == 0)
+                                {!! Form::label('fencing['.$act_competitor.']', $competitor_in[$act_competitor].' - '.$comp, array('class' => 'col-xs-4 control-label label-orange')) !!}
+                            @else
+                                {!! Form::label('fencing['.$act_competitor.']', $competitor_in[$act_competitor].' - '.$comp, array('class' => 'col-xs-4 control-label')) !!}
+                            @endif
                             <div class="col-xs-2">
                                 {!! Form::number('fencing['.$act_competitor.'_'.$key.']', $fencing_results[$act_competitor.'_'.$key] , array('min' => 0, 'max'=>$bouts_per_match, 'class' => 'form-control')) !!}
                             </div>

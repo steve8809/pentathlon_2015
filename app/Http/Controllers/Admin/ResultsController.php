@@ -362,7 +362,12 @@ class ResultsController extends Controller
                     $result->riding_points = 0;
                 }
                 else {
-                    $result->riding_points =  $request->riding_point[$comp->competitor->id] - $riding_time_diff;
+                    if($riding_time_diff >= 0) {
+                        $result->riding_points =  $request->riding_point[$comp->competitor->id] - $riding_time_diff;
+                    }
+                    else {
+                        $result->riding_points = $request->riding_point[$comp->competitor->id];
+                    }
                 }
             }
             else {
@@ -570,7 +575,7 @@ class ResultsController extends Controller
             $act_competitor = $request->competitor;
         }
 
-        $specials = ['Részt vett', 'Nem indult el', 'Feladta/Nem ért célba', 'Kihagyta'];
+        $specials = ['Részt vett', 'Nem indult el', 'Feladta/Nem ért célba', 'Kiesett'];
 
         //Úszás spec
         $swimming = [];

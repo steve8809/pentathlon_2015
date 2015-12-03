@@ -17,9 +17,9 @@ class PageController extends Controller
     public function index()
     {
         $competition = Competition::orderBy('date', 'desc')->firstOrFail();
-        $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('name', 'asc')->get();
+        $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->get();
         if (!$competitiongroups->isEmpty()) {
-            $competitiongroup = Competitiongroup::where('competition_id', '=', $competition->id)->firstOrFail();
+            $competitiongroup = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->firstOrFail();
             $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 0)->orderBy('total_points', 'desc')->get();
             $results_dsq = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 1)->get();
             $teams = Results_team::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();
@@ -30,7 +30,7 @@ class PageController extends Controller
     public function select($id)
     {
         $competition = Competition::orderBy('date', 'desc')->firstOrFail();
-        $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('name', 'asc')->get();
+        $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->get();
         if (!$competitiongroups->isEmpty()) {
             $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
             $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 0)->orderBy('total_points', 'desc')->get();
@@ -49,9 +49,9 @@ class PageController extends Controller
     public function competition_show($id)
     {
         $competition = Competition::whereId($id)->firstOrFail();
-        $competitiongroups = Competitiongroup::where('competition_id', '=', $id)->orderBy('name', 'asc')->get();
+        $competitiongroups = Competitiongroup::where('competition_id', '=', $id)->orderBy('date', 'desc')->get();
         if (!$competitiongroups->isEmpty()) {
-            $competitiongroup = Competitiongroup::where('competition_id', '=', $competition->id)->firstOrFail();
+            $competitiongroup = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->firstOrFail();
             $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 0)->orderBy('total_points', 'desc')->get();
             $results_dsq = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 1)->get();
             $teams = Results_team::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();
@@ -62,7 +62,7 @@ class PageController extends Controller
     public function competition_select($id, $subid)
     {
         $competition = Competition::whereId($id)->firstOrFail();
-        $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('name', 'asc')->get();
+        $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->get();
         if (!$competitiongroups->isEmpty()) {
             $competitiongroup = Competitiongroup::whereId($subid)->firstOrFail();
             $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 0)->orderBy('total_points', 'desc')->get();

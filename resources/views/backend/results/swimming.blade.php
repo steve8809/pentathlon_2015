@@ -29,7 +29,11 @@
                     </div>
                     @foreach($competitor_in as $key => $comp)
                     <div class="form-group">
-                        {!! Form::label('swimming['.$key.']', $comp, array('class' => 'col-xs-2 control-label')) !!}
+                        @if ($competitor_swimming[$key] == "")
+                            {!! Form::label('swimming['.$key.']', $comp, array('class' => 'col-xs-2 control-label label-orange')) !!}
+                        @else
+                            {!! Form::label('swimming['.$key.']', $comp, array('class' => 'col-xs-2 control-label')) !!}
+                        @endif
                         <div class="col-xs-4 @if ($errors->has('swimming.'.$key)) has-error @endif">
                             {!! Form::text('swimming['.$key.']', $competitor_swimming[$key] , array('class' => 'form-control masked_input')) !!}
                         </div>

@@ -28,7 +28,11 @@
                     </div>
                     @foreach($competitor_in as $key => $comp)
                         <div class="form-group">
-                            {!! Form::label('ce['.$key.']', $comp, array('class' => 'col-xs-2 control-label')) !!}
+                            @if ($competitor_ce[$key] == "")
+                                {!! Form::label('ce['.$key.']', $comp, array('class' => 'col-xs-2 control-label label-orange')) !!}
+                            @else
+                                {!! Form::label('ce['.$key.']', $comp, array('class' => 'col-xs-2 control-label')) !!}
+                            @endif
                             <div class="col-xs-4 @if ($errors->has('ce.'.$key)) has-error @endif">
                                 {!! Form::text('ce['.$key.']', $competitor_ce[$key] , array('class' => 'form-control masked_input')) !!}
                             </div>

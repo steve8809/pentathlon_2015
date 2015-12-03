@@ -249,25 +249,28 @@ class CompetitiongroupsController extends Controller
         $competitiongroup->save();
 
         //Benevezett versenyzők vívó mérkőzéseinek összeállítása
-        $competitor_list = Result::select('competitor_id')->where('competitiongroup_id', '=', $id)->orderBy('competitor_id')->get()->toArray();
-        $competitor_in = [];
-        foreach($competitor_list as $comp) {
-            $competitor_in[] = $comp['competitor_id'];
+        if ($request->fencing_bouts != 0) {
+            $competitor_list = Result::select('competitor_id')->where('competitiongroup_id', '=', $id)->orderBy('competitor_id')->get()->toArray();
+            $competitor_in = [];
+            foreach($competitor_list as $comp) {
+                $competitor_in[] = $comp['competitor_id'];
+            }
+
+            while (count($competitor_in) >= 2) {
+                foreach ($competitor_in as $comp) {
+                    if ($competitor_in[0] != $comp) {
+                        $fencing_result = new Fencing_result;
+                        $fencing_result->competitiongroup_id = $id;
+                        $fencing_result->competitor1_id = $competitor_in[0];
+                        $fencing_result->competitor2_id = $comp;
+                        $fencing_result->save();
+                    }
+                }
+                unset($competitor_in[0]);
+                $competitor_in = array_values($competitor_in);
+            }
         }
 
-        while (count($competitor_in) >= 2) {
-            foreach ($competitor_in as $comp) {
-                if ($competitor_in[0] != $comp) {
-                    $fencing_result = new Fencing_result;
-                    $fencing_result->competitiongroup_id = $id;
-                    $fencing_result->competitor1_id = $competitor_in[0];
-                    $fencing_result->competitor2_id = $comp;
-                    $fencing_result->save();
-                }
-            }
-            unset($competitor_in[0]);
-            $competitor_in = array_values($competitor_in);
-        }
         return redirect('admin/competitiongroups/')->with('status', 'Nevezés lezárva');
     }
 }

@@ -1,5 +1,10 @@
 <fieldset>
     <legend>{!! $legend !!}</legend>
+    <ul class="list-group">
+        <li class="list-group-item">Időeredmény megadása a következő formátumban: mm:ss.uu, pl.: 02:30.00 </li>
+        <li class="list-group-item">Úszás hossza, kombinált hossza megadása méterben: pl. 200 m, 3200 m </li>
+
+    </ul>
     <div class="form-group @if ($errors->has('swimming_time')) has-error @endif">
         {!! Form::label('swimming_time', 'Úszóidő 250 ponthoz', array('class' => 'col-lg-2 control-label')) !!}
         <div class="col-lg-10">

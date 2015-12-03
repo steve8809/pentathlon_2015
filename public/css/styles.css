@@ -53,3 +53,7 @@ td.btn-edit {
     padding-left: 4px;
     padding-right: 25px;
 }
+/* Piros label */
+label.control-label.label-orange  {
+    color: #ff840f;
+}
