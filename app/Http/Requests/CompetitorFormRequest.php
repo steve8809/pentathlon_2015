@@ -25,8 +25,8 @@ class CompetitorFormRequest extends Request
     public function rules()
     {
         return [
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name' => 'required|alpha_spaces',
+            'last_name' => 'required|alpha_spaces',
             'sex' => 'required',
             'birthday' => 'required|date',
             'country_id' => 'required',

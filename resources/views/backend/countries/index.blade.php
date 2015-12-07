@@ -22,7 +22,7 @@
                         <tbody>
                         @foreach($countries as $country)
                             <tr>
-                                <td><img src="/images/{!! $country->flag !!}"></td>
+                                <td><img src="/images/{!! $country->flag !!}" alt="{!! $country->name !!} zászlaja"></td>
                                 <td>{!! $country->name !!}</td>
                                 <td>{!! $country->iso_alpha3 !!} </td>
                             </tr>

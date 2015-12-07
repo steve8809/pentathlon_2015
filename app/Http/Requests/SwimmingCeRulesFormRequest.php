@@ -26,8 +26,8 @@ class SwimmingCeRulesFormRequest extends Request
         return [
             'swimming_time' => 'date_multi_format:"i:s.u"|required',
             'ce_time' => 'date_multi_format:"i:s.u"|required',
-            'swimming_dist' => 'required',
-            'ce_dist' => 'required',
+            'swimming_dist' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/',
+            'ce_dist' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/',
         ];
     }
 }

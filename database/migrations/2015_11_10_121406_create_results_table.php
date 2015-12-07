@@ -45,7 +45,7 @@ class CreateResultsTable extends Migration
             $table->integer('ce_order');
             $table->integer('total_points');
             $table->integer('total_penalty_points')->nullable()->default(null);
-            $table->integer('dsq_status');
+            $table->tinyInteger('dsq_status');
             $table->timestamps();
         });
     }

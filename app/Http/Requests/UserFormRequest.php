@@ -26,7 +26,7 @@ class UserFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:users,name,'.$this->id,
+            'name' => 'required|alpha_num|unique:users,name,'.$this->id,
             'email'=> 'required|unique:users,email,'.$this->id,
             'role'=> 'required',
             'password'=>'alpha_num|min:6|confirmed',

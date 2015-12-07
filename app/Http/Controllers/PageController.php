@@ -16,7 +16,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        $competition = Competition::orderBy('date', 'desc')->firstOrFail();
+        $competition = Competition::orderBy('date', 'desc')->first();
         $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->get();
         if (!$competitiongroups->isEmpty()) {
             $competitiongroup = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->firstOrFail();
@@ -29,7 +29,7 @@ class PageController extends Controller
 
     public function select($id)
     {
-        $competition = Competition::orderBy('date', 'desc')->firstOrFail();
+        $competition = Competition::orderBy('date', 'desc')->first();
         $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->get();
         if (!$competitiongroups->isEmpty()) {
             $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
@@ -48,7 +48,7 @@ class PageController extends Controller
 
     public function competition_show($id)
     {
-        $competition = Competition::whereId($id)->firstOrFail();
+        $competition = Competition::whereId($id)->first();
         $competitiongroups = Competitiongroup::where('competition_id', '=', $id)->orderBy('date', 'desc')->get();
         if (!$competitiongroups->isEmpty()) {
             $competitiongroup = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->firstOrFail();
@@ -61,7 +61,7 @@ class PageController extends Controller
 
     public function competition_select($id, $subid)
     {
-        $competition = Competition::whereId($id)->firstOrFail();
+        $competition = Competition::whereId($id)->first();
         $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->get();
         if (!$competitiongroups->isEmpty()) {
             $competitiongroup = Competitiongroup::whereId($subid)->firstOrFail();

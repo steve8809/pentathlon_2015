@@ -24,10 +24,10 @@ class CompetitionFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/',
             'country_id' => 'required',
-            'town' => 'required',
-            'host' => 'required',
+            'town' => 'required|alpha_spaces',
+            'host' => 'required||regex:/(^[A-Za-z0-9 ]+$)+/',
             'date' => 'required|date',
             'category' => 'required',
         ];

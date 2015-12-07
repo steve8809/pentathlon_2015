@@ -24,9 +24,9 @@ class ClubFormRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:clubs,name,'.$this->id,
+            'name' => 'required||regex:/(^[A-Za-z0-9 ]+$)+/|unique:clubs,name,'.$this->id,
             'country' => 'required',
-            'town' => 'required'
+            'town' => 'required|alpha_spaces'
         ];
     }
 }

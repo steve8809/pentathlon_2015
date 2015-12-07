@@ -24,7 +24,7 @@ class HorseFormRequest extends Request
     public function rules()
     {
         return [
-            'name'       => 'required',
+            'name'       => 'required|alpha_spaces',
             'sex'      => 'required',
             'colour' => 'required',
             'age' => 'required',

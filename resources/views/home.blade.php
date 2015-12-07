@@ -68,7 +68,7 @@
                                     <td>{!! $key+1 !!}</td>
                                     <td>{!! $result->competitor->full_name !!}</td>
                                     <td>{!! $result->competitor->country->iso_alpha3 !!}</td>
-                                    <td><img src="/images/{!! $result->competitor->country->flag !!}"></td>
+                                    <td><img src="/images/{!! $result->competitor->country->flag !!}" alt="{!! $result->competitor->country->name !!} zászlaja"></td>
                                     <td>{!! $result->competitor->club->name !!}</td>
                                     <td>@if ($result->fencing_order != 0){!! $result->fencing_order !!} @else - @endif</td>
                                     @if($result->fencing_status == "")
@@ -223,7 +223,7 @@
                                 <td>{!! $key+1 !!}</td>
                                 <td>{!! $result->competitor->full_name !!}</td>
                                 <td>{!! $result->competitor->country->iso_alpha3 !!}</td>
-                                <td><img src="/images/{!! $result->competitor->country->flag !!}"></td>
+                                <td><img src="/images/{!! $result->competitor->country->flag !!}" alt="{!! $result->competitor->country->name !!} zászlaja"></td>
                                 <td>{!! $result->competitor->club->name !!}</td>
                             </tr>
                         @endforeach

@@ -50,7 +50,6 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     //Lovak
     Route::resource('horses', 'HorsesController');
     Route::post('horses/{id?}/edit', 'HorsesController@update');
-    Route::get('api/horses', array('as'=>'api.horses', 'uses'=>'HorsesController@getDatatable'));
 
     //Klubok
     Route::resource('clubs', 'ClubsController');

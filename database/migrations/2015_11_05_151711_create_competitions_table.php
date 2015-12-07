@@ -21,7 +21,7 @@ class CreateCompetitionsTable extends Migration
             $table->string('host');
             $table->date('date');
             $table->string('category');
-            $table->integer('in_competition');
+            $table->tinyInteger('in_competition');
             $table->timestamps();
         });
     }

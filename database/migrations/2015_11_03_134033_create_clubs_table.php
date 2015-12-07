@@ -17,7 +17,7 @@ class CreateClubsTable extends Migration
             $table->string('name')->unique();
             $table->string('country');
             $table->string('town');
-            $table->integer('in_competition');
+            $table->tinyInteger('in_competition');
             $table->timestamps();
         });
     }

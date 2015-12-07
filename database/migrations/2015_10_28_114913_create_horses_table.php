@@ -18,7 +18,7 @@ class CreateHorsesTable extends Migration
             $table->string('colour');
             $table->string('sex');
             $table->integer('age');
-            $table->integer('in_competition');
+            $table->tinyInteger('in_competition');
             $table->timestamps();
         });
     }
