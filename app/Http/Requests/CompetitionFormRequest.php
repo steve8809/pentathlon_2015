@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Carbon\Carbon;
 
 class CompetitionFormRequest extends Request
 {
@@ -23,12 +24,13 @@ class CompetitionFormRequest extends Request
      */
     public function rules()
     {
+        $tomorrow = Carbon::tomorrow()->toDateString();
         return [
             'name' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/',
             'country_id' => 'required',
             'town' => 'required|alpha_spaces',
             'host' => 'required||regex:/(^[A-Za-z0-9 ]+$)+/',
-            'date' => 'required|date',
+            'date' => 'required|date|before:'.$tomorrow,
             'category' => 'required',
         ];
     }

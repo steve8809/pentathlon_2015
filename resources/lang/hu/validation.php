@@ -15,13 +15,13 @@ return [
 
     'accepted'             => 'A(z) :attribute el kell fogadni.',
     'active_url'           => 'A(z) :attribute nem egy létező URL.',
-    'after'                => 'A(z) :attribute egy dátumnak kell lennie, :date után.',
+    'after'                => 'A(z) :attribute mezőben egy dátumot kell megadni, :date utánit.',
     'alpha'                => 'A(z) :attribute csak betűket tartalmazhat.',
     'alpha_dash'           => 'A(z) :attribute csak betűket, számokat és kötőjeleket tartalmazhat.',
     'alpha_num'            => 'A(z) :attribute csak betűket és számokat tartalmazhat.',
     'alpha_spaces'         => 'A(z) :attribute csak betűket és space-eket tartalmazhat.',
     'array'                => 'A(z) :attribute egy tömbnek kell lennie.',
-    'before'               => 'A(z) :attribute egy dátumnak kell lennie, :date előtt.',
+    'before'               => 'A(z) :attribute mezőben egy dátumot kell megadni, :date előttit.',
     'between'              => [
         'numeric' => 'A(z) :attribute mezőnek a következő értékek között kell lennie: :min és :max.',
         'file'    => 'A(z) :attribute mérete :min és :max kilobyte közötti lehet.',

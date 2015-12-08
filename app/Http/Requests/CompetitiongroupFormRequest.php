@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Carbon\Carbon;
 
 class CompetitiongroupFormRequest extends Request
 {
@@ -23,9 +24,10 @@ class CompetitiongroupFormRequest extends Request
      */
     public function rules()
     {
+        $tomorrow = Carbon::tomorrow()->toDateString();
         return [
             'competition_id' => 'required',
-            'date' => 'required|date',
+            'date' => 'required|date|before:'.$tomorrow,
             'type' => 'required',
             'age_group' => 'required',
             'sex' => 'required',
