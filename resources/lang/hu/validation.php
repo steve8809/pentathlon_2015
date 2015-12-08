@@ -139,7 +139,8 @@ return [
         'bouts_per_match' => 'Tusok száma meccsenként',
         'riding_time_limit' => 'Lovas szintidő',
         'club_id' => 'Klub',
-        'date' => 'Dátum'
+        'date' => 'Dátum',
+        'email' => 'E-mail'
 
     ],
 
