@@ -11,6 +11,18 @@
 |
 */
 
+Route::get('error', function() {
+    try
+    {
+        $pdo = DB::connection('mysql')->getPdo();
+    }
+    catch(\PDOException $exception)
+    {
+        return Response::make('Database error! ' . $exception->getCode());
+    }
+    return 'all fine';
+});
+
 //Főoldal
 Route::get('/', 'PageController@index');
 Route::get('/home', 'PageController@index');
@@ -36,7 +48,6 @@ Route::post('users/login', 'Auth\AuthController@postLogin');
 
 //Admin részek
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
-
     //Admin home
     Route::get('/', 'PagesController@home');
 
