@@ -40,6 +40,7 @@
         <div class="well well bs-component">
             <ul class="list-group">
                 <li class="list-group-item">Tusok száma ezen a versenyen: {!! $bouts_per_match !!}</li>
+                <li class="list-group-item">Büntetőpontok mezőben egy 0-nál nagyobb számot lehet megadni. Megadása nem kötelező. </li>
             </ul>
 
             {!! Form::model($competitiongroup, array('class' => 'form-horizontal')) !!}

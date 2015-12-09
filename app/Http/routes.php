@@ -11,18 +11,6 @@
 |
 */
 
-Route::get('error', function() {
-    try
-    {
-        $pdo = DB::connection('mysql')->getPdo();
-    }
-    catch(\PDOException $exception)
-    {
-        return Response::make('Database error! ' . $exception->getCode());
-    }
-    return 'all fine';
-});
-
 //Főoldal
 Route::get('/', 'PageController@index');
 Route::get('/home', 'PageController@index');
