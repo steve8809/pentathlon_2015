@@ -20,7 +20,7 @@ class PageController extends Controller
         if($competition) {
             $competitiongroups = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->get();
             if (!$competitiongroups->isEmpty()) {
-                $competitiongroup = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->firstOrFail();
+                $competitiongroup = Competitiongroup::where('competition_id', '=', $competition->id)->orderBy('date', 'desc')->firstorFail();
                 $results = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 0)->orderBy('total_points', 'desc')->get();
                 $results_dsq = Result::where('competitiongroup_id', '=', $competitiongroup->id)->where('dsq_status', 1)->get();
                 $teams = Results_team::where('competitiongroup_id', '=', $competitiongroup->id)->orderBy('total_points', 'desc')->get();

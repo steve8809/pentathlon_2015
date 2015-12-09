@@ -137,114 +137,123 @@
                 @endif
             </div>
 
-            @if ($results_dsq->isEmpty() && $teams->isEmpty())
-            @if (Route::is('competition.show') || Route::is('competition.select'))<a href="/competitions" class="btn btn-info">Vissza a versenyekhez</a>@endif
-                <div class = "placeholder"></div>
-            @endif
-        </div>
-
-        @if (!$teams->isEmpty())
-            <div class="container col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2> Csapatverseny eredménye</h2>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table id="results_teams" class="table table-bordered table-text-center table-hover">
-                            <thead>
-                            <tr>
-                                <th colspan="2"></th>
-                                <th colspan="2">Vívás</th>
-                                <th colspan="2">Úszás</th>
-                                <th colspan="2">Lovaglás</th>
-                                <th colspan="2">Kombinált</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <th>Csapat neve</th>
-                                <th>H</th>
-                                <th>P</th>
-                                <th>H</th>
-                                <th>P</th>
-                                <th>H</th>
-                                <th>P</th>
-                                <th>H</th>
-                                <th>P</th>
-                                <th>Össz</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($teams as $key => $team)
-                                <tr>
-                                    <td rowspan="4">{!! $key+1 !!}</td>
-                                    <td rowspan="4"><strong>{!! $team->name !!}</strong> <br>
-                                        {!! $team->competitor1->full_name !!} <br>
-                                        {!! $team->competitor2->full_name !!} <br>
-                                        {!! $team->competitor3->full_name !!} <br>
-                                    </td>
-                                    <td rowspan="4">@if ($team->fencing_order != 0){!! $team->fencing_order !!} @else - @endif</td>
-                                    <td rowspan="4">{!! $team->fencing_points !!}</td>
-                                    <td rowspan="4">@if ($team->swimming_order != 0){!! $team->swimming_order !!} @else - @endif</td>
-                                    <td rowspan="4">{!! $team->swimming_points !!}</td>
-                                    <td rowspan="4">@if ($team->riding_order != 0){!! $team->riding_order !!} @else - @endif</td>
-                                    <td rowspan="4">{!! $team->riding_points !!}</td>
-                                    <td rowspan="4">@if ($team->ce_order != 0){!! $team->ce_order !!} @else - @endif</td>
-                                    <td rowspan="4">{!! $team->ce_points !!}</td>
-                                    <td rowspan="4">{!! $team->total_points !!}</td>
-                                </tr>
-                                <tr></tr>
-                                <tr></tr>
-                                <tr></tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-                @if ($results_dsq->isEmpty())
+            @if ($competitiongroups->isEmpty())
+            @else
+                @if ($results_dsq->isEmpty() && $teams->isEmpty())
                 @if (Route::is('competition.show') || Route::is('competition.select'))<a href="/competitions" class="btn btn-info">Vissza a versenyekhez</a>@endif
                     <div class = "placeholder"></div>
                 @endif
-            </div>
+            @endif
+        </div>
+
+        @if ($competitiongroups->isEmpty())
+        @else
+            @if (!$teams->isEmpty())
+                <div class="container col-md-10 col-md-offset-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2> Csapatverseny eredménye</h2>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table id="results_teams" class="table table-bordered table-text-center table-hover">
+                                <thead>
+                                <tr>
+                                    <th colspan="2"></th>
+                                    <th colspan="2">Vívás</th>
+                                    <th colspan="2">Úszás</th>
+                                    <th colspan="2">Lovaglás</th>
+                                    <th colspan="2">Kombinált</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>Csapat neve</th>
+                                    <th>H</th>
+                                    <th>P</th>
+                                    <th>H</th>
+                                    <th>P</th>
+                                    <th>H</th>
+                                    <th>P</th>
+                                    <th>H</th>
+                                    <th>P</th>
+                                    <th>Össz</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($teams as $key => $team)
+                                    <tr>
+                                        <td rowspan="4">{!! $key+1 !!}</td>
+                                        <td rowspan="4"><strong>{!! $team->name !!}</strong> <br>
+                                            {!! $team->competitor1->full_name !!} <br>
+                                            {!! $team->competitor2->full_name !!} <br>
+                                            {!! $team->competitor3->full_name !!} <br>
+                                        </td>
+                                        <td rowspan="4">@if ($team->fencing_order != 0){!! $team->fencing_order !!} @else - @endif</td>
+                                        <td rowspan="4">{!! $team->fencing_points !!}</td>
+                                        <td rowspan="4">@if ($team->swimming_order != 0){!! $team->swimming_order !!} @else - @endif</td>
+                                        <td rowspan="4">{!! $team->swimming_points !!}</td>
+                                        <td rowspan="4">@if ($team->riding_order != 0){!! $team->riding_order !!} @else - @endif</td>
+                                        <td rowspan="4">{!! $team->riding_points !!}</td>
+                                        <td rowspan="4">@if ($team->ce_order != 0){!! $team->ce_order !!} @else - @endif</td>
+                                        <td rowspan="4">{!! $team->ce_points !!}</td>
+                                        <td rowspan="4">{!! $team->total_points !!}</td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr></tr>
+                                    <tr></tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    @if ($results_dsq->isEmpty())
+                    @if (Route::is('competition.show') || Route::is('competition.select'))<a href="/competitions" class="btn btn-info">Vissza a versenyekhez</a>@endif
+                        <div class = "placeholder"></div>
+                    @endif
+                </div>
+            @endif
         @endif
 
-        @if (!$results_dsq->isEmpty())
-            <div class="container col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2> Kizárt versenyzők</h2>
-                    </div>
+        @if ($competitiongroups->isEmpty())
+        @else
+            @if (!$results_dsq->isEmpty())
+                <div class="container col-md-10 col-md-offset-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2> Kizárt versenyzők</h2>
+                        </div>
 
-                    <div class="table-responsive">
-                        <table id="results_dsq" class="table table-bordered table-text-center table-hover">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Versenyző neve</th>
-                                <th colspan="2">Nemzet</th>
-                                <th>Klub</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($results_dsq as $key => $result)
+                        <div class="table-responsive">
+                            <table id="results_dsq" class="table table-bordered table-text-center table-hover">
+                                <thead>
                                 <tr>
-                                    <td>{!! $key+1 !!}</td>
-                                    <td>{!! $result->competitor->full_name !!}</td>
-                                    <td>{!! $result->competitor->country->iso_alpha3 !!}</td>
-                                    <td><img src="/images/{!! $result->competitor->country->flag !!}" alt="{!! $result->competitor->country->name !!} zászlaja"></td>
-                                    <td>{!! $result->competitor->club->name !!}</td>
+                                    <th></th>
+                                    <th>Versenyző neve</th>
+                                    <th colspan="2">Nemzet</th>
+                                    <th>Klub</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($results_dsq as $key => $result)
+                                    <tr>
+                                        <td>{!! $key+1 !!}</td>
+                                        <td>{!! $result->competitor->full_name !!}</td>
+                                        <td>{!! $result->competitor->country->iso_alpha3 !!}</td>
+                                        <td><img src="/images/{!! $result->competitor->country->flag !!}" alt="{!! $result->competitor->country->name !!} zászlaja"></td>
+                                        <td>{!! $result->competitor->club->name !!}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
 
+                        </div>
                     </div>
+                    @if (Route::is('competition.show') || Route::is('competition.select'))<a href="/competitions" class="btn btn-info">Vissza a versenyekhez</a> @endif
+                    <div class ="placeholder"></div>
                 </div>
-                @if (Route::is('competition.show') || Route::is('competition.select'))<a href="/competitions" class="btn btn-info">Vissza a versenyekhez</a> @endif
-                <div class ="placeholder"></div>
-            </div>
+            @endif
         @endif
 
     @endif
