@@ -160,17 +160,17 @@
                                 <th class="sort">H</th>
                                 <th class="no-sort">Gy</th>
                                 <th class="no-sort">V</th>
-                                <th class="no-sort">P</th>
+                                <th class="sort">P</th>
                                 <th class="sort">H</th>
-                                <th class="no-sort">Idő</th>
-                                <th class="no-sort">P</th>
+                                <th class="sort">Idő</th>
+                                <th class="sort">P</th>
                                 <th class="sort">H</th>
                                 <th class="no-sort">Idő</th>
                                 <th class="no-sort">Ló</th>
-                                <th class="no-sort">P</th>
+                                <th class="sort">P</th>
                                 <th class="sort">H</th>
-                                <th class="no-sort">Idő</th>
-                                <th class="no-sort">P</th>
+                                <th class="sort">Idő</th>
+                                <th class="sort">P</th>
                                 <th class="sort">Össz</th>
                             </tr>
                             </thead>
@@ -258,7 +258,8 @@
                     "aTargets" : [ "no-sort" ]
                 } ],
                 "order": [[ 17, "desc" ]],
-                "aoColumns": [null, null, null, {"sType": "natural"}, null, null, null, {"sType": "natural"}, null, null, {"sType": "natural"}, null, null, null, {"sType": "natural"}, null, null, null]
+                "aoColumns": [null, null, null, {"sType": "natural"}, null, null, null, {"sType": "natural"}, {"sType": "natural"}, null, {"sType": "natural"},
+                    {"sType": "natural"}, null, null, {"sType": "natural"}, {"sType": "natural"}, {"sType": "natural"}, null]
             } );
 
         } );
