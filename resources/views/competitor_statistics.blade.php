@@ -143,7 +143,7 @@
                     <p> Nincs egy eredménye sem.</p>
                 @else
                     <div class="table-responsive">
-                        <table cellpadding="0" id="results_stats" class="table table-hover table-bordered table-text-center">
+                        <table cellpadding="0" id="results_stats" class="table table-bordered table-text-center table-hover">
                             <thead>
                             <tr>
                                 <th colspan="3"></th>
@@ -223,11 +223,7 @@
                                     @else
                                         <td>{!! $result->ce_points !!} (-{!! $result->penalty_points_ce !!})</td>
                                     @endif
-                                    @if($result->total_penalty_points == null || $result->total_penalty_points == 0)
-                                        <td>{!! $result->total_points !!}</td>
-                                    @else
-                                        <td>{!! $result->total_points !!} (-{!! $result->total_penalty_points !!})</td>
-                                    @endif
+                                    <td>{!! $result->total_points !!}</td>
                                 </tr>
                             @endforeach
                             </tbody>

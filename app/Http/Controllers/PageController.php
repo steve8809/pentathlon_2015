@@ -146,7 +146,7 @@ class PageController extends Controller
             $act_competitor = $request->competitor;
         }
 
-        $all_result = Result::where('competitor_id', '=', $act_competitor)->get();
+        $all_result = Result::where('competitor_id', '=', $act_competitor)->orderBy('total_points', 'desc')->get();
 
         //Úszás és kombinált távok mentése
         $swim_200 = ['Ifi B', 'Ifi A', 'Junior', 'Felnőtt', 'Senior'];
