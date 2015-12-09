@@ -24,7 +24,7 @@ class TeamsEntrySaveFormRequest extends Request
     public function rules()
     {
         return [
-            'team_name' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/',
+            'team_name' => 'required|alpha_spaces_num_dot',
             'competitors' => 'required|size:3|array'
         ];
     }

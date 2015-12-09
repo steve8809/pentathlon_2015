@@ -19,6 +19,14 @@ class AppServiceProvider extends ServiceProvider
             return preg_match('/^[\pL\s]+$/u', $value);
         });
 
+        Validator::extend('alpha_spaces_num', function($attribute, $value, $parameters, $validator) {
+            return preg_match('/^[\pL\s\pN]+$/u', $value);
+        });
+
+        Validator::extend('alpha_spaces_num_dot', function($attribute, $value, $parameters, $validator) {
+            return preg_match('/^[\pL\s\pN.]+$/u', $value);
+        });
+
         Validator::extend('date_multi_format', function($attribute, $value, $formats) {
             foreach($formats as $format) {
                 $parsed = date_parse_from_format($format, $value);

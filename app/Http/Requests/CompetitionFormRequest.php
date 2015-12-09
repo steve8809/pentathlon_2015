@@ -26,10 +26,10 @@ class CompetitionFormRequest extends Request
     {
         $tomorrow = Carbon::tomorrow()->toDateString();
         return [
-            'name' => 'required|regex:/(^[A-Za-z0-9 ]+$)+/',
+            'name' => 'required|alpha_spaces_num_dot',
             'country_id' => 'required',
             'town' => 'required|alpha_spaces',
-            'host' => 'required||regex:/(^[A-Za-z0-9 ]+$)+/',
+            'host' => 'required|alpha_spaces_num_dot',
             'date' => 'required|date|before:'.$tomorrow,
             'category' => 'required',
         ];

@@ -20,6 +20,8 @@ return [
     'alpha_dash'           => 'A(z) :attribute csak betűket, számokat és kötőjeleket tartalmazhat.',
     'alpha_num'            => 'A(z) :attribute csak betűket és számokat tartalmazhat.',
     'alpha_spaces'         => 'A(z) :attribute csak betűket és space-eket tartalmazhat.',
+    'alpha_spaces_num'     => 'A(z) :attribute csak betűket, space-eket és számokat tartalmazhat.',
+    'alpha_spaces_num_dot' => 'A(z) :attribute csak betűket, space-eket, számokat és pontokat tartalmazhat.',
     'array'                => 'A(z) :attribute egy tömbnek kell lennie.',
     'before'               => 'A(z) :attribute mezőben egy dátumot kell megadni, :date előttit.',
     'between'              => [
