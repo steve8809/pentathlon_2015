@@ -53,6 +53,25 @@ td.btn-edit {
     padding-left: 4px;
     padding-right: 25px;
 }
+
+/* Statisztikák padding módosítások */
+#results_stats>tbody>tr>th.no-sort, #results_stats>tfoot>tr>th.no-sort, #results_stats>thead>tr>th.no-sort {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#results_stats>tbody>tr>td, #results_stats>tfoot>tr>td, #results_stats>thead>tr>td {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#results_stats>tbody>tr>th.sort, #results_stats>tfoot>tr>th.sort, #results_stats>thead>tr>th.sort {
+    padding-left: 4px;
+    padding-right: 20px;
+}
+
+
+
 /* Piros label */
 label.control-label.label-orange  {
     color: #ff840f;

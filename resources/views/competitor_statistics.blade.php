@@ -132,7 +132,140 @@
                     </table>
                 </div>
             </div>
+            @if ($all_result->isEmpty()) <div class="placeholder"></div> @endif
+        </div>
+        <div class="container col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2> Versenyző eredményei </h2>
+                </div>
+                @if ($all_result->isEmpty())
+                    <p> Nincs egy eredménye sem.</p>
+                @else
+                    <div class="table-responsive">
+                        <table cellpadding="0" id="results_stats" class="table table-hover table-bordered table-text-center">
+                            <thead>
+                            <tr>
+                                <th colspan="3"></th>
+                                <th colspan="4">Vívás</th>
+                                <th colspan="3">Úszás</th>
+                                <th colspan="4">Lovaglás</th>
+                                <th colspan="3">Kombinált</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th class="no-sort">Verseny</th>
+                                <th class="no-sort">Csoport</th>
+                                <th class="sort">Dátum</th>
+                                <th class="sort">H</th>
+                                <th class="no-sort">Gy</th>
+                                <th class="no-sort">V</th>
+                                <th class="no-sort">P</th>
+                                <th class="sort">H</th>
+                                <th class="no-sort">Idő</th>
+                                <th class="no-sort">P</th>
+                                <th class="sort">H</th>
+                                <th class="no-sort">Idő</th>
+                                <th class="no-sort">Ló</th>
+                                <th class="no-sort">P</th>
+                                <th class="sort">H</th>
+                                <th class="no-sort">Idő</th>
+                                <th class="no-sort">P</th>
+                                <th class="sort">Össz</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($all_result as $result)
+                                <tr>
+                                    <td>{!! $result->competitiongroup->competition->name !!}</td>
+                                    <td>{!! $result->competitiongroup->name !!}</td>
+                                    <td>{!! $result->competitiongroup->date !!}</td>
+                                    <td>@if ($result->fencing_order != 0){!! $result->fencing_order !!} @else - @endif</td>
+                                    @if($result->fencing_status == "")
+                                        <td>@if (!is_null($result->fencing_win)){!! $result->fencing_win !!} @else - @endif</td>
+                                        <td>@if (!is_null($result->fencing_lose)){!! $result->fencing_lose !!} @else - @endif</td>
+                                    @else
+                                        <td>{!! $result->fencing_status !!}</td>
+                                        <td>-</td>
+                                    @endif
+                                    @if($result->penalty_points_fencing == null || $result->penalty_points_fencing == 0)
+                                        <td>{!! $result->fencing_points !!}</td>
+                                    @else
+                                        <td>{!! $result->fencing_points !!} (-{!! $result->penalty_points_fencing !!})</td>
+                                    @endif
+                                    <td>@if ($result->swimming_order != 0){!! $result->swimming_order !!} @else - @endif</td>
+                                    @if($result->swimming_status == "")
+                                        <td>@if ($result->swimming_time != ""){!! $result->swimming_time !!} @else - @endif</td>
+                                    @else
+                                        <td>{!! $result->swimming_status !!}</td>
+                                    @endif
+                                    @if($result->penalty_points_swimming == null || $result->penalty_points_swimming == 0)
+                                        <td>{!! $result->swimming_points !!}</td>
+                                    @else
+                                        <td>{!! $result->swimming_points !!} (-{!! $result->penalty_points_swimming !!})</td>
+                                    @endif
+                                    <td>@if ($result->riding_order != 0){!! $result->riding_order !!} @else - @endif</td>
+                                    @if($result->riding_status == "")
+                                        <td>@if ($result->riding_time != ""){!! $result->riding_time !!} @else - @endif</td>
+                                    @else
+                                        <td>{!! $result->riding_status !!}</td>
+                                    @endif
+                                    <td>@if ($result->horse != null && $result->riding_status == "") {!! $result->horse->name !!} @else - @endif</td>
+                                    <td>{!! $result->riding_points !!}</td>
+                                    <td>@if ($result->ce_order != 0){!! $result->ce_order !!} @else - @endif</td>
+                                    @if($result->ce_status == "")
+                                        <td>@if ($result->ce_time != ""){!! $result->ce_time !!} @else - @endif</td>
+                                    @else
+                                        <td>{!! $result->ce_status !!}</td>
+                                    @endif
+                                    @if($result->penalty_points_ce == null || $result->penalty_points_ce == 0)
+                                        <td>{!! $result->ce_points !!}</td>
+                                    @else
+                                        <td>{!! $result->ce_points !!} (-{!! $result->penalty_points_ce !!})</td>
+                                    @endif
+                                    @if($result->total_penalty_points == null || $result->total_penalty_points == 0)
+                                        <td>{!! $result->total_points !!}</td>
+                                    @else
+                                        <td>{!! $result->total_points !!} (-{!! $result->total_penalty_points !!})</td>
+                                    @endif
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
+            </div>
             <div class="placeholder"></div>
         </div>
+
     @endif
+    <script>
+        $(document).ready(function() {
+            $('#results_stats').DataTable( {
+                "pageLength": 50,
+                "language": {
+                    "lengthMenu": "_MENU_ eredmény megjelenítése",
+                    "zeroRecords": "Nincs megjeleníthető eredmény",
+                    "info": "_PAGE_.oldal, összesen ennyiből: _PAGES_",
+                    "infoEmpty": "Nincsenek adatok",
+                    "infoFiltered": "(megjelenítve _MAX_ eredményből)",
+                    "sSearch": "Keresés",
+                    "oPaginate": {
+                        "sFirst":    "Első",
+                        "sLast":    "Utolsó",
+                        "sNext":    "Következő",
+                        "sPrevious": "Előző"
+                    },
+                },
+                "aoColumnDefs" : [ {
+                    "bSortable" : false,
+                    "aTargets" : [ "no-sort" ]
+                } ],
+                "order": [[ 17, "desc" ]],
+                "aoColumns": [null, null, null, {"sType": "natural"}, null, null, null, {"sType": "natural"}, null, null, {"sType": "natural"}, null, null, null, {"sType": "natural"}, null, null, null]
+            } );
+
+        } );
+
+    </script>
 @endsection

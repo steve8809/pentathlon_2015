@@ -146,6 +146,8 @@ class PageController extends Controller
             $act_competitor = $request->competitor;
         }
 
+        $all_result = Result::where('competitor_id', '=', $act_competitor)->get();
+
         //Úszás és kombinált távok mentése
         $swim_200 = ['Ifi B', 'Ifi A', 'Junior', 'Felnőtt', 'Senior'];
         $swim_100 = ['Ifi C', 'Ifi D'];
@@ -178,7 +180,7 @@ class PageController extends Controller
         $best_ce_800 = Result::whereIn('age_group', $ce_800)->where('competitor_id', '=', $act_competitor)->where('ce_time', '!=', '')->orderBy('ce_time', 'asc')->first();
         $best_ce_400 = Result::whereIn('age_group', $ce_400)->where('competitor_id', '=', $act_competitor)->where('ce_time', '!=', '')->orderBy('ce_time', 'asc')->first();
 
-        return view('competitor_statistics', compact('competitors', 'competitor_in', 'act_competitor', 'best_riding', 'best_fencing', 'best_total', 'best_swimming_200',
+        return view('competitor_statistics', compact('all_result', 'competitors', 'competitor_in', 'act_competitor', 'best_riding', 'best_fencing', 'best_total', 'best_swimming_200',
             'best_swimming_100', 'best_swimming_50', 'best_ce_3200', 'best_ce_2400', 'best_ce_1600', 'best_ce_800', 'best_ce_400'));
     }
 
