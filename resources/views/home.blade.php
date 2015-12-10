@@ -16,6 +16,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     @if ($competitiongroups->isEmpty())
+                        @if (!Route::is('competition.show') && !Route::is('competition.select'))<h1>Aktuális verseny</h1> @endif
                         <h2> {!! $competition->name !!}</h2>
                         <p> Még nincsen csoport felvéve a versenyhez</p>
                     @else
