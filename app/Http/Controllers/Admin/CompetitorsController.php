@@ -17,7 +17,7 @@ class CompetitorsController extends Controller
 
     public function index()
     {
-        $competitors = Competitor::orderBy('last_name', 'desc')->paginate(10);
+        $competitors = Competitor::orderBy('last_name', 'asc')->orderBy('first_name', 'asc')->paginate(10);
         return view('backend.competitors.index', compact('competitors'));
     }
 
