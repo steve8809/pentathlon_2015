@@ -44,14 +44,14 @@ class CeSaveFormRequest extends Request
 
         foreach($this->request->get('ce') as $key => $val)
         {
-            $messages['ce.'.$key.'.date_multi_format'] = 'A pirossal jelölt mezőkben az időeredmény megadása nem a következő formátumban történt vagy a beírt érték nem valós: pp:mm.ss - pl.: 13:20.00';
-            $messages['ce.'.$key.'.required_with'] = 'A pirossal jelölt mezőkben az időeredmény megadása kötelező.';
+            $messages['ce.'.$key.'.date_multi_format'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
+            $messages['ce.'.$key.'.required_with'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
         }
 
         foreach($this->request->get('penalty_ce') as $key => $val)
         {
-            $messages['penalty_ce.'.$key.'.integer'] = 'A pirossal jelölt mezőkben egész számot kell megadni.';
-            $messages['penalty_ce.'.$key.'.min'] = 'A pirossal jelölt mezőkben megadott szám értékének minimum 0-nak kell lennie.';
+            $messages['penalty_ce.'.$key.'.integer'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
+            $messages['penalty_ce.'.$key.'.min'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
         }
 
         return $messages;

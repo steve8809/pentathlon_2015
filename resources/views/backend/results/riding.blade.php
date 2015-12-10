@@ -18,6 +18,7 @@
                 <ul class="list-group">
                     <li class="list-group-item">A lovaglás pontszáma 0 és 300 közötti érték, időeredmény túllépés nélküli pontszámot kell megadni.</li>
                     <li class="list-group-item">Lovas szintidő a versenyen: {!! $competitiongroup->riding_time_limit !!}. Időeredmény megadása a következő formátumban: mm:ss.uu, pl.: 01:20.34</li>
+                    <li class="list-group-item">Ha egy sorban meg van adva egy érték, akkor minden mező kitöltése kötelező az adott sorban.</li>
                 </ul>
                 @if (empty($competitor_in))
                     <p> Nincs egy nevezett versenyző sem.</p>

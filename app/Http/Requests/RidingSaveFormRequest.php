@@ -49,20 +49,20 @@ class RidingSaveFormRequest extends Request
         $messages = [];
         foreach($this->request->get('riding_point') as $key => $val)
         {
-            $messages['riding_point.'.$key.'.integer'] = 'A pirossal jelölt mezőkben a pontszám megadása nem megfelelő.';
-            $messages['riding_point.'.$key.'.between'] = 'A pirossal jelölt mezőkben nem megfelelő a pontszám: 0 és 300 közötti értéket kell megadni.';
-            $messages['riding_point.'.$key.'.required_with'] = 'A pirossal jelölt mezőkben a ló kiválasztása/pontszám/idő megadása kötelező.';
+            $messages['riding_point.'.$key.'.integer'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
+            $messages['riding_point.'.$key.'.between'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
+            $messages['riding_point.'.$key.'.required_with'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
         }
 
         foreach($this->request->get('riding_time') as $key => $val)
         {
-            $messages['riding_time.'.$key.'.required_with'] = 'A pirossal jelölt mezőkben a ló kiválasztása/pontszám/idő megadása kötelező.';
-            $messages['riding_time.'.$key.'.date_multi_format'] = 'A pirossal jelölt mezőkben az időeredmény megadása nem a következő formátumban történt vagy a beírt érték nem valós: pp:mm.ss - pl.: 01:20.00';
+            $messages['riding_time.'.$key.'.required_with'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
+            $messages['riding_time.'.$key.'.date_multi_format'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
         }
 
         foreach($this->request->get('horse_id') as $key => $val)
         {
-            $messages['horse_id.'.$key.'.required_with'] = 'A pirossal jelölt mezőkben a ló kiválasztása/pontszám/idő megadása kötelező.';
+            $messages['horse_id.'.$key.'.required_with'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
         }
 
         return $messages;

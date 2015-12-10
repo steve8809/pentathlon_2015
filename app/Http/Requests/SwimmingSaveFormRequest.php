@@ -44,14 +44,14 @@ class SwimmingSaveFormRequest extends Request
 
         foreach($this->request->get('swimming') as $key => $val)
         {
-            $messages['swimming.'.$key.'.date_multi_format'] = 'A pirossal jelölt mezőkben az időeredmény megadása nem a következő formátumban történt vagy a beírt érték nem valós: pp:mm.ss - pl.: 02:30.00';
-            $messages['swimming.'.$key.'.required_with'] = 'A pirossal jelölt mezőkben az időeredmény megadása kötelező.';
+            $messages['swimming.'.$key.'.date_multi_format'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
+            $messages['swimming.'.$key.'.required_with'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
         }
 
         foreach($this->request->get('penalty_swimming') as $key => $val)
         {
-            $messages['penalty_swimming.'.$key.'.integer'] = 'A pirossal jelölt mezőkben egész számot kell megadni.';
-            $messages['penalty_swimming.'.$key.'.between'] = 'A pirossal jelölt mezőkben megadott szám értékének 0 és 50 közöttinek kell lennie.';
+            $messages['penalty_swimming.'.$key.'.integer'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
+            $messages['penalty_swimming.'.$key.'.between'] = 'A pirossal jelölt mezőkben hiba történt. Ellenőrizd az adatokat, segítség az információs sávokban.';
         }
 
         return $messages;

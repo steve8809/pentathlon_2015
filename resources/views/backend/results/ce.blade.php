@@ -16,7 +16,7 @@
             <fieldset>
                 <legend>Kombinált eredmények a következő versenyen: {!! $competitiongroup->competition->name.' - '.$competitiongroup->name.' - Táv: '.$ce_dist->ce_dist!!}</legend>
                 <ul class="list-group">
-                    <li class="list-group-item">Időeredmény megadása a következő formátumban: mm:ss.uu, pl.: 13:11.67 </li>
+                    <li class="list-group-item">Időeredmény megadása a következő formátumban: mm:ss.uu, pl.: 13:11.67. Idő megadása kötelező, ha van büntetőpont. </li>
                     <li class="list-group-item">Büntetőpontok mezőben egy 0-nál nagyobb számot lehet megadni. Megadása nem kötelező. </li>
                 </ul>
                 @if (empty($competitor_in))
