@@ -51,7 +51,6 @@
             </div>
             @if (empty($team_in))
                 <p> Nincs egy nevezett csapat sem.</p>
-                <a href="/admin/competitiongroups" class="btn btn-info">Vissza a csoportokhoz</a>
             @else
                 <div class="table-responsive">
                     <table class="table">
