@@ -38,12 +38,14 @@
                 <legend>{!! $competitor_in[$act_competitor] !!}</legend>
                 {!! Form::hidden('act_comp', $act_competitor) !!}
 
+                @if ($competitiongroup->fencing_bouts != 0)
                 <div class="form-group">
                     {!! Form::label('fencing['.$act_competitor.']', 'Vívás', array('class' => 'col-lg-2 control-label')) !!}
                     <div class="col-lg-6">
                         {!! Form::select('fencing', $specials, $fencing[$act_competitor], array('class' => 'form-control', ($fencing[$act_competitor] != 0) ? 'disabled' : '')) !!}
                     </div>
                 </div>
+                @endif
 
                 <div class="form-group">
                     {!! Form::label('swimming['.$act_competitor.']', 'Úszás', array('class' => 'col-lg-2 control-label')) !!}
@@ -52,12 +54,14 @@
                     </div>
                 </div>
 
+                @if ($competitiongroup->riding_time_limit != "00:00.00")
                 <div class="form-group">
                     {!! Form::label('riding['.$act_competitor.']', 'Lovaglás', array('class' => 'col-lg-2 control-label')) !!}
                     <div class="col-lg-6">
                         {!! Form::select('riding', $specials, $riding[$act_competitor], array('class' => 'form-control', ($riding[$act_competitor] != 0) ? 'disabled' : '')) !!}
                     </div>
                 </div>
+                @endif
 
                 <div class="form-group">
                     {!! Form::label('ce['.$act_competitor.']', 'Kombinált', array('class' => 'col-lg-2 control-label')) !!}
