@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb67a04e-8faf-43d1-a76c-9e5ea0f6a5a7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClubsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClubsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitiongroupsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitiongroupsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitionsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitionsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitorsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitorsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ResultsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ResultsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/EntryCloseFormRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/EntryCloseFormRequest.php" />
     </list>
     <ignored path="pentathlon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,11 +84,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RolesController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RolesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/RolesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntryCloseFormRequest.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Requests/EntryCloseFormRequest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.53125">
+              <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -119,16 +124,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClubsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ClubsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.961538">
-              <caret line="36" column="89" selection-start-line="36" selection-start-column="89" selection-end-line="36" selection-end-column="89" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -145,7 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/backend/horses/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/swimming_ce_rules/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/swimming_ce_rules/form.blade.php" />
@@ -196,6 +190,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ClubsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitorsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitionsController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/EntryCloseFormRequest.php" />
       </list>
     </option>
   </component>
@@ -1235,13 +1230,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/lang/hu/validation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1604,6 +1592,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/EntryCloseFormRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53125">
+          <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
           <folding />
         </state>
       </provider>
