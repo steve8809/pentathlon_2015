@@ -137,7 +137,7 @@ class ResultsController extends Controller
         foreach ($competitor_list as $comp) {
             $result = Result::where('competitiongroup_id', '=', $id)->where('competitor_id', '=', $comp->competitor->id)->firstOrFail();
             $result->total_points = $result->fencing_points + $result->swimming_points + $result->riding_points + $result->ce_points;
-            $result->total_penalty_points = $result->penalty_points_fencing + $result->penalty_points_swimming + $result->penalty_points_riding + $result->penalty_points_ce;
+            $result->total_penalty_points = $result->penalty_points_fencing + $result->penalty_points_swimming + $result->penalty_points_ce;
             $result->save();
         }
     }
@@ -651,7 +651,7 @@ class ResultsController extends Controller
         $result = Result::where('competitiongroup_id', '=', $id)->where('competitor_id', '=', $act_competitor)->first();
 
         //Úszás specek
-        if ($request->swimming == 1 || $request->swimming == 2 || $request->swimming == 3) {
+        if ($request->swimming == 1) {
             $result->swimming_status = "DNS";
             $result->swimming_points = 0;
             $result->swimming_order = 0;
