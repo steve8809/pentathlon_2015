@@ -22,7 +22,7 @@ class ClubsController extends Controller
 
     public function create()
     {
-        $countries = Country::lists('name','name')->all();
+        $countries = Country::orderBy('name', 'asc')->get()->lists('name','name')->all();
         return view('backend.clubs.create', compact('countries'));
     }
 
@@ -34,7 +34,7 @@ class ClubsController extends Controller
 
     public function edit($id)
     {
-        $countries = Country::lists('name','name')->all();
+        $countries = Country::orderBy('name', 'asc')->get()->lists('name','name')->all();
         $club = Club::whereId($id)->firstOrFail();
         return view('backend.clubs.edit', compact('club', 'countries'));
     }

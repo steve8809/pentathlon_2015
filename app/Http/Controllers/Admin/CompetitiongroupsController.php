@@ -40,7 +40,7 @@ class CompetitiongroupsController extends Controller
 
     public function create()
     {
-        $competitions = Competition::all()->lists('name_town_date_category', 'id')->all();
+        $competitions = Competition::orderBy('date', 'desc')->get()->lists('name_town_date_category', 'id')->all();
         $age_groups = Age_group::lists('age_group', 'age_group')->all();
         return view('backend.competitiongroups.create', compact('competitions', 'age_groups'));
     }
@@ -67,7 +67,7 @@ class CompetitiongroupsController extends Controller
 
     public function edit($id)
     {
-        $competitions = Competition::all()->lists('name_town_date_category', 'id')->all();
+        $competitions = Competition::orderBy('date', 'desc')->get()->lists('name_town_date_category', 'id')->all();
         $age_groups = Age_group::lists('age_group', 'age_group')->all();
         $competitiongroup = Competitiongroup::whereId($id)->firstOrFail();
         return view('backend.competitiongroups.edit', compact('competitiongroup', 'competitions', 'age_groups'));

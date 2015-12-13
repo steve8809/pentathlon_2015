@@ -23,8 +23,8 @@ class CompetitorsController extends Controller
 
     public function create()
     {
-        $countries = Country::lists('name', 'id')->all();
-        $clubs = Club::all()->lists('name_town', 'id')->all();
+        $countries = Country::orderBy('name', 'asc')->get()->lists('name', 'id')->all();
+        $clubs = Club::orderBy('name', 'asc')->get()->lists('name_town', 'id')->all();
         return view('backend.competitors.create', compact('countries', 'clubs'));
     }
 
@@ -49,8 +49,8 @@ class CompetitorsController extends Controller
 
     public function edit($id)
     {
-        $countries = Country::lists('name','id')->all();
-        $clubs = Club::all()->lists('name_town', 'id')->all();
+        $countries = Country::orderBy('name', 'asc')->lists('name', 'id')->all();
+        $clubs = Club::orderBy('name', 'asc')->get()->lists('name_town', 'id')->all();
         $competitor = Competitor::whereId($id)->firstOrFail();
         return view('backend.competitors.edit', compact('competitor', 'countries', 'clubs'));
     }

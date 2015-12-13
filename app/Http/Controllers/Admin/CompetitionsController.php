@@ -24,7 +24,7 @@ class CompetitionsController extends Controller
 
     public function create()
     {
-        $countries = Country::lists('name', 'id')->all();
+        $countries = Country::orderBy('name', 'asc')->lists('name', 'id')->all();
         $categories = Category::lists('category', 'category')->all();
         return view('backend.competitions.create', compact('countries', 'categories'));
     }
@@ -37,7 +37,7 @@ class CompetitionsController extends Controller
 
     public function edit($id)
     {
-        $countries = Country::lists('name','id')->all();
+        $countries = Country::orderBy('name', 'asc')->lists('name', 'id')->all();
         $categories = Category::lists('category','category')->all();
         $competition = Competition::whereId($id)->firstOrFail();
         return view('backend.competitions.edit', compact('competition', 'countries', 'categories'));

@@ -655,6 +655,7 @@ class ResultsController extends Controller
             $result->swimming_status = "DNS";
             $result->swimming_points = 0;
             $result->swimming_order = 0;
+            $result->swimming_time = "";
             $result->penalty_points_swimming = 0;
             $result->save();
         }
@@ -662,6 +663,7 @@ class ResultsController extends Controller
             $result->swimming_status = "DNF";
             $result->swimming_points = 0;
             $result->swimming_order = 0;
+            $result->swimming_time = "";
             $result->penalty_points_swimming = 0;
             $result->save();
         }
@@ -669,6 +671,7 @@ class ResultsController extends Controller
             $result->swimming_status = "ELI";
             $result->swimming_points = 0;
             $result->swimming_order = 0;
+            $result->swimming_time = "";
             $result->penalty_points_swimming = 0;
             $result->save();
         }
@@ -678,18 +681,27 @@ class ResultsController extends Controller
             $result->riding_status = "DNS";
             $result->riding_points = 0;
             $result->riding_order = 0;
+            $result->riding_time = "";
+            $result->riding_point = "";
+            $result->horse_id = null;
             $result->save();
         }
         if ($request->riding == 2) {
             $result->riding_status = "DNF";
             $result->riding_points = 0;
             $result->riding_order = 0;
+            $result->riding_time = "";
+            $result->riding_point = "";
+            $result->horse_id = null;
             $result->save();
         }
         if ($request->riding == 3) {
             $result->riding_status = "ELI";
             $result->riding_points = 0;
             $result->riding_order = 0;
+            $result->riding_time = "";
+            $result->riding_point = "";
+            $result->horse_id = null;
             $result->save();
         }
 
@@ -698,6 +710,7 @@ class ResultsController extends Controller
             $result->ce_status = "DNS";
             $result->ce_points = 0;
             $result->ce_order = 0;
+            $result->ce_time = "";
             $result->penalty_points_ce = 0;
             $result->save();
         }
@@ -705,6 +718,7 @@ class ResultsController extends Controller
             $result->ce_status = "DNF";
             $result->ce_points = 0;
             $result->ce_order = 0;
+            $result->ce_time = "";
             $result->penalty_points_ce = 0;
             $result->save();
         }
@@ -712,6 +726,7 @@ class ResultsController extends Controller
             $result->ce_status = "ELI";
             $result->ce_points = 0;
             $result->ce_order = 0;
+            $result->ce_time = "";
             $result->penalty_points_ce = 0;
             $result->save();
         }
@@ -800,7 +815,7 @@ class ResultsController extends Controller
         $result->swimming_points = 0;
         $result->penalty_points_swimming = null;
         $result->swimming_order = 0;
-        $result->riding_point = 0;
+        $result->riding_point = "";
         $result->riding_time = "";
         $result->riding_points = 0;
         $result->horse_id = null;
