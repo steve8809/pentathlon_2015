@@ -740,8 +740,10 @@ class ResultsController extends Controller
             $result->penalty_points_fencing = 0;
             $result->save();
 
-            $competitiongroup->fencing_bouts = $competitiongroup->fencing_bouts - $competitiongroup->bouts_per_match;
-            $competitiongroup->save();
+            if ($competitiongroup->fencing_bouts != 0) {
+                $competitiongroup->fencing_bouts = $competitiongroup->fencing_bouts - $competitiongroup->bouts_per_match;
+                $competitiongroup->save();
+            }
 
             $fencing_results1 = Fencing_result::where('competitiongroup_id', '=', $id)->where('competitor1_id', '=', $act_competitor)->get();
             $fencing_results2 = Fencing_result::where('competitiongroup_id', '=', $id)->where('competitor2_id', '=', $act_competitor)->get();
@@ -828,8 +830,11 @@ class ResultsController extends Controller
         $result->total_penalty_points = null;
         $result->save();
 
-        $competitiongroup->fencing_bouts = $competitiongroup->fencing_bouts - $competitiongroup->bouts_per_match;
-        $competitiongroup->save();
+        if ($competitiongroup->fencing_bouts != 0) {
+            $competitiongroup->fencing_bouts = $competitiongroup->fencing_bouts - $competitiongroup->bouts_per_match;
+            $competitiongroup->save();
+        }
+
 
         $fencing_results1 = Fencing_result::where('competitiongroup_id', '=', $id)->where('competitor1_id', '=', $act_competitor)->get();
         $fencing_results2 = Fencing_result::where('competitiongroup_id', '=', $id)->where('competitor2_id', '=', $act_competitor)->get();

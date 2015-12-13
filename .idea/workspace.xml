@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb67a04e-8faf-43d1-a76c-9e5ea0f6a5a7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/EntryCloseFormRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/EntryCloseFormRequest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ResultsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ResultsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/hu/validation.php" afterPath="$PROJECT_DIR$/resources/lang/hu/validation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pentathlon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,7 +29,7 @@
       <file leaf-file-name="CountriesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CountriesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -37,7 +39,7 @@
       <file leaf-file-name="FencingRulesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/FencingRulesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -47,7 +49,7 @@
       <file leaf-file-name="HorsesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/HorsesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -57,28 +59,28 @@
       <file leaf-file-name="PagesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/PagesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultsController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ResultsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ResultsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="19.923077">
-              <caret line="728" column="34" selection-start-line="728" selection-start-column="34" selection-end-line="728" selection-end-column="34" />
+            <state vertical-scroll-proportion="-1.3414352">
+              <caret line="745" column="13" selection-start-line="745" selection-start-column="13" selection-end-line="745" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompetitiongroupsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitiongroupsController.php">
+      <file leaf-file-name="validation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/lang/hu/validation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-27.461538">
-              <caret line="69" column="115" selection-start-line="69" selection-start-column="115" selection-end-line="69" selection-end-column="115" />
+            <state vertical-scroll-proportion="-23.846153">
+              <caret line="74" column="45" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -87,17 +89,17 @@
       <file leaf-file-name="RolesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/RolesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntryCloseFormRequest.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EntryCloseFormRequest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Requests/EntryCloseFormRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53125">
+            <state vertical-scroll-proportion="0.0">
               <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
               <folding />
             </state>
@@ -107,7 +109,7 @@
       <file leaf-file-name="CompetitionsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitionsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.615385">
+            <state vertical-scroll-proportion="0.0">
               <caret line="39" column="81" selection-start-line="39" selection-start-column="81" selection-end-line="39" selection-end-column="81" />
               <folding />
             </state>
@@ -117,7 +119,7 @@
       <file leaf-file-name="CompetitorsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitorsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.23077">
+            <state vertical-scroll-proportion="0.0">
               <caret line="51" column="81" selection-start-line="51" selection-start-column="81" selection-end-line="51" selection-end-column="81" />
               <folding />
             </state>
@@ -162,7 +164,6 @@
         <option value="$PROJECT_DIR$/app/Http/Requests/SwimmingCeRulesFormRequest.php" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/ClubFormRequest.php" />
-        <option value="$PROJECT_DIR$/resources/lang/hu/validation.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/CompetitionFormRequest.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/TeamsEntrySaveFormRequest.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
@@ -185,12 +186,13 @@
         <option value="$PROJECT_DIR$/resources/views/backend/competitiongroups/teams_entry.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ResultsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitiongroupsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ClubsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitorsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitionsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/EntryCloseFormRequest.php" />
+        <option value="$PROJECT_DIR$/resources/lang/hu/validation.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/ResultsController.php" />
       </list>
     </option>
   </component>
@@ -239,7 +241,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1127,6 +1128,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1230,13 +1232,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="7.3076925">
@@ -1480,7 +1475,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="69" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1496,7 +1490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1504,7 +1497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1526,7 +1518,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitiongroupsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.461538">
+        <state vertical-scroll-proportion="0.0">
           <caret line="69" column="115" selection-start-line="69" selection-start-column="115" selection-end-line="69" selection-end-column="115" />
           <folding />
         </state>
@@ -1534,7 +1526,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitionsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.615385">
+        <state vertical-scroll-proportion="0.0">
           <caret line="39" column="81" selection-start-line="39" selection-start-column="81" selection-end-line="39" selection-end-column="81" />
           <folding />
         </state>
@@ -1542,7 +1534,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CompetitorsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.23077">
+        <state vertical-scroll-proportion="0.0">
           <caret line="51" column="81" selection-start-line="51" selection-start-column="81" selection-end-line="51" selection-end-column="81" />
           <folding />
         </state>
@@ -1580,14 +1572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ResultsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="19.923077">
-          <caret line="728" column="34" selection-start-line="728" selection-start-column="34" selection-end-line="728" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/RolesController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1598,8 +1582,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/EntryCloseFormRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53125">
+        <state vertical-scroll-proportion="0.0">
           <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/hu/validation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.846153">
+          <caret line="74" column="45" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ResultsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3414352">
+          <caret line="745" column="13" selection-start-line="745" selection-start-column="13" selection-end-line="745" selection-end-column="13" />
           <folding />
         </state>
       </provider>

@@ -72,7 +72,7 @@ return [
         'numeric' => 'A(z) :attribute mező méretének ennyinek kell lennie: :size.',
         'file'    => 'A(z) :attribute méretének ennyi kilobytenak kell lennie: :size.',
         'string'  => 'A(z) :attribute ennyi karaktert tartalmazhat: :size .',
-        'array'   => 'A(z) :attribute ennyi elemet kell tartalmaznia: :size.',
+        'array'   => 'A(z) :attribute mezőnek ennyi elemet kell tartalmaznia: :size.',
     ],
     'string'               => 'A(z) :attribute nem egy karaktersorozat.',
     'timezone'             => 'A(z) :attribute nem egy valós név.',
@@ -142,7 +142,8 @@ return [
         'riding_time_limit' => 'Lovas szintidő',
         'club_id' => 'Klub',
         'date' => 'Dátum',
-        'email' => 'E-mail'
+        'email' => 'E-mail',
+        'password_confirmation' => 'Jelszó ismét'
 
     ],
 
