@@ -18,7 +18,7 @@ class CompetitorTableSeeder extends Seeder
             $rand_date = mt_rand($start, $end);
             $birthday = date("Y-m-d", $rand_date);
             $sex = $sexes[array_rand($sexes, 1)];
-            $country_id = rand(1,239);
+            $country_id = rand(1,238);
             $club = rand(1,6);
             $full_name = 'Versenyző '.$n;
             DB::table('competitors')->insert(

@@ -18,14 +18,14 @@
                     <li class="list-group-item">Egy csapatban 3 versenyző lehet.</li>
                 </ul>
 
-                <div class="form-group @if ($errors->has('name')) has-error @endif">
+                <div class="form-group @if ($errors->has('team_name')) has-error @endif">
                     {!! Form::label('team_name', 'Név', array('class' => 'col-lg-2 control-label')) !!}
                     <div class="col-lg-10">
                         {!! Form::text('team_name', null , array('class' => 'form-control', 'placeholder' => 'Csapat neve')) !!}
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group @if ($errors->has('competitors')) has-error @endif">
                     {!! Form::label('competitors', 'Versenyző', array('class' => 'col-lg-2 control-label')) !!}
                     <div class="col-lg-10">
                         {!! Form::select('competitors[]', $competitors, null, array('id' => 'competitors', 'class' => 'form-control', 'multiple')) !!}

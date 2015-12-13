@@ -45,6 +45,6 @@ class UsersController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect('/admin/users');
+        return redirect('/admin/users')->with('status', 'A felhasználó törölve!');
     }
 }
